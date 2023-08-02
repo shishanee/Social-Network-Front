@@ -1,0 +1,70 @@
+*{
+    color: #FFF;
+}
+
+.app{
+    background: #272626;
+    .allPage{
+        .sideBar{
+        }
+
+        .mainContent{
+
+            .contentHeader{
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-end;
+
+                .avaName{
+                    display: flex;
+                    align-items: flex-end;;
+
+                    .avaImg{
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50%;
+                    }
+
+                    .fullName{
+                        padding: 5px 5px;
+
+                        .name{
+                            font-size: 21px;
+                        }
+                        .linkToChangeProfile{
+                            text-decoration: none;
+                            color:#364ae1;
+                            font-size: 12px;;
+                        }
+                    }
+                }
+                .blockForChanging{
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 5px;
+                    align-items: center;
+                .changeProfile{
+                    text-decoration: none;
+                    background: #000;
+                    color: #FFF;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    border: none;  
+                    cursor: pointer;
+                }
+
+                .yet{
+                    text-decoration: none;
+                    background: #000;
+                    color: #FFF;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    border: none;  
+                    cursor: pointer;
+                }
+            }
+        }
+        }
+    }
+
+}
