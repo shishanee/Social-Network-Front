@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Routers from "./Routes/Routes";
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
     <>
       <BtnScrollUp />
@@ -15,6 +15,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

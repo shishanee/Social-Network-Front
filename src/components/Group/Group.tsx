@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGroups } from "../../features/group.slice";
+import { getGroups } from "../../features/groupSlice";
 import styles from "./Group.module.scss";
 import { Link } from "react-router-dom";
+import { AppDispatch, RootState } from "../../app/store";
 
-const Group: React.FC = () => {
-  const group = useSelector((state) => state.group.group);
+const Group: React.FC = (): JSX.Element => {
+  const group = useSelector((state: RootState) => state.group.group);
   console.log(group);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getGroups());
   }, []);
@@ -15,7 +16,9 @@ const Group: React.FC = () => {
     <div className={styles.group}>
       <div className={styles.buttons}>
         <div className={styles.firstLinks}>
-          <button>Все сообщества <p>{group.length}</p></button>
+          <button>
+            Все сообщества <p>{group.length}</p>
+          </button>
           <button>Управление</button>
         </div>
         <button className={styles.createBut}>Создать сообщество</button>

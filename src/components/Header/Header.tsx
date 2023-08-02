@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Header.module.scss";
-import logo from '../../../public/letter-d (1).png'
-import search from '../../../public/loupe.png'
-import down from '../../../public/down-arrow (2).png'
-import bell from '../../../public/bell.png'
+import logo from "../../../public/letter-d (1).png";
+import search from "../../../public/loupe.png";
+import down from "../../../public/down-arrow (2).png";
+import bell from "../../../public/bell.png";
 
-const Header: React.FC = () => {
+const Header: React.FC = (): JSX.Element => {
   return (
     <header className={styles.header}>
       <div className={styles.logoAndSearch}>
@@ -20,7 +20,10 @@ const Header: React.FC = () => {
         </div>
       </div>
       <div className={styles.profile}>
-        <img src="https://grozny.tv/storage/images/27b10e7d-9d8f-4f6e-a612-865147245920.jpg" alt="" />
+        <img
+          src="https://grozny.tv/storage/images/27b10e7d-9d8f-4f6e-a612-865147245920.jpg"
+          alt=""
+        />
         <img className={styles.down} src={down} alt="" />
       </div>
     </header>
