@@ -9,10 +9,12 @@ const App: React.FC = (): JSX.Element => {
     <>
       <BtnScrollUp />
       <Header />
-      <div className="homePage">
-        <Sidebar />
-        <Routers />
-      </div> 
+      <div className="home">
+        <div className="homePage">
+          <Sidebar />
+          <Routers />
+        </div>
+      </div>
     </>
   );
 };

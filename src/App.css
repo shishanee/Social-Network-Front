@@ -10,7 +10,15 @@
   justify-content: space-evenly;
   background: #141414;
   padding-top: 15px;
+  width: 1000px;
 }
 input {
   outline: none;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  background: #141414;
+
 }
