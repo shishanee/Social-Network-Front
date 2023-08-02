@@ -17,23 +17,33 @@ const MainFeed: React.FC = () => {
               <div className={styles.avaName}>
 
                   <img className={styles.avaImg} src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="ava" />
+                  
+                  <div className={styles.blockWithoutImg}>
                   <div className={styles.fullName}>
-
                       <div className={styles.name}>Abdurrahman Navrazov</div>
-                      <Link to={"#"} className={styles.linkToChangeProfile}>Укажите информацию о себе</Link>
-
+                      <Link to={"#"} className={styles.linkToChangeProfile}>Укажите информацию о себе 
+                     <span className={styles.arrowLink}>  › </span>
+                      </Link>
                   </div>
 
-              </div>
                 <div className={styles.blockForChanging}>
               <button className={styles.changeProfile}>Редактировать профиль</button>
-              <button className={styles.yet}> Ещё</button>
+              <button className={styles.yet}> Ещё </button>
+              </div>
+              </div>
               </div>
               
           </div>
 
           <div className={styles.contentMain}>
-              <div className={styles.leftSide}></div>
+              <div className={styles.leftSide}>
+                <div className={styles.blockPhoto}>
+                    <div className={styles.phptoAndMusic}>
+                        <Link to={"#"} className={styles.photoBut}></Link>
+                        <Link to={"#"} className={styles.musicText}></Link>
+                    </div>
+                </div>
+              </div>
               <div className={styles.rightSide}></div>
           </div>
 

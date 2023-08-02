@@ -1,70 +1,102 @@
-*{
-    color: #FFF;
+* {
+  color: #fff;
 }
 
-.app{
-    background: #272626;
-    .allPage{
-        .sideBar{
-        }
+.app {
+  background: #272626;
+  .allPage {
+    // .sideBar {
+    // }
 
-        .mainContent{
+    .mainContent {
+      .contentHeader {
+        .avaName {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          padding: 20px;
 
-            .contentHeader{
-                display: flex;
-                justify-content: space-around;
-                align-items: flex-end;
+          .avaImg {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+          }
 
-                .avaName{
-                    display: flex;
-                    align-items: flex-end;;
+          .blockWithoutImg {
+            width: 700px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            align-content: center;
+            .fullName {
+              padding: 5px 5px;
 
-                    .avaImg{
-                        width: 150px;
-                        height: 150px;
-                        border-radius: 50%;
-                    }
+              .name {
+                font-size: 21px;
+              }
+              .linkToChangeProfile {
+                text-decoration: none;
+                color: #364ae1;
+                font-size: 12px;
 
-                    .fullName{
-                        padding: 5px 5px;
-
-                        .name{
-                            font-size: 21px;
-                        }
-                        .linkToChangeProfile{
-                            text-decoration: none;
-                            color:#364ae1;
-                            font-size: 12px;;
-                        }
-                    }
+                .arrowLink {
+                  color: #364ae1;
+                  transition: 0.3s;
                 }
-                .blockForChanging{
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 5px;
-                    align-items: center;
-                .changeProfile{
-                    text-decoration: none;
-                    background: #000;
-                    color: #FFF;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    border: none;  
-                    cursor: pointer;
+              }
+              .linkToChangeProfile:hover {
+                .arrowLink{
+                    margin-left: 3px;
+                    transition: 0.3s;
                 }
-
-                .yet{
-                    text-decoration: none;
-                    background: #000;
-                    color: #FFF;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    border: none;  
-                    cursor: pointer;
-                }
+              }
             }
-        }
-        }
-    }
 
+            .blockForChanging {
+              padding: 5px 5px;
+              display: flex;
+              justify-content: space-between;
+              gap: 5px;
+
+              .changeProfile {
+                font-size: 14px;
+                text-decoration: none;
+                background: #4d4b4b;
+                color: #fff;
+                padding: 0px 16px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+              }
+
+              .changeProfile:hover {
+                background: #555454;
+              }
+
+              .yet {
+                font-size: 14px;
+                text-decoration: none;
+                background: #4d4b4b;
+                color: #fff;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+              }
+              .yet:hover {
+                background: #555454;
+              }
+            }
+          }
+        }
+      }
+      .liftSide{
+
+      }
+
+      .rigthSide{
+        
+      }
+    }
+  }
 }
