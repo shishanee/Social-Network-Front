@@ -10,11 +10,14 @@ import videos from "../../../public/videos.svg"
 import clips from "../../../public/clips.svg"
 import styles from "./Sidebar.module.scss"
 import { Link } from "react-router-dom"
+import BtnScrollUp from "../BtnScrollUp/BtnScrollUp"
 
 
 function Sidebar() {
   return (
+
     <div className={styles.siderbar}>
+        <BtnScrollUp/>
         <ol>
             <li><Link to="#"><img src={myProfile} alt="" /><span>Моя страница</span></Link></li>
             <li><Link to="#"> <img src={news} alt="" />Новости </Link></li>
@@ -26,7 +29,6 @@ function Sidebar() {
             <li><Link to="#"> <img src={musics} alt="" />Музыка</Link></li>
             <li><Link to="#"> <img src={videos} alt="" />Видео</Link></li>
             <li><Link to="#"> <img src={clips} alt="" />Закладки</Link></li>
-           
         </ol>
     </div>
   )
