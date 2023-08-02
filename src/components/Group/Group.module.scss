@@ -1,0 +1,52 @@
+.groupsMain {
+  margin-top: 10px;
+  hr {
+    border: 1px solid rgba(192, 192, 192, 0.283);
+  }
+  .hr {
+    border-bottom: 1px solid rgba(192, 192, 192, 0.454);
+  }
+}
+.oneGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  .groupName {
+    display: flex;
+    align-items: center;
+  }
+  button {
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+  }
+  a {
+    color: #e1e3e6;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  h5 {
+    font-weight: 400;
+    font-size: 14px;
+    color: grey;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+.group {
+  background: #222222;
+  width: 550px;
+  padding: 20px;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  border-radius: 8px;
+}
