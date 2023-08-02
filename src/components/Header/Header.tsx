@@ -1,10 +1,15 @@
-import React from 'react'
-import styles from './Header.module.scss'
+import React from "react";
+import styles from "./Header.module.scss";
 
-const Header:React.FC = () => {
+const Header: React.FC = () => {
   return (
-    <div>Header</div>
-  )
-}
+    <header>
+      <div className={styles.logo}>
+        <div className={styles.search}></div>
+      </div>
+      <div className={styles.profile}></div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
