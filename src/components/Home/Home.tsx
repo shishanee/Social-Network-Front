@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Home.module.scss";
 import RightSidebar from "../rightSidebar/rightSidebar";
 
-const Home: React.FC = () => {
+const Home: React.FC = (): JSX.Element => {
   return (
     <>
       <div className={styles.homePage}>

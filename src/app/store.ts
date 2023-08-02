@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import group from "../features/group.slice";
+import group from "../features/groupSlice";
+import application from "../features/applicationSlice";
 
 export const store = configureStore({
   reducer: {
     group,
+    application,
   },
 });
 
