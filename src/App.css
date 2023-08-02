@@ -11,3 +11,6 @@
   background: #141414;
   padding-top: 15px;
 }
+input {
+  outline: none;
+}

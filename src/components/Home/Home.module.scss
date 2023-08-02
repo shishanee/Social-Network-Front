@@ -27,6 +27,13 @@
       background: #222222;
       width: 490px;
       height: 40px;
+      color: #dbdbdbdb;
+      padding-left: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+    input:active {
+      border: none;
     }
   }
 }
