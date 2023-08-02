@@ -1,16 +1,22 @@
 import "./App.css";
+import BtnScrollUp from "./components/BtnScrollUp/BtnScrollUp";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Routers from "./Routes/Routes";
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   return (
     <>
+      <BtnScrollUp />
       <Header />
-      <Routers />
-      <Footer />
+      <div className="home">
+        <div className="homePage">
+          <Sidebar />
+          <Routers />
+        </div>
+      </div>
     </>
   );
-}
+};
 
 export default App;

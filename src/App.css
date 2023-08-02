@@ -2,5 +2,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.homePage {
+  display: flex;
+  justify-content: space-evenly;
+  background: #141414;
+  padding-top: 15px;
+  width: 1000px;
+}
+input {
+  outline: none;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  background: #141414;
+
 }
