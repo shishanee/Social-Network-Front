@@ -20,11 +20,11 @@ function Sidebar() {
         <BtnScrollUp/>
         <ol>
             <li><Link to="#"><img src={myProfile} alt="" /><span>Моя страница</span></Link></li>
-            <li><Link to="#"> <img src={news} alt="" />Новости </Link></li>
+            <li><Link to="/"> <img src={news} alt="" />Новости </Link></li>
             <li><Link to="#"> <img src={message} alt="" />Мессенджер</Link></li>
             <li><Link to="#"> <img src={call} alt="" />Звонки</Link></li>
             <li><Link to="#"> <img src={friends} alt="" />Друзья</Link></li>
-            <li><Link to="#"> <img src={group} alt="" />Сообщества</Link></li>
+            <li><Link to="/group"> <img src={group} alt="" />Сообщества</Link></li>
             <li><Link to="#"> <img src={photos} alt="" />Фотографии</Link></li>
             <li><Link to="#"> <img src={musics} alt="" />Музыка</Link></li>
             <li><Link to="#"> <img src={videos} alt="" />Видео</Link></li>
