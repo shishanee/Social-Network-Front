@@ -1,0 +1,133 @@
+.rightSidebarContainer {
+  background-color: #222222f7;
+  color: #dbdbdb;
+  width: 355px;
+  border-radius: 13px;
+  border: solid 1px rgba(128, 128, 128, 0.468);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  .rightSidebarMenu {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .rightSidebar {
+    padding: 7px;
+  }
+  .rightSidebarMenu:hover {
+    background-color: #3b3b3b;
+  }
+ 
+  .rightSidebarSiz {
+    width: 92%;
+    height: 3px;
+    border-bottom: solid 1px rgba(128, 128, 128, 0.468);
+    margin: auto;
+    margin-bottom: 4px;
+    margin-top: 2px;
+  }
+  .rightSidebarPodMenu {
+    font-size: 13px;
+    padding: 10px 25px;
+    margin: auto;
+    border-radius: 8px;
+    color: rgb(128, 128, 128);
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+  .rightSidebarPodMenu:hover{
+    background-color: #3b3b3b;
+  }
+  .backlightNews{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    margin-bottom: 2px;
+  }
+  .backlightImage{
+    font-size: 13px;
+    padding: 10px 25px;
+    margin: auto;
+    border-radius: 8px;
+    color: rgb(128, 128, 128);
+    font-weight: 400;
+    background-color: #3b3b3b;
+    margin-bottom: 2px;
+  }
+  .backlightVideo{
+    font-size: 13px;
+    padding: 10px 25px;
+    margin: auto;
+    border-radius: 8px;
+    color: rgb(128, 128, 128);
+    font-weight: 400;
+    background-color: #3b3b3b;
+    margin-bottom: 2px;
+  }
+  .backlightPodcast{
+    font-size: 13px;
+    padding: 10px 25px;
+    margin: auto;
+    border-radius: 8px;
+    color: rgb(128, 128, 128);
+    font-weight: 400;
+    background-color: #3b3b3b;
+    margin-bottom: 2px;
+  }
+  .backlightPopulate{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    margin-bottom: 2px;
+  }
+  .backlightSearch{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    margin-bottom: 2px;
+  }
+  .backlightReaction{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    margin-bottom: 2px;
+  }
+  .backlightUpdate{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    margin-bottom: 2px;
+  }
+  .backlightComment{
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13.1px;
+    font-weight: 500;
+    background-color: #3b3b3b;
+    color: #dbdbdb;
+    text-decoration: none;
+    margin-bottom: 2px;
+  }
+  .link{
+    text-decoration: none;
+    color: #dbdbdb;
+    
+  }
+}
