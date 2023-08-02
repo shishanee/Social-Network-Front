@@ -1,0 +1,20 @@
+div {
+    .buttonToTop {
+        position: fixed;
+        background-color: transparent;
+        top: 20px;
+        left: 20px;
+        font-size: 16px;
+        color: cornflowerblue;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        text-align: center;
+    
+        span {
+            font-size: 15px;
+            text-align: center;
+        }
+      }
+}
+

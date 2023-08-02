@@ -4,3 +4,10 @@
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.homePage {
+  display: flex;
+  justify-content: space-evenly;
+  background: #141414;
+  padding-top: 15px;
+}

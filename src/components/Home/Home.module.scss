@@ -1,0 +1,32 @@
+.homePage {
+  padding: 16px;
+  background: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .post {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    width: 550px;
+    background: #222222;
+    border-radius: 10px;
+    border: 1px solid rgba(192, 192, 192, 0.135);
+
+    img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    input {
+      border: 0;
+      background: #222222;
+      width: 490px;
+      height: 40px;
+    }
+  }
+}
