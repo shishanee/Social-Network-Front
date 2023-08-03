@@ -1,20 +1,56 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Grops } from "./groupSlice";
+
+export interface User {
+  _id: string;
+  firstName: string;
+  image: string;
+  lastName: string;
+  number: string;
+  email: string;
+  password: string;
+  age: string;
+  posts: string[];
+  groups: string[];
+  friends: string[];
+  __v:number
+}
 
 export interface IApplication {
+  state: User[];
   error: string | null | unknown;
   signinUp: boolean;
   signinIn: boolean;
-  token: string;
+  token: string | null;
+  loading: boolean;
 }
 
-const initialState = {
+export const initialState: IApplication = {
+  state: [],
   error: null,
   signinUp: false,
   signinIn: false,
+  loading: false,
   token: localStorage.getItem("token"),
 };
 
-export const authSignUp = createAsyncThunk(
+export interface dataSingUp {
+  firstName: string;
+  lastName: string;
+  number: string;
+  email: string;
+  password: string;
+}
+
+export interface dataSingIn{
+  number:string,
+  password: string
+}
+export const authSignUp = createAsyncThunk<
+  Grops,
+  dataSingUp,
+  { rejectValue: string | unknown | null}
+>(
   "auth/signUp",
   async ({ firstName, lastName, number, email, password }, thunkAPI) => {
     try {
@@ -34,11 +70,11 @@ export const authSignUp = createAsyncThunk(
 
       return json;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      thunkAPI.rejectWithValue(error);
     }
   }
 );
-export const authSignIn = createAsyncThunk(
+export const authSignIn = createAsyncThunk< string | null,dataSingIn,{rejectValue: string | unknown}>(
   "auth/signIn",
   async ({ number, password }, thunkAPI) => {
     try {
@@ -54,11 +90,11 @@ export const authSignIn = createAsyncThunk(
         return thunkAPI.rejectWithValue(token.error);
       }
 
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token.token);
 
-      return token;
+      return token.token;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -84,7 +120,7 @@ const applicationSlice = createSlice({
       .addCase(authSignUp.pending, (state) => {
         state.signinUp = true;
       })
-      .addCase(authSignUp.rejected, (state, action) => {
+      .addCase(authSignUp.rejected, (state, action: PayloadAction<string | unknown>) => {
         state.signinUp = false;
         state.error = action.payload;
       })
@@ -95,7 +131,7 @@ const applicationSlice = createSlice({
       .addCase(authSignIn.pending, (state) => {
         state.error = null;
       })
-      .addCase(authSignIn.rejected, (state, action) => {
+      .addCase(authSignIn.rejected, (state, action: PayloadAction<string | unknown>) => {
         state.signinUp = false;
         state.error = action.payload;
       })
