@@ -16,7 +16,7 @@ const Sidebar: React.FC = (): JSX.Element => {
       <BtnScrollUp />
       <ol>
         <li>
-          <Link to="#">
+          <Link to="/myFeed">
             <img src={myProfile} alt="" />
             <span>Моя страница</span>
           </Link>

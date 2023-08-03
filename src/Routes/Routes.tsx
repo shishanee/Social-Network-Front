@@ -5,10 +5,12 @@ import MyFeed from "../components/MyFeed/MyFeed";
 import Home from "../components/Home/Home";
 import Group from "../components/Group/Group";
 import AudioPlayer from "../components/Music/AudioPlayer";
+import Edit from "../components/EditProfile/Edit";
 
 const Routers = () => {
   return (
     <Routes>
+      <Route path="/edit" element={<Edit />}/>
       <Route path="/register" element={<SignUp />} />
       <Route path="/login" element={<SignIn />} />
       <Route path="/myFeed" element={<MyFeed />} />

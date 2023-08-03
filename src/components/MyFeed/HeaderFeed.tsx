@@ -15,16 +15,18 @@ const HeaderFeed: React.FC = () => {
         <div className={styles.blockWithoutImg}>
           <div className={styles.fullName}>
             <div className={styles.name}>Abdurrahman Navrazov</div>
-            <Link to={"#"} className={styles.linkToChangeProfile}>
+            <Link to={"/edit"} className={styles.linkToChangeProfile}>
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>
             </Link>
           </div>
 
           <div className={styles.blockForChanging}>
-            <button className={styles.changeProfile}>
+            <Link to={"/edit"} className={styles.changeProfile}>
+              <p>
               Редактировать профиль
-            </button>
+              </p>
+            </Link>
             <button className={styles.yet}> Ещё </button>
           </div>
         </div>
