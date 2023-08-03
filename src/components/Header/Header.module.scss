@@ -68,6 +68,7 @@
   .profile {
     position: relative;
     width: 100px;
+    cursor: pointer;
     img {
       width: 32px;
       height: 32px;
@@ -135,4 +136,48 @@
   border-bottom: 1px solid rgba(192, 192, 192, 0.301);
   display: flex;
   justify-content: center;
+}
+
+.modal_window{
+  position: absolute;
+  border-radius: 10px;
+  right: 200px;
+  width: 200px;
+  background-color: #292929;
+  box-shadow: -12px 10px 15px rgba(0, 0, 0, 0.29);
+  a{
+    text-decoration: none;
+  }
+  .modal_profile{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    background-color:#424242;
+    border-radius: 10px;
+    padding: 0;
+
+    img{
+      width: 50px;
+      padding: 5px;
+      border-radius: 50%;
+
+    }
+  }
+  .div{
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    img {
+      padding: 5px;
+    }
+  }
+  .div:hover{
+    background-color:#424242;
+    cursor: pointer;
+    border-radius: 10px;
+
+  }
+  padding: 0;
+
 }
