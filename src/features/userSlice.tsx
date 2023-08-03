@@ -54,7 +54,7 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   }
 );
 
-export const allUsers = createAsyncThunk<User[],void,{rejectValue: string | unknown | null}>("all/users", async (_, thunkAPI) => {
+export const allUsers = createAsyncThunk<User[],void,{rejectValue: string | unknown | null}>("all/users", async (_, ) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
   return data;
