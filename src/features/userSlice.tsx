@@ -22,14 +22,16 @@ export interface UserState {
   user: User[];
   users: User[];
   friends: User[];
+  followers: User[];
   loading: boolean;
-  error: ReactNode | string | null | unknown
+  error: ReactNode | string | null | unknown;
 }
 
 export const initialState: UserState = {
-  user: [], 
+  user: [],
   users: [],
   friends: [],
+  followers: [],
   loading: false,
   error: null,
 };
@@ -54,7 +56,11 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   }
 );
 
-export const allUsers = createAsyncThunk<User[],void,{rejectValue: string | unknown | null}>("all/users", async (_, ) => {
+export const allUsers = createAsyncThunk<
+  User[],
+  void,
+  { rejectValue: string | unknown | null }
+>("all/users", async (_) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
   return data;
@@ -67,6 +73,8 @@ export const userSlice = createSlice({
     builder
       .addCase(getUser.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.user = action.payload;
+        state.followers = action.payload.followers;
+        state.friends = action.payload.friends;
         state.loading = false;
         state.error = null;
       })
@@ -78,20 +86,24 @@ export const userSlice = createSlice({
         getUser.rejected,
         (state, action: PayloadAction<string | null | unknown>) => {
           (state.error = action.payload), (state.loading = false);
-        })
-      .addCase(allUsers.fulfilled, (state, action :PayloadAction<User[]>) => {
+        }
+      )
+      .addCase(allUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.users = action.payload;
-        state.error = null 
-        state.loading = false
+        state.error = null;
+        state.loading = false;
       })
-      .addCase(allUsers.rejected ,(state, action:PayloadAction<string | unknown | null>)=>{
-        state.error = action.payload
-        state.loading = false
-      })
-      .addCase(allUsers.pending, (state, _ )=>{
-        state.error = null
-        state.loading = true
-      })
+      .addCase(
+        allUsers.rejected,
+        (state, action: PayloadAction<string | unknown | null>) => {
+          state.error = action.payload;
+          state.loading = false;
+        }
+      )
+      .addCase(allUsers.pending, (state, _) => {
+        state.error = null;
+        state.loading = true;
+      });
   },
 });
 

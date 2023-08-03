@@ -17,8 +17,8 @@ const FriendsCart = (props: Props): JSX.Element => {
         <img src={image} alt="" />
       </div>
       <div className={styles.userName}>
-        <span className={styles.userFirstName}>{firstName}</span>
-        <span className={styles.userLastName}> {lastName}</span>
+        <h3 className={styles.userFirstName}>{firstName}</h3>
+        <h3 className={styles.userLastName}> {lastName}</h3>
       </div>
       </div>
       <div>
