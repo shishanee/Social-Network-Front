@@ -11,9 +11,9 @@
   .contentHeader {
     .avaName {
       display: flex;
-      border-radius: 5px;
-      background: #353535;
-      border: 1px solid #000000;
+      border-radius: 12px;
+      background: #222222;
+      border: 1px solid rgba(192, 192, 192, 0.135);
       justify-content: center;
       align-items: flex-end;
       padding: 20px;
@@ -101,9 +101,10 @@
       .blockMainLeft {
         margin-top: 5px;
         display: flex;
-        border-radius: 5px;
-        border: 1px solid #000000;
-        background: #353535;
+
+        border-radius: 12px;
+        border: 1px solid rgba(192, 192, 192, 0.135);
+        background: #222222;
         flex-direction: column;
         justify-content: center;
         .photoAndMusic {
@@ -169,7 +170,7 @@
             object-fit: cover;
             width: 165px;
             height: 165px;
-            border: 1px solid #4d4b4b;
+            border: 1px solid rgba(192, 192, 192, 0.135);
             border-radius: 5px;
           }
         }
@@ -215,6 +216,102 @@
             }
           }
         }
+      }
+      .post {
+        padding: 8px;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        // height: 52px;
+        width: 550px;
+        background: #222222;
+        border-radius: 12px;
+        border: 1px solid rgba(192, 192, 192, 0.135);
+
+        img {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 10px;
+          margin-left: 10px;
+        }
+        input {
+          border: 0;
+          background: #222222;
+          color: #dbdbdbdb;
+          padding-left: 10px;
+          font-size: 14px;
+          outline: none;
+        }
+        input:active {
+          border: none;
+        }
+      }
+
+      .blockForNotes{
+        margin-top: 15px;
+        width: 550px;
+        border: 1px solid rgba(192, 192, 192, 0.135);
+        border-radius: 12px;
+        background: #222222;
+        .namesBlock{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            align-content: center;
+            padding: 18px 20px;
+            
+            .linkk2:hover{
+                background: #333333;
+                transition: 0.2s;
+            }
+
+            .linkk{
+                border: 1px solid rgba(192, 192, 192, 0.135);
+                transition: 0.2s;
+                font-size: 14px;
+                text-decoration: none;
+                color: #e1e3e6;
+                padding: 4px 8px;
+                border-radius: 12px;
+                cursor: pointer;
+            }
+            .linkk2{
+                transition: 0.2s;
+                font-size: 14px;
+                text-decoration: none;
+                color: #828282;
+                padding: 4px 8px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+            }
+        }
+        hr{
+            height: 1px;
+            border: 0.1px solid #828282;
+        }
+        .withoutNotes{
+            padding: 36px 20px;
+            margin: 0px 0px 15px;
+            div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            p{
+                color: #828282;
+                font-size: 13px;
+            }
+            img{
+                margin: 0px 0px 12px;
+                width: 43px;
+                height: 43;
+                object-fit: contain;
+            }
+        }
+    }
       }
     }
 
@@ -312,6 +409,7 @@
                 background: #333333;
               }
             }
+
           }
         }
       }
@@ -463,6 +561,20 @@
               text-decoration: none;
               display: flex;
               padding: 12px 12px;
+        .blockForFriend:hover {
+          background: #333333;
+          transition: 0.2s;
+        }
+
+        .blockForFriend {
+          transition: 0.2s;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: 4px 8px;
+          text-decoration: none;
+          border-radius: 12px;
 
               span {
                 padding: 0px 6px;

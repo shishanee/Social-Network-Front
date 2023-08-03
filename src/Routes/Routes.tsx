@@ -5,7 +5,7 @@ import MyFeed from "../components/MyFeed/MyFeed";
 import Home from "../components/Home/Home";
 import Group from "../components/Group/Group";
 import React from "react";
-// import AudioPlayer from "../components/Music/AudioPlayer";
+import Music from "../components/Music/Music";
 
 const Routers:React.FC = ():JSX.Element => {
   return (
@@ -15,6 +15,7 @@ const Routers:React.FC = ():JSX.Element => {
       <Route path="/myFeed" element={<MyFeed />} />
       <Route path="/" element={<Home />} />
       <Route path="/group" element={<Group />} />
+      <Route path="/music" element={<Music />} />
     </Routes>
   );
 };
