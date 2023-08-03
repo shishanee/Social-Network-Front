@@ -58,7 +58,17 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getUser.fulfilled, (state, action:PayloadAction<User[]>) => {
       state.user = action.payload;
-    });
+      state.loading = false
+      state.error = null
+    })
+    .addCase(getUser.pending, (state, _)=>{
+      state.error = null
+      state.loading = true
+    })
+    .addCase(getUser.rejected, (state, action: PayloadAction<string | null | unknown>)=> {
+      state.error = action.payload,
+      state.loading = false
+    })
   },
 });
 

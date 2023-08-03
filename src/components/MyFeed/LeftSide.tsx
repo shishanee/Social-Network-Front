@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./MyFeed.module.scss";
 
-const LeftSide: React.FC = () => {
+const LeftSide: React.FC = ():JSX.Element => {
   return (
     <div className={styles.leftSide}>
       <div className={styles.blockMainLeft}>

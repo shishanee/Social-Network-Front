@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import topBtn from "../../../public/expand_less_FILL0_wght400_GRAD0_opsz48.svg";
 
 const BtnScrollUp: React.FC = (): JSX.Element => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const handleScroll = () => {
+  const handleScroll = ():void => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
     } else {
@@ -13,7 +13,7 @@ const BtnScrollUp: React.FC = (): JSX.Element => {
     }
   };
 
-  const scrollToTop = () => {
+  const scrollToTop = ():void => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",

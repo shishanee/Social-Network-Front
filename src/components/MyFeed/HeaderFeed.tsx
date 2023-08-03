@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MyFeed.module.scss";
 import { Link } from "react-router-dom";
 
-const HeaderFeed: React.FC = () => {
+const HeaderFeed: React.FC = ():JSX.Element => {
   return (
     <div className={styles.contentHeader}>
       <div className={styles.avaName}>

@@ -1,0 +1,95 @@
+.friendsContaner {
+  width: 555px;
+  background-color: #222222f7;
+  border-radius: 12px;
+  padding: 10px;
+}
+.searchFriendWords {
+  display: flex;
+  margin-left: 1%;
+  width: 270px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.MoreSetting {
+  display: flex;
+}
+.youFollowers {
+  color: #dbdbdb;
+  padding: 5px 5px;
+  border-radius: 7px;
+}
+.subscriptions {
+  color: #dbdbdb;
+  padding: 5px 5px;
+  border-radius: 7px;
+}
+.subscriptions:hover {
+  background-color: #3b3b3b;
+}
+.youFollowers:hover {
+  background-color: #3b3b3b;
+}
+.actionYouFollowers {
+  background-color: #3b3b3b;
+  color: #dbdbdb;
+  padding: 5px 5px;
+  border-radius: 7px;
+}
+.actionSubscriptions {
+  background-color: #3b3b3b;
+  color: #dbdbdb;
+  padding: 5px 5px;
+  border-radius: 7px;
+}
+.userCartContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: solid 1px rgba(128, 128, 128, 0.468);
+    padding: 10px;
+}
+.UserImageContainer{
+width: 70px;
+height: 70px;
+border-radius: 50%;
+}
+.UserImageContainer > img{
+width: 100%;
+height: 100%;
+border-radius: 50%;
+}
+.userName{
+    color: #6699cc;
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.userFirstName{
+margin-right: 3px;
+}
+.avatarAndName{
+    display: flex;
+    align-items: center;
+}
+.buttonDelete{
+    padding: 5px 30px;
+    border-radius: 7px;
+    border: none;
+    background-color: #e1e3e6;
+    font-size: 13px;
+    margin-top: 3px;
+    color: #000;
+}
+.liveSearch{
+    padding: 10px;
+}
+.liveSearch > input{
+    width: 400px;
+    padding: 4px;
+    border: solid 1px rgba(128, 128, 128, 0.468);
+    border-radius: 6px;
+    background-color: transparent;
+    color: #dbdbdb;
+    font-size: 16px;
+}

@@ -4,9 +4,10 @@ import SignIn from "../components/Sign/SignIn";
 import MyFeed from "../components/MyFeed/MyFeed";
 import Home from "../components/Home/Home";
 import Group from "../components/Group/Group";
+import React from "react";
 import Music from "../components/Music/Music";
 
-const Routers = () => {
+const Routers:React.FC = ():JSX.Element => {
   return (
     <Routes>
       <Route path="/register" element={<SignUp />} />
