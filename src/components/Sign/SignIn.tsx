@@ -29,6 +29,7 @@ const SignIn: React.FC = () => {
       </div>
       <form>
         <input type="text" placeholder="Телефон или почта"/>
+        <input type="password" placeholder="Пароль"/>
         <br />
         <button>Войти</button>
       </form>
@@ -41,6 +42,7 @@ const SignIn: React.FC = () => {
           <a href="#"><p>Подробнее</p></a>
           </div>
       </div>
+     <Link to={"/register"}><button className={styles.authBtn}>Зарегистрироваться</button></Link>
     </div>
     </div>
   )
