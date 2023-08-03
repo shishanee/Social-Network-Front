@@ -20,6 +20,7 @@ export interface User {
 
 export interface UserState {
   user: User[];
+  users: User[];
   friends: User[];
   loading: boolean;
   error: ReactNode | string | null | unknown
@@ -27,6 +28,7 @@ export interface UserState {
 
 const initialState: UserState = {
   user: [],
+  users: [],
   friends: [],
   loading: false,
   error: null,
@@ -52,6 +54,11 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   }
 );
 
+export const allUsers = createAsyncThunk<User[],void>("all/users", async (_, thunkAPI) => {
+  const res = await fetch("http://localhost:4000/users");
+  const data = res.json();
+  return data;
+});
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -71,8 +78,20 @@ const userSlice = createSlice({
         getUser.rejected,
         (state, action: PayloadAction<string | null | unknown>) => {
           (state.error = action.payload), (state.loading = false);
-        }
-      );
+        })
+      .addCase(allUsers.fulfilled, (state, action :PayloadAction<User[]>) => {
+        state.users = action.payload;
+        state.error = null 
+        state.loading = false
+      })
+      .addCase(allUsers.rejected ,(state, action:PayloadAction<string | unknown | null>)=>{
+        state.error = action.payload
+        state.loading = false
+      })
+      .addCase(allUsers.pending, (state, _ )=>{
+        state.error = null
+        state.loading = true
+      })
   },
 });
 
