@@ -85,7 +85,7 @@ const SignIn: React.FC = () => {
           <br />
           <button onClick={handleSignIn}>Войти</button>
         </form>
-        {error}
+        <p className={styles.ErrorMessage}>{error}</p>
         <hr />
         <div className={styles.qrBlock}>
           <div className={styles.qrImgBlock}>

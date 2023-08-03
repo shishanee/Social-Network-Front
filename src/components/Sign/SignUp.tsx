@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Sign.module.scss";
 import logo from "../../../public/letter-d.png";
 import people from "../../../public/people.svg";
 import sigin from "../../../public/sigin.svg";
 import lock from "../../../public/lock.svg";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { authSignUp } from "../../features/applicationSlice";
+import { AppDispatch, RootState } from "../../app/store";
 
 const SignUp: React.FC = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSign, setIsSign] = useState(false);
+  const error = useSelector((state: RootState) => state.application.error);
 
-  const dispatch = useDispatch();
+
+
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
 
   const changeEmail = (e) => {
     setEmail(e.target.value);
@@ -30,9 +37,18 @@ const SignUp: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     await dispatch(authSignUp({ firstName, lastName, email, password }));
+    setIsSign(true);
+
   };
+
+  useEffect(() => {
+    if (isSign && !error) {
+      navigate("/login");
+    }
+  }, [isSign, error, navigate]);
   return (
     <div className={styles.singIn_main}>
       <div className={styles.signIn_info}>
@@ -92,6 +108,7 @@ const SignUp: React.FC = () => {
           <br />
           <button onClick={handleRegister}>Продолжить</button>
         </form>
+        <p className={styles.ErrorMessage}>{error}</p>
         <hr />
         <div className={styles.qrBlock}>
           <Link to={"/login"} className={styles.link}>
