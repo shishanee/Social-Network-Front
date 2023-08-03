@@ -3,7 +3,7 @@ import styles from "./rightSidebar.module.scss";
 import { Link } from "react-router-dom";
 
 const RightSidebar: React.FC = (): JSX.Element => {
-  const [heaght, setHeaght] = useState(false)
+  const [heaght, setHeaght] = useState(false);
   const [podMenu, setPodMenu] = useState(false);
   const [backlightNews, setBacklightNews] = useState(true);
   const [backlightImage, setBacklightImage] = useState(false);
@@ -14,8 +14,6 @@ const RightSidebar: React.FC = (): JSX.Element => {
   const [backlightReaction, setBacklightReacrion] = useState(false);
   const [backlightUpdate, setBacklightUpdate] = useState(false);
   const [backlightComment, setBacklightComment] = useState(false);
-
-
 
   const handleImageClick = () => {
     setBacklightNews(false);
@@ -30,7 +28,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
   };
 
   const handleOpenPodMenu = () => {
-    setHeaght(true)
+    setHeaght(true);
     setPodMenu(true);
     setBacklightNews(true);
     setBacklightImage(false);
@@ -68,7 +66,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
   };
 
   const handlePopulateClick = () => {
-    setHeaght(false)
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -81,7 +79,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
   const handleSearchClick = () => {
-    setHeaght(false)
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -94,7 +92,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
   const handleReactionClick = () => {
-    setHeaght(false)
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -107,7 +105,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
   const handleUpdateClick = () => {
-    setHeaght(false)
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -120,7 +118,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
   const handleCommentClick = () => {
-    setHeaght(false)
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -133,8 +131,14 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(true);
   };
   return (
-    <div className={heaght? styles.rightSidebarContainerHeaght :styles.rightSidebarContainer}>
-      <div className={styles.rightSidebar}> 
+    <div
+      className={
+        heaght
+          ? styles.rightSidebarContainerHeaght
+          : styles.rightSidebarContainer
+      }
+    >
+      <div className={styles.rightSidebar}>
         <Link className={styles.link} to={"#"}>
           <div
             className={
