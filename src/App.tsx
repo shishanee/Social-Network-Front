@@ -6,23 +6,26 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Routers from "./Routes/Routes";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "./app/store";
-import { getUser } from "./features/userSlice";
+import { allUsers, getUser } from "./features/userSlice";
+import { getGroups } from "./features/groupSlice";
 
 const App: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getUser());
+    dispatch(allUsers());
+    dispatch(getGroups());
   }, []);
   return (
     <>
-        <BtnScrollUp />
+      <BtnScrollUp />
       <Header />
       <div className="home">
         <div className="homePage">
           <Sidebar />
           <Routers />
         </div>
-      </div> 
+      </div>
     </>
   );
 };
