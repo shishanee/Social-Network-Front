@@ -6,8 +6,9 @@ import Home from "../components/Home/Home";
 import Group from "../components/Group/Group";
 import React from "react";
 import Music from "../components/Music/Music";
+import Friends from "../components/Friends/Friends";
 
-const Routers:React.FC = ():JSX.Element => {
+const Routers: React.FC = (): JSX.Element => {
   return (
     <Routes>
       <Route path="/register" element={<SignUp />} />
@@ -16,6 +17,7 @@ const Routers:React.FC = ():JSX.Element => {
       <Route path="/" element={<Home />} />
       <Route path="/group" element={<Group />} />
       <Route path="/music" element={<Music />} />
+      <Route path="/friends" element={<Friends />} />
     </Routes>
   );
 };
