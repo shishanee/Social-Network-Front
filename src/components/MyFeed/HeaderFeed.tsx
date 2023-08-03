@@ -2,10 +2,12 @@ import React from "react";
 import styles from "./MyFeed.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { User } from "../../features/applicationSlice";
 
   
 const HeaderFeed: React.FC = ():JSX.Element => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state:RootState) => state.user.user[0]);
   
   return (
     <div className={styles.contentHeader}>
@@ -19,7 +21,7 @@ const HeaderFeed: React.FC = ():JSX.Element => {
         <div className={styles.blockWithoutImg}>
           <div className={styles.fullName}>
 
-            <div className={styles.name}>{`${user.user.firstName} ${user.user.lastName}`}</div>
+            <div className={styles.name}>{`${user.firstName} ${user.lastName}`}</div>
             <Link to={"#"} className={styles.linkToChangeProfile}>
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>

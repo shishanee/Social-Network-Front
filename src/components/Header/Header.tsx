@@ -11,13 +11,14 @@ import { Link } from "react-router-dom";
 import addUser from "../../../public/add-user (1).png";
 
 const Header: React.FC = (): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user[0]);
   const token = useSelector((state: RootState) => state.application.token);
   const users = useSelector((state: RootState) => state.user.users);
   const group = useSelector((state: RootState) => state.group.group);
   const [open, setOpen] = useState<boolean>(false);
 
-  console.log(group);
+  console.log(user);
+  
 
   const [searchUser, setSearchUser] = useState<string>("");
 

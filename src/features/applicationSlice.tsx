@@ -19,7 +19,7 @@ export interface User {
 
 export interface IApplication {
   state: User[];
-  error: string | null  | unknown | ReactNode 
+  error: string | null  |   ReactNode 
   signinUp: boolean;
   signinIn: boolean;
   token: string | null;
@@ -111,7 +111,7 @@ export const authSignOut = createAsyncThunk<void,void,{rejectValue: string | nul
   }
 );
 
-const applicationSlice = createSlice({
+export const applicationSlice = createSlice({
   name: "application",
   initialState,
   reducers: {},

@@ -6,8 +6,11 @@ import { RootState } from "../../app/store";
 import noimage from "../../../public/noimage.png";
 
 const Home: React.FC = (): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user[0]);
   const token = useSelector((state: RootState) => state.application.token);
+
+  
+  
 
   return (
     <>

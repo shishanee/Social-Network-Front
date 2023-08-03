@@ -9,7 +9,7 @@ export interface User {
   followers: string[];
   friends: string[];
   groups: string[];
-  image: string;
+  image?: string;
   lastName: string;
   number: string;
   password: string;
@@ -26,8 +26,8 @@ export interface UserState {
   error: ReactNode | string | null | unknown
 }
 
-const initialState: UserState = {
-  user: [],
+export const initialState: UserState = {
+  user: [], 
   users: [],
   friends: [],
   loading: false,
@@ -54,12 +54,12 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   }
 );
 
-export const allUsers = createAsyncThunk<User[],void>("all/users", async (_, thunkAPI) => {
+export const allUsers = createAsyncThunk<User[],void,{rejectValue: string | unknown | null}>("all/users", async (_, thunkAPI) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
   return data;
 });
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
