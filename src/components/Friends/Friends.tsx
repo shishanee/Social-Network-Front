@@ -5,7 +5,6 @@ import FriendsCart from "./FriendsCart";
 import test from "../../a/01_18_-_.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
-import { getGroups } from "../../features/groupSlice";
 import { getUser } from "../../features/userSlice";
 
 const Friends: React.FC = (): JSX.Element => {
