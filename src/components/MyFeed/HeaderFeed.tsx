@@ -6,7 +6,7 @@ import { RootState } from "../../app/store";
 
   
 const HeaderFeed: React.FC = ():JSX.Element => {
-  const user = useSelector((state:RootState) => state.user.user[0]);
+  const user = useSelector((state:RootState) => state.user.user);
   
   return (
     <div className={styles.contentHeader}>
@@ -20,7 +20,7 @@ const HeaderFeed: React.FC = ():JSX.Element => {
         <div className={styles.blockWithoutImg}>
           <div className={styles.fullName}>
 
-            <div className={styles.name}>{`${user.firstName} ${user.lastName}`}</div>
+            <div className={styles.name}>{`${user[0].firstName} ${user[0].lastName}`}</div>
             <Link to={"#"} className={styles.linkToChangeProfile}>
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>

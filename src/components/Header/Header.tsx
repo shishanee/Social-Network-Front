@@ -12,7 +12,7 @@ import noimage from "../../../public/noimage.png"
 
 
 const Header: React.FC = (): JSX.Element => {
-  const user = useSelector((state: RootState) => state.user.user[0]);
+  const user = useSelector((state: RootState) => state.user.user);
   const token = useSelector((state: RootState) => state.application.token);
   const users = useSelector((state: RootState) => state.user.users);
   const group = useSelector((state: RootState) => state.group.group);
