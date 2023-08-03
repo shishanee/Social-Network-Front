@@ -4,7 +4,7 @@ import SignIn from "../components/Sign/SignIn";
 import MyFeed from "../components/MyFeed/MyFeed";
 import Home from "../components/Home/Home";
 import Group from "../components/Group/Group";
-import AudioPlayer from "../components/Music/AudioPlayer";
+import Music from "../components/Music/Music";
 
 const Routers = () => {
   return (
@@ -14,6 +14,7 @@ const Routers = () => {
       <Route path="/myFeed" element={<MyFeed />} />
       <Route path="/" element={<Home />} />
       <Route path="/group" element={<Group />} />
+      <Route path="/music" element={<Music />} />
     </Routes>
   );
 };
