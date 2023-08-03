@@ -24,7 +24,8 @@ const SignIn: React.FC = () => {
     setPassword(e.target.value)
    }
 
-   const handleSignIn = () => {
+   const handleSignIn = (e) => {
+    e.preventDefault()
     dispatch(authSignIn( { email, password } ))
    }
 
