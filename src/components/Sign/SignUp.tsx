@@ -28,8 +28,9 @@ const SignUp: React.FC = () => {
         <h2>Регистрация в DICAR</h2>
       </div>
       <form>
-        <input type="text" placeholder="Телефон или почта"/>
-        <input type="text" placeholder="Имя и Фамилия"/>
+        <input type="text" placeholder="Почта"/>
+        <input type="text" placeholder="Имя"/>
+        <input type="text" placeholder="Фамилия"/>
         <input type="password" placeholder="Пароль"/>
         <br />
         <button>Продолжить</button>
