@@ -4,12 +4,13 @@ import BtnScrollUp from "./components/BtnScrollUp/BtnScrollUp";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Routers from "./Routes/Routes";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./app/store";
 import { allUsers, getUser } from "./features/userSlice";
 import { getGroups } from "./features/groupSlice";
 
 const App: React.FC = (): JSX.Element => {
+  const token = useSelector((state:RootState) => state.application.token)
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getUser());
@@ -22,7 +23,7 @@ const App: React.FC = (): JSX.Element => {
       <Header />
       <div className="home">
         <div className="homePage">
-          <Sidebar />
+          {token && <Sidebar />}
           <Routers />
         </div>
       </div>

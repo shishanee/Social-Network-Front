@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Grops } from "./groupSlice";
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export interface User {
   _id: string;
@@ -14,12 +14,12 @@ export interface User {
   posts: string[];
   groups: string[];
   friends: string[];
-  __v:number
+  __v: number;
 }
 
 export interface IApplication {
   state: User[];
-  error: string | null  |   ReactNode 
+  error: string | null | ReactNode;
   signinUp: boolean;
   signinIn: boolean;
   token: string | null;
@@ -42,74 +42,74 @@ export interface dataSingUp {
   password: string;
 }
 
-export interface dataSingIn{
-  email:string,
-  password: string
+export interface dataSingIn {
+  email: string;
+  password: string;
 }
 export const authSignUp = createAsyncThunk<
   Grops,
   dataSingUp,
-  { rejectValue: string | unknown | null}
->(
-  "auth/signUp",
-  async ({ firstName, lastName, email, password }, thunkAPI) => {
-    try {
-      const res = await fetch("http://localhost:4000/auth", {
-        method: "POST",
-        body: JSON.stringify({ firstName, lastName, email, password }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
+  { rejectValue: string | unknown | null }
+>("auth/signUp", async ({ firstName, lastName, email, password }, thunkAPI) => {
+  try {
+    const res = await fetch("http://localhost:4000/auth", {
+      method: "POST",
+      body: JSON.stringify({ firstName, lastName, email, password }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
 
-      const json = await res.json();
+    const json = await res.json();
 
-      if (json.error) {
-        return thunkAPI.rejectWithValue(json.error);
-      }
-
-      return json;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error);
+    if (json.error) {
+      return thunkAPI.rejectWithValue(json.error);
     }
+
+    return json;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
   }
-);
-export const authSignIn = createAsyncThunk< string | null,dataSingIn,{rejectValue: string | unknown}>(
-  "auth/signIn",
-  async ({ email, password }, thunkAPI) => {
-    try {
-      const res = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      const token = await res.json();
-      if (token.error) {
-        return thunkAPI.rejectWithValue(token.error);
-      }
-
-      localStorage.setItem("token", token.token);
-
-      return token.token;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error);
+});
+export const authSignIn = createAsyncThunk<
+  string | null,
+  dataSingIn,
+  { rejectValue: string | unknown }
+>("auth/signIn", async ({ email, password }, thunkAPI) => {
+  console.log(email, password);
+  try {
+    const res = await fetch("http://localhost:4000/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    const token = await res.json();
+    if (token.error) {
+      return thunkAPI.rejectWithValue(token.error);
     }
-  }
-);
 
-export const authSignOut = createAsyncThunk<void,void,{rejectValue: string | null | unknown}>(
-  "auth/signout",
-  async (_, thunkAPI) => {
-    try {
-      localStorage.removeItem("token");
-      window.location.reload();
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
+    localStorage.setItem("token", token);
+
+    return token.token;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
   }
-);
+});
+
+export const authSignOut = createAsyncThunk<
+  void,
+  void,
+  { rejectValue: string | null | unknown }
+>("auth/signout", async (_, thunkAPI) => {
+  try {
+    localStorage.removeItem("token");
+    window.location.reload();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const applicationSlice = createSlice({
   name: "application",
@@ -117,14 +117,17 @@ export const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    //authSignUp
+      //authSignUp
       .addCase(authSignUp.pending, (state) => {
         state.signinUp = true;
       })
-      .addCase(authSignUp.rejected, (state, action: PayloadAction<string | unknown>) => {
-        state.signinUp = false;
-        state.error = action.payload;
-      })
+      .addCase(
+        authSignUp.rejected,
+        (state, action: PayloadAction<string | unknown>) => {
+          state.signinUp = false;
+          state.error = action.payload;
+        }
+      )
       .addCase(authSignUp.fulfilled, (state) => {
         state.signinUp = false;
         state.error = null;
@@ -133,29 +136,35 @@ export const applicationSlice = createSlice({
       .addCase(authSignIn.pending, (state) => {
         state.error = null;
       })
-      .addCase(authSignIn.rejected, (state, action: PayloadAction< string | unknown | null > ) => {
-        state.signinUp = false;
-        state.error = action.payload;
-      })
+      .addCase(
+        authSignIn.rejected,
+        (state, action: PayloadAction<string | unknown | null>) => {
+          state.signinUp = false;
+          state.error = action.payload;
+        }
+      )
       .addCase(authSignIn.fulfilled, (state, action) => {
         state.signinUp = false;
         state.error = null;
-        state.token = action.payload
+        state.token = action.payload;
       })
-      .addCase(authSignOut.fulfilled, (state , _)=>{
-        state.loading = false
-        state.token = null
-        state.error = null
+      .addCase(authSignOut.fulfilled, (state, _) => {
+        state.loading = false;
+        state.token = null;
+        state.error = null;
       })
-      .addCase(authSignOut.pending, (state, _ )=>{
-        state.error = null
-        state.token = null
-        state.loading = true
+      .addCase(authSignOut.pending, (state, _) => {
+        state.error = null;
+        state.token = null;
+        state.loading = true;
       })
-      .addCase(authSignOut.rejected, (state, action: PayloadAction<string | null | unknown> )=>{
-        state.error = action.payload
-        state.loading = false
-      })
+      .addCase(
+        authSignOut.rejected,
+        (state, action: PayloadAction<string | null | unknown>) => {
+          state.error = action.payload;
+          state.loading = false;
+        }
+      );
   },
 });
 

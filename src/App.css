@@ -7,7 +7,7 @@
 
 .homePage {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
   background: #141414;
   padding-top: 15px;
   width: 1000px;
