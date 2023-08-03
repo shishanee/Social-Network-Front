@@ -9,6 +9,7 @@ import { RootState } from "../../app/store";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
+  const token = useSelector((state: RootState) => state.application.token);
 
   return (
     <header className={styles.header}>
@@ -24,7 +25,7 @@ const Header: React.FC = (): JSX.Element => {
         </div>
       </div>
       <div className={styles.profile}>
-        <img src={`http://localhost:4000/${user.image}`} alt="" />
+        {token && <img src={`http://localhost:4000/${user.image}`} alt="" />}
         <img className={styles.down} src={down} alt="" />
       </div>
     </header>

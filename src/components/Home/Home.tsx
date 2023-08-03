@@ -6,13 +6,14 @@ import { RootState } from "../../app/store";
 
 const Home: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
+  const token = useSelector((state: RootState) => state.application.token)
 
   return (
     <>
       <div className={styles.homePage}>
         <title>Новости</title>
         <div className={styles.post}>
-          <img src={`http://localhost:4000/${user.image}`} alt="" />
+          {token &&<img src={`http://localhost:4000/${user.image}`} alt="" />}
           <input type="text" placeholder="Что у вас нового?" />
         </div>
       </div>
