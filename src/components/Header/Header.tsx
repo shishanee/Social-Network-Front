@@ -23,6 +23,9 @@ const Header: React.FC = (): JSX.Element => {
         <div className={styles.search}>
           <input type="text" placeholder="Поиск" />
           <img src={search} alt="" />
+          <div>
+            
+          </div>
         </div>
       </div>
       <div className={styles.profile}>
