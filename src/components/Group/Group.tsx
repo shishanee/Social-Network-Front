@@ -7,7 +7,6 @@ import { AppDispatch, RootState } from "../../app/store";
 
 const Group: React.FC = (): JSX.Element => {
   const group = useSelector((state: RootState) => state.group.group);
-  console.log(group);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getGroups());

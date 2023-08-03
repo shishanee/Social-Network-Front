@@ -3,11 +3,10 @@ import styles from "./MyFeed.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const HeaderFeed: React.FC = () => {
   
+const HeaderFeed: React.FC = ():JSX.Element => {
   const user = useSelector((state) => state.user);
   
-
   return (
     <div className={styles.contentHeader}>
       <div className={styles.avaName}>
