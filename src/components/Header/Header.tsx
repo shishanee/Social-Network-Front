@@ -4,12 +4,15 @@ import logo from "../../../public/letter-d (1).png";
 import search from "../../../public/loupe.png";
 import down from "../../../public/down-arrow (2).png";
 import bell from "../../../public/bell.png";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
 import { Link } from "react-router-dom";
 import addUser from "../../../public/add-user (1).png";
 import noimage from "../../../public/noimage.png"
-
+import setting from "../../../public/setting.svg"
+import signOut from "../../../public/sigOut.svg"
+import tema from "../../../public/tema.svg"
+import { authSignOut } from "../../features/applicationSlice";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -17,8 +20,10 @@ const Header: React.FC = (): JSX.Element => {
   const users = useSelector((state: RootState) => state.user.users);
   const group = useSelector((state: RootState) => state.group.group);
   const [open, setOpen] = useState<boolean>(false);
+  const [modal, setModal] = useState(false)
 
-  console.log(group);
+  const dispatch = useDispatch<AppDispatch>();
+
 
   const [searchUser, setSearchUser] = useState<string>("");
 
@@ -41,7 +46,15 @@ const Header: React.FC = (): JSX.Element => {
     }
   });
 
+  const handleModal = () => {
+    setModal(!modal)
+  }
+  
+  const signout = () => {
+    dispatch(authSignOut())
+  }
   return (
+    <>
     <header className={styles.header}>
       <div className={styles.logoAndSearch}>
         <div className={styles.logo}>
@@ -58,7 +71,7 @@ const Header: React.FC = (): JSX.Element => {
             value={searchUser}
             type="text"
             placeholder="Поиск"
-          />
+            />
           <img src={search} alt="" />
         </div>
         {open && (
@@ -72,7 +85,7 @@ const Header: React.FC = (): JSX.Element => {
                     <div>
                       <Link
                         to={item._id}
-                      >{`${item.firstName} ${item.lastName}`}</Link>
+                        >{`${item.firstName} ${item.lastName}`}</Link>
                       <p>{item.friends.length} followers</p>
                     </div>
                   </div>
@@ -106,16 +119,44 @@ const Header: React.FC = (): JSX.Element => {
           </div>
         )}
       </div>
-      <div className={styles.profile}>
+      <div className={styles.profile} onClick={handleModal}>
         {token && (
           <img
-            src={user.image ? `http://localhost:4000/${user.image}` : noimage}
-            alt=""
+          src={user.image ? `http://localhost:4000/${user.image}` : noimage}
+          alt=""
           />
-        )}
+          )}
         <img className={styles.down} src={down} alt="" />
       </div>
     </header>
+      {modal ? (
+        <div className={styles.modal_window}>
+          <Link to={"/myFeed"}>
+            <div className={styles.modal_profile}>
+              <img className={styles.imgProfil}
+                src={
+                  user.image ? `http://localhost:4000/${user.image}` : noimage
+                }
+                alt=""
+              />
+              {`${user.firstName} ${user.lastName}`}
+            </div>
+          </Link>
+          <div className={styles.div}>
+            <img src={setting} alt="" />
+            <span>Настройки</span>
+          </div>
+          <div className={styles.div}>
+            <img src={tema} alt="" />
+            <span>Тема</span>
+          </div>
+          <div className={styles.div} onClick={signout}>
+            <img src={signOut} alt="" />
+            <span>Выйти</span>
+          </div>
+        </div>
+      ) : null}
+          </>
   );
 };
 
