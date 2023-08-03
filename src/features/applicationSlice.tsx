@@ -44,7 +44,7 @@ export const authSignIn = createAsyncThunk(
     try {
       const res = await fetch("http://localhost:4000/login", {
         method: "POST",
-        body: JSON.stringify({ number, password }),
+        body: JSON.stringify({ email, password }),
         headers: {
           "Content-type": "application/json",
         },
