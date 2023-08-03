@@ -6,9 +6,10 @@ import down from "../../../public/down-arrow (2).png";
 import bell from "../../../public/bell.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import noimage from "../../../public/noimage.png";
 import { Link } from "react-router-dom";
 import addUser from "../../../public/add-user (1).png";
+import noimage from "../../../public/noimage.png"
+
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -67,7 +68,7 @@ const Header: React.FC = (): JSX.Element => {
               return (
                 <div className={styles.oneUser}>
                   <div className={styles.userFirstBlock}>
-                    <img src={`http://localhost:4000/${item.image}`} alt="" />
+                    <img src={!item.image ? noimage :`http://localhost:4000/${item.image}`} alt="" />
                     <div>
                       <Link
                         to={item._id}
@@ -88,7 +89,7 @@ const Header: React.FC = (): JSX.Element => {
                 return (
                   <div className={styles.oneUser}>
                     <div className={styles.userFirstBlock}>
-                      <img src={`http://localhost:4000/${item.image}`} alt="" />
+                      <img src={!item.image ? noimage:`http://localhost:4000/${item.image}`} alt="" />
                       <div>
                         <Link to={item._id}>{item.name}</Link>
                         <p>{item.followers.length} followers</p>
