@@ -30,3 +30,7 @@ input {
   background: #141414;
   min-height: 100%;
 }
+
+button {
+  cursor: pointer;
+}
