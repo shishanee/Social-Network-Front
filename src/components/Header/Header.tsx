@@ -34,6 +34,12 @@ const Header: React.FC = (): JSX.Element => {
     }
   });
 
+  const groups = group.filter((item) => {
+    if (item.name.toLowerCase().includes(searchUser.toLowerCase())) {
+      return item;
+    }
+  });
+
   return (
     <header className={styles.header}>
       <div className={styles.logoAndSearch}>
@@ -78,7 +84,7 @@ const Header: React.FC = (): JSX.Element => {
             <div className={styles.hr}></div>
             <div>
               <h5>Группы</h5>
-              {group.slice(0, 3).map((item) => {
+              {groups.slice(0, 3).map((item) => {
                 return (
                   <div className={styles.oneUser}>
                     <div className={styles.userFirstBlock}>
