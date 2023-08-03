@@ -13,15 +13,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    .authBtn{
-
-        width: 300px;
-        margin-top: 10px;
-        color: #dbdbdb;
-        border-radius: 5px;
-        border: 0;
-        background-color: #4bb34b;
-        padding: 10px;
+    .authBtn {
+      width: 300px;
+      margin-top: 10px;
+      color: #dbdbdb;
+      border-radius: 5px;
+      border: 0;
+      background-color: #4bb34b;
+      padding: 10px;
     }
     .logo {
       h2 {
@@ -132,14 +131,21 @@
     }
   }
 }
-.link{
-    text-decoration: none;
-    button{
-        width: 300px;
-        color:#dbdbdb;
-        background-color: #4bb34b;
-        border: 0;
-        border-radius: 5px;
-        padding: 10px;
-    }
+.link {
+  text-decoration: none;
+  button {
+    width: 300px;
+    color: #dbdbdb;
+    background-color: #4bb34b;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+  }
+}
+
+.ErrorMessage {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  color: silver;
 }
