@@ -9,31 +9,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSignUp } from "../../features/applicationSlice";
 import { AppDispatch, RootState } from "../../app/store";
 
-const SignUp: React.FC = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isSign, setIsSign] = useState(false);
+const SignUp: React.FC = ():JSX.Element => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isSign, setIsSign] = useState<boolean>(false);
   const error = useSelector((state: RootState) => state.application.error);
-
-
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-
-  const changeEmail = (e) => {
+  const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-  const changeFirstName = (e) => {
+  const changeFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
   };
 
-  const changeLastName = (e) => {
+  const changeLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLastName(e.target.value);
   };
-  const changePassword = (e) => {
+  const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
@@ -41,7 +38,6 @@ const SignUp: React.FC = () => {
     e.preventDefault();
     await dispatch(authSignUp({ firstName, lastName, email, password }));
     setIsSign(true);
-
   };
 
   useEffect(() => {

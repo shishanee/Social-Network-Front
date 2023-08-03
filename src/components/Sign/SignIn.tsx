@@ -8,22 +8,22 @@ import lock from "../../../public/lock.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignIn } from "../../features/applicationSlice";
-import { RootState } from "../../app/store";
+import { AppDispatch, RootState } from "../../app/store";
 
-const SignIn: React.FC = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+const SignIn: React.FC = (): JSX.Element => {
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [isSign, setIsSign] = useState<boolean>(false);
   const error = useSelector((state: RootState) => state.application.error);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const changeLogin = (e) => {
+  const changeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const changePassword = (e) => {
+  const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
