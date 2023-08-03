@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Sign.module.scss"
 import logo from "../../../public/letter-d.png"
 import qr from "../../../public/qr-code.png"
@@ -6,8 +6,28 @@ import people from "../../../public/people.svg"
 import sigin from "../../../public/sigin.svg"
 import lock from "../../../public/lock.svg"
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authSignIn } from "../../features/applicationSlice";
 
 const SignIn: React.FC = () => {
+  
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState(); 
+
+  const dispatch = useDispatch();
+
+  const changeLogin = (e) => {
+   setEmail(e.target.value)
+  };
+   
+  const changePassword = (e) => {
+    setPassword(e.target.value)
+   }
+
+   const handleSignIn = () => {
+    dispatch(authSignIn( { email, password } ))
+   }
+
   return (
     <div className={styles.singIn_main}>
     <div className={styles.signIn_info}>
@@ -28,10 +48,10 @@ const SignIn: React.FC = () => {
         <h2>Вход в DICAR</h2>
       </div>
       <form>
-        <input type="text" placeholder="Телефон или почта"/>
-        <input type="password" placeholder="Пароль"/>
+        <input type="text" value={email} onChange={changeLogin} placeholder="Телефон или почта"/>
+        <input type="password" value={password} onChange={changePassword} placeholder="Пароль"/>
         <br />
-        <button>Войти</button>
+        <button onClick={handleSignIn}>Войти</button>
       </form>
       <hr />
       <div className={styles.qrBlock}>
