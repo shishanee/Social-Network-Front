@@ -7,6 +7,7 @@ import bell from "../../../public/bell.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import noimage from "../../../public/noimage.png";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -17,12 +18,17 @@ const Header: React.FC = (): JSX.Element => {
       <div className={styles.logoAndSearch}>
         <div className={styles.logo}>
           <img src={logo} alt="" />
+          <Link to="/">
           <h3>DICAR</h3>
+          </Link>
         </div>
         <img className={styles.bell} src={bell} alt="" />
         <div className={styles.search}>
           <input type="text" placeholder="Поиск" />
           <img src={search} alt="" />
+          <div>
+            
+          </div>
         </div>
       </div>
       <div className={styles.profile}>

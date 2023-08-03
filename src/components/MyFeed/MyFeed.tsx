@@ -4,7 +4,7 @@ import HeaderFeed from "./HeaderFeed";
 import MainFeed from "./MainFeed";
 
 
-const MyFeed: React.FC = () => {
+const MyFeed: React.FC = ():JSX.Element => {
     return (
         <div className={styles.allPage}>
               <HeaderFeed />

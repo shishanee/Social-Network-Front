@@ -10,6 +10,7 @@
     padding: 40px;
     background-color: #19191a;
     width: 50%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -142,10 +143,10 @@
     padding: 10px;
   }
 }
-
 .ErrorMessage {
   text-align: center;
   font-size: 12px;
   margin-top: 10px;
   color: silver;
 }
+

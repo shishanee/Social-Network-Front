@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "./MyFeed.module.scss";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const HeaderFeed: React.FC = () => {
+  
+const HeaderFeed: React.FC = ():JSX.Element => {
+  const user = useSelector((state) => state.user);
+  
   return (
     <div className={styles.contentHeader}>
       <div className={styles.avaName}>
@@ -14,8 +18,9 @@ const HeaderFeed: React.FC = () => {
 
         <div className={styles.blockWithoutImg}>
           <div className={styles.fullName}>
-            <div className={styles.name}>Abdurrahman Navrazov</div>
-            <Link to={"/edit"} className={styles.linkToChangeProfile}>
+
+            <div className={styles.name}>{`${user.user.firstName} ${user.user.lastName}`}</div>
+            <Link to={"#"} className={styles.linkToChangeProfile}>
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>
             </Link>

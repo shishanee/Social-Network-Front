@@ -18,6 +18,7 @@ export interface User {
 
 export interface UserState {
   user: User[];
+  users: User[];
   friends: User[];
   loading: boolean;
   error: null | string | unknown;
@@ -25,6 +26,7 @@ export interface UserState {
 
 const initialState: UserState = {
   user: [],
+  users: [],
   friends: [],
   loading: false,
   error: null,
@@ -51,14 +53,35 @@ export const getUser = createAsyncThunk<
   }
 });
 
+export const allUsers = createAsyncThunk("all/users", async (_, ThunkAPI) => {
+  const res = await fetch("http://localhost:4000/users");
+  const data = res.json();
+  return data;
+});
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getUser.fulfilled, (state, action:PayloadAction<User[]>) => {
-      state.user = action.payload;
-    });
+    builder
+      .addCase(getUser.fulfilled, (state, action: PayloadAction<User[]>) => {
+        state.user = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(getUser.pending, (state, _) => {
+        state.error = null;
+        state.loading = true;
+      })
+      .addCase(
+        getUser.rejected,
+        (state, action: PayloadAction<string | null | unknown>) => {
+          (state.error = action.payload), (state.loading = false);
+        }
+      )
+      .addCase(allUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+      });
   },
 });
 

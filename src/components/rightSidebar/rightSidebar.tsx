@@ -3,19 +3,21 @@ import styles from "./rightSidebar.module.scss";
 import { Link } from "react-router-dom";
 
 const RightSidebar: React.FC = (): JSX.Element => {
-  const [heaght, setHeaght] = useState(false);
-  const [podMenu, setPodMenu] = useState(false);
-  const [backlightNews, setBacklightNews] = useState(true);
-  const [backlightImage, setBacklightImage] = useState(false);
-  const [backlightVideo, setBacklightVideo] = useState(false);
-  const [backlightPodcast, setBacklightPodcast] = useState(false);
-  const [backlightPopulate, setBacklightPopulate] = useState(false);
-  const [backlightSearch, setBacklightSearch] = useState(false);
-  const [backlightReaction, setBacklightReacrion] = useState(false);
-  const [backlightUpdate, setBacklightUpdate] = useState(false);
-  const [backlightComment, setBacklightComment] = useState(false);
+  const [heaght, setHeaght] = useState<boolean>(false)
+  const [podMenu, setPodMenu] = useState<boolean>(false);
+  const [backlightNews, setBacklightNews] = useState<boolean>(true);
+  const [backlightImage, setBacklightImage] = useState<boolean>(false);
+  const [backlightVideo, setBacklightVideo] = useState<boolean>(false);
+  const [backlightPodcast, setBacklightPodcast] = useState<boolean>(false);
+  const [backlightPopulate, setBacklightPopulate] = useState<boolean>(false);
+  const [backlightSearch, setBacklightSearch] = useState<boolean>(false);
+  const [backlightReaction, setBacklightReacrion] = useState<boolean>(false);
+  const [backlightUpdate, setBacklightUpdate] = useState<boolean>(false);
+  const [backlightComment, setBacklightComment] = useState<boolean>(false);
 
-  const handleImageClick = () => {
+
+
+  const handleImageClick = ():void  => {
     setBacklightNews(false);
     setBacklightImage(true);
     setBacklightVideo(false);
@@ -25,10 +27,11 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightReacrion(false);
     setBacklightUpdate(false);
     setBacklightComment(false);
-  };
+  }
 
-  const handleOpenPodMenu = () => {
-    setHeaght(true);
+
+  const handleOpenPodMenu = ():void  => {
+    setHeaght(true)
     setPodMenu(true);
     setBacklightNews(true);
     setBacklightImage(false);
@@ -41,7 +44,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
 
-  const handleVideoClick = () => {
+  const handleVideoClick = ():void  => {
     setBacklightNews(false);
     setBacklightImage(false);
     setBacklightVideo(true);
@@ -53,7 +56,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
 
-  const handlePodcastClick = () => {
+  const handlePodcastClick = ():void  => {
     setBacklightNews(false);
     setBacklightImage(false);
     setBacklightVideo(false);
@@ -64,6 +67,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(false);
     setBacklightComment(false);
   };
+
 
   const handlePopulateClick = () => {
     setHeaght(false);
@@ -77,7 +81,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightReacrion(false);
     setBacklightUpdate(false);
     setBacklightComment(false);
-  };
+  }
   const handleSearchClick = () => {
     setHeaght(false);
     setPodMenu(false);
@@ -91,8 +95,8 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(false);
     setBacklightComment(false);
   };
-  const handleReactionClick = () => {
-    setHeaght(false);
+  const handleReactionClick = ():void  => {
+    setHeaght(false)
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -104,8 +108,9 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(false);
     setBacklightComment(false);
   };
-  const handleUpdateClick = () => {
-    setHeaght(false);
+
+  const handleUpdateClick = ():void  => {
+    setHeaght(false)
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -117,8 +122,9 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(true);
     setBacklightComment(false);
   };
-  const handleCommentClick = () => {
-    setHeaght(false);
+
+  const handleCommentClick = ():void => {
+    setHeaght(false)
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
