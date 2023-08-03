@@ -44,6 +44,30 @@ const LeftSide: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      <div className={styles.post}>
+          <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
+          
+          <input type="text" placeholder="Что у вас нового?" />
+        </div>
+
+        <div className={styles.blockForNotes}>
+            <div className={styles.namesBlock}>
+              <Link className={styles.linkk} to={"#"}>Все записи</Link>
+              <Link className={styles.linkk2} to={"#"}>Мои записи</Link>
+              <Link className={styles.linkk2} to={"#"}>Архив записей</Link>
+            </div>
+            <br className={styles.br} />
+            <hr className={styles.hr} />
+            <br />
+
+            <div className={styles.withoutNotes}>
+              <div>
+              <img src="https://i.ibb.co/SJnt2jL/notes.png" alt="notes" />
+              <p>На стене пока нет ни одной записи</p>
+              </div>
+            </div>
+        </div>
     </div>
   );
 };
