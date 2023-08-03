@@ -27,7 +27,8 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightReacrion(false);
     setBacklightUpdate(false);
     setBacklightComment(false);
-  };
+  }
+
 
   const handleOpenPodMenu = ():void  => {
     setHeaght(true)
@@ -67,8 +68,9 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(false);
   };
 
-  const handlePopulateClick = ():void  => {
-    setHeaght(false)
+
+  const handlePopulateClick = () => {
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -79,9 +81,9 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightReacrion(false);
     setBacklightUpdate(false);
     setBacklightComment(false);
-  };
-  const handleSearchClick = ():void  => {
-    setHeaght(false)
+  }
+  const handleSearchClick = () => {
+    setHeaght(false);
     setPodMenu(false);
     setBacklightNews(false);
     setBacklightImage(false);
@@ -106,6 +108,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(false);
     setBacklightComment(false);
   };
+
   const handleUpdateClick = ():void  => {
     setHeaght(false)
     setPodMenu(false);
@@ -119,6 +122,7 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightUpdate(true);
     setBacklightComment(false);
   };
+
   const handleCommentClick = ():void => {
     setHeaght(false)
     setPodMenu(false);
@@ -133,8 +137,14 @@ const RightSidebar: React.FC = (): JSX.Element => {
     setBacklightComment(true);
   };
   return (
-    <div className={heaght? styles.rightSidebarContainerHeaght :styles.rightSidebarContainer}>
-      <div className={styles.rightSidebar}> 
+    <div
+      className={
+        heaght
+          ? styles.rightSidebarContainerHeaght
+          : styles.rightSidebarContainer
+      }
+    >
+      <div className={styles.rightSidebar}>
         <Link className={styles.link} to={"#"}>
           <div
             className={

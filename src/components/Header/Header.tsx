@@ -6,9 +6,11 @@ import down from "../../../public/down-arrow (2).png";
 import bell from "../../../public/bell.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import noimage from "../../../public/noimage.png";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
+  const token = useSelector((state: RootState) => state.application.token);
 
   return (
     <header className={styles.header}>
@@ -24,7 +26,12 @@ const Header: React.FC = (): JSX.Element => {
         </div>
       </div>
       <div className={styles.profile}>
-        <img src={`http://localhost:4000/${user.image}`} alt="" />
+        {token && (
+          <img
+            src={user.image ? `http://localhost:4000/${user.image}` : noimage}
+            alt=""
+          />
+        )}
         <img className={styles.down} src={down} alt="" />
       </div>
     </header>

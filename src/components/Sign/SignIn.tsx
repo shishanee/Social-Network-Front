@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Sign.module.scss";
 import logo from "../../../public/letter-d.png";
 import qr from "../../../public/qr-code.png";
 import people from "../../../public/people.svg";
 import sigin from "../../../public/sigin.svg";
 import lock from "../../../public/lock.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authSignIn } from "../../features/applicationSlice";
+import { AppDispatch, RootState } from "../../app/store";
 
 const SignIn: React.FC = (): JSX.Element => {
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [isSign, setIsSign] = useState<boolean>(false);
+  const error = useSelector((state: RootState) => state.application.error);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  const changeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const changePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    await dispatch(authSignIn({ email, password }));
+    setIsSign(true);
+  };
+  useEffect(() => {
+    if (isSign && !error) {
+      navigate("/");
+    }
+  }, [isSign, error, navigate]);
+
   return (
     <div className={styles.singIn_main}>
       <div className={styles.signIn_info}>
@@ -40,11 +70,22 @@ const SignIn: React.FC = (): JSX.Element => {
           <h2>Вход в DICAR</h2>
         </div>
         <form>
-          <input type="text" placeholder="Телефон или почта" />
-          <input type="password" placeholder="Пароль" />
+          <input
+            type="text"
+            value={email}
+            onChange={changeLogin}
+            placeholder="Телефон или почта"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={changePassword}
+            placeholder="Пароль"
+          />
           <br />
-          <button>Войти</button>
+          <button onClick={handleSignIn}>Войти</button>
         </form>
+        <p className={styles.ErrorMessage}>{error}</p>
         <hr />
         <div className={styles.qrBlock}>
           <div className={styles.qrImgBlock}>
