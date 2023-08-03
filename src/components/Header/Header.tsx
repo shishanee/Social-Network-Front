@@ -18,7 +18,8 @@ const Header: React.FC = (): JSX.Element => {
   const group = useSelector((state: RootState) => state.group.group);
   const [open, setOpen] = useState<boolean>(false);
 
-  console.log(group);
+  console.log(user);
+  
 
   const [searchUser, setSearchUser] = useState<string>("");
 

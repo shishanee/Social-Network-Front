@@ -16,7 +16,9 @@ const Friends: React.FC = (): JSX.Element => {
 
     const followers = useSelector((item: RootState)=>item.user.user)
 
-    console.log(followers)
+    console.log(followers);
+    
+
 
     useEffect(() => {
       dispatch(getUser());
