@@ -16,15 +16,15 @@ const App: React.FC = (): JSX.Element => {
   }, []);
   return (
     <>
-    {/* <Friends/> */}
-        <BtnScrollUp />
+    <Friends/>
+        {/* <BtnScrollUp />
       <Header />
       <div className="home">
         <div className="homePage">
           <Sidebar />
           <Routers />
         </div>
-      </div> 
+      </div>  */}
     </>
   );
 };
