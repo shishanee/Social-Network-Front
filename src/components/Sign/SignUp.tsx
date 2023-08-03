@@ -34,9 +34,9 @@ const SignUp: React.FC = ():JSX.Element => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await dispatch(authSignUp({ firstName, lastName, email, password }));
+    dispatch(authSignUp({ firstName, lastName, email, password }));
     setIsSign(true);
   };
 

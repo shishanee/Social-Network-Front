@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import styles from "./Sign.module.scss";
 import logo from "../../../public/letter-d.png";
 import qr from "../../../public/qr-code.png";
@@ -11,8 +11,8 @@ import { authSignIn } from "../../features/applicationSlice";
 import { AppDispatch, RootState } from "../../app/store";
 
 const SignIn: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [isSign, setIsSign] = useState<boolean>(false);
   const error = useSelector((state: RootState) => state.application.error);
 
@@ -27,9 +27,9 @@ const SignIn: React.FC = (): JSX.Element => {
     setPassword(e.target.value);
   };
 
-  const handleSignIn = async (e) => {
+  const handleSignIn = async (e:MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await dispatch(authSignIn({ email, password }));
+    dispatch(authSignIn({ email, password }));
     setIsSign(true);
   };
   useEffect(() => {

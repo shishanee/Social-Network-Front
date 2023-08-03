@@ -1,4 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../app/store";
+import { ReactNode } from "react";
 
 export interface User {
   age: string;
@@ -21,7 +23,7 @@ export interface UserState {
   users: User[];
   friends: User[];
   loading: boolean;
-  error: null | string | unknown;
+  error: ReactNode | string | null | unknown
 }
 
 const initialState: UserState = {
@@ -32,28 +34,27 @@ const initialState: UserState = {
   error: null,
 };
 
-export const getUser = createAsyncThunk<
-  User[],
-  void,
-  { rejectValue: string | unknown | null }
->("get/user", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("http://localhost:4000/user", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
-    const data = await res.json();
+export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
+  "get/user",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/user", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
 
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error);
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const allUsers = createAsyncThunk("all/users", async (_, ThunkAPI) => {
+export const allUsers = createAsyncThunk<User[],void>("all/users", async (_, thunkAPI) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
   return data;
@@ -77,11 +78,20 @@ const userSlice = createSlice({
         getUser.rejected,
         (state, action: PayloadAction<string | null | unknown>) => {
           (state.error = action.payload), (state.loading = false);
-        }
-      )
-      .addCase(allUsers.fulfilled, (state, action) => {
+        })
+      .addCase(allUsers.fulfilled, (state, action :PayloadAction<User[]>) => {
         state.users = action.payload;
-      });
+        state.error = null 
+        state.loading = false
+      })
+      .addCase(allUsers.rejected ,(state, action:PayloadAction<string | unknown | null>)=>{
+        state.error = action.payload
+        state.loading = false
+      })
+      .addCase(allUsers.pending, (state, _ )=>{
+        state.error = null
+        state.loading = true
+      })
   },
 });
 
