@@ -8,7 +8,8 @@ export interface Grops {
   discription: string,
   followers: string[],
   post: string[]
-  __v: number
+  __v: number,
+  image: string
 }
 
 export interface InitialState {
@@ -38,7 +39,7 @@ export const getGroups = createAsyncThunk<
   }
 });
 
-const groupSlice = createSlice({
+export const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {},

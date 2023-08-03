@@ -24,7 +24,6 @@ const Header: React.FC = (): JSX.Element => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-
   const [searchUser, setSearchUser] = useState<string>("");
 
   const findUser = (e: React.ChangeEvent<HTMLInputElement>) => {

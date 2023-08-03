@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Edit.module.scss'
 
-const EditFirst: React.FC = () => {
+const EditFirst: React.FC = ():JSX.Element => {
   return (
     <div className={styles.editFirst}>
       
