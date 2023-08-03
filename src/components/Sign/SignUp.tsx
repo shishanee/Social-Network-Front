@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignUp } from "../../features/applicationSlice";
 import { AppDispatch, RootState } from "../../app/store";
+import { ReactNode } from 'react';
 
 const SignUp: React.FC = ():JSX.Element => {
   const [firstName, setFirstName] = useState<string>("");
@@ -34,9 +35,9 @@ const SignUp: React.FC = ():JSX.Element => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await dispatch(authSignUp({ firstName, lastName, email, password }));
+    dispatch(authSignUp({ firstName, lastName, email, password }));
     setIsSign(true);
   };
 

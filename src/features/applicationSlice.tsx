@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Grops } from "./groupSlice";
+import { ReactNode } from 'react';
 
 export interface User {
   _id: string;
@@ -18,7 +19,7 @@ export interface User {
 
 export interface IApplication {
   state: User[];
-  error: string | null | unknown;
+  error: string | null  | unknown | ReactNode 
   signinUp: boolean;
   signinIn: boolean;
   token: string | null;
@@ -37,7 +38,6 @@ export const initialState: IApplication = {
 export interface dataSingUp {
   firstName: string;
   lastName: string;
-  number: string;
   email: string;
   password: string;
 }
@@ -99,7 +99,7 @@ export const authSignIn = createAsyncThunk< string | null,dataSingIn,{rejectValu
   }
 );
 
-export const authSignOut = createAsyncThunk(
+export const authSignOut = createAsyncThunk<void,void,{rejectValue: string | null | unknown}>(
   "auth/signout",
   async (_, thunkAPI) => {
     try {
@@ -117,6 +117,7 @@ const applicationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    //authSignUp
       .addCase(authSignUp.pending, (state) => {
         state.signinUp = true;
       })
@@ -128,18 +129,33 @@ const applicationSlice = createSlice({
         state.signinUp = false;
         state.error = null;
       })
+      //authSignIn
       .addCase(authSignIn.pending, (state) => {
         state.error = null;
       })
-      .addCase(authSignIn.rejected, (state, action: PayloadAction<string | unknown>) => {
+      .addCase(authSignIn.rejected, (state, action: PayloadAction< string | unknown | null > ) => {
         state.signinUp = false;
         state.error = action.payload;
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
         state.signinUp = false;
         state.error = null;
-        state.token = action.payload;
-      });
+        state.token = action.payload
+      })
+      .addCase(authSignOut.fulfilled, (state , _)=>{
+        state.loading = false
+        state.token = null
+        state.error = null
+      })
+      .addCase(authSignOut.pending, (state, _ )=>{
+        state.error = null
+        state.token = null
+        state.loading = true
+      })
+      .addCase(authSignOut.rejected, (state, action: PayloadAction<string | null | unknown> )=>{
+        state.error = action.payload
+        state.loading = false
+      })
   },
 });
 
