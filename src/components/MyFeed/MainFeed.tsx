@@ -3,6 +3,7 @@ import styles from "./MyFeed.module.scss";
 import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
 
+
 const MainFeed: React.FC = ():JSX.Element => {
   return (
     <div className={styles.contentMain}>

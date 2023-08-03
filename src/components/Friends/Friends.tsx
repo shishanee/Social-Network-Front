@@ -1,15 +1,28 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Friends.module.scss";
 import FriendsCart from "./FriendsCart";
 import test from "../../a/01_18_-_.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
+import { getGroups } from "../../features/groupSlice";
+import { getUser } from "../../features/userSlice";
 
 const Friends: React.FC = (): JSX.Element => {
-  const [actionYouFollowers, setActionYouFollowers] = useState<boolean>(true);
-  const [actionSubscriptions, setActionSubscriptions] =
-    useState<boolean>(false);
-
     
+    const dispatch = useDispatch<AppDispatch>()
+
+  const [actionYouFollowers, setActionYouFollowers] = useState<boolean>(true);
+  const [actionSubscriptions, setActionSubscriptions] = useState<boolean>(false);
+
+    const followers = useSelector((item: RootState)=>item.user.user)
+
+    console.log(followers)
+
+    useEffect(() => {
+      dispatch(getUser());
+    }, [])
+
 
   const handleActionYouFollowers = (): void => {
     setActionYouFollowers(true);
