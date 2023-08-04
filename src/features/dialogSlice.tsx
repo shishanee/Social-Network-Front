@@ -15,6 +15,27 @@ export const getDialog = createAsyncThunk("get/dialog", async (_, thunkAPI) => {
     thunkAPI.rejectWithValue(error);
   }
 });
+// /addmessage/:id
+
+export const addMessage = createAsyncThunk(
+  "add/message",
+  async ({ id, text }, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/addmessage/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ text: text }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const oneDialog = createAsyncThunk(
   "one/dialog",
@@ -44,6 +65,9 @@ export const dialogSlice = createSlice({
       })
       .addCase(oneDialog.pending, (state, action) => {
         state.loading = true;
+      })
+      .addCase(addMessage.fulfilled, (state, action) => {
+        state.oneChat[0] = action.payload;
       });
   },
 });

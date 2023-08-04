@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { oneDialog } from "../../features/dialogSlice";
+import { addMessage, oneDialog } from "../../features/dialogSlice";
 import { RootState } from "../../app/store";
 import styles from "./OneChat.module.scss";
 import { parseJWT } from "../../helpers/parseJWT";
@@ -11,6 +11,7 @@ import enter from "../../../public/send-message.png";
 
 const OneChat: React.FC = (): JSX.Element => {
   const chat = useSelector((state: RootState) => state.dialog.oneChat);
+  console.log(chat[0])
   const loading = useSelector((state: RootState) => state.dialog.loading);
   const token = useSelector((state: RootState) => state.application.token);
   const [text, setText] = useState<string>("");
@@ -19,7 +20,10 @@ const OneChat: React.FC = (): JSX.Element => {
   const handleMessage = (e) => {
     setText(e.target.value);
   };
-
+  const addMes = () => {
+    dispatch(addMessage({ id, text }))
+    setText('')
+  };
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -68,7 +72,6 @@ const OneChat: React.FC = (): JSX.Element => {
           return (
             <div>
               {item.messages.map((one) => {
-                console.log(one);
                 return (
                   <div className={styles.oneBlockMessage}>
                     <img
@@ -100,7 +103,7 @@ const OneChat: React.FC = (): JSX.Element => {
           type="text"
           placeholder="Напишите сообщение..."
         />
-        <img src={enter} alt="" />
+        <img onClick={addMes} src={enter} alt="" />
       </div>
     </div>
   );

@@ -4,9 +4,11 @@
   border-radius: 20px;
   border: 1px solid rgba(192, 192, 192, 0.135);
   height: 660px;
-  overflow: auto;
-  overflow: hidden;
   position: relative;
+  .chatMessage {
+    height: 531px;
+    overflow: auto;
+  }
   .inputBlock {
     position: absolute;
     bottom: 0;
@@ -18,7 +20,9 @@
     border-top: 1px solid rgba(192, 192, 192, 0.221);
     display: flex;
     align-items: center;
-    img{
+    border-radius:  0px 0px 20px 20px;
+
+    img {
       width: 20px;
       height: 20px;
       object-fit: cover;
