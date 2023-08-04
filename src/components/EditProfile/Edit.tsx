@@ -6,7 +6,6 @@ import styles from './Edit.module.scss'
 const Edit: React.FC = ():JSX.Element => {
   return (
     <div className={styles.edit}>
-      <EditFirst />
       <EditSecond />
     </div>
   )

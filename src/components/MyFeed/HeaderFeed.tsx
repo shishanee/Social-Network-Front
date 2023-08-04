@@ -20,8 +20,9 @@ const HeaderFeed: React.FC = ():JSX.Element => {
         <div className={styles.blockWithoutImg}>
           <div className={styles.fullName}>
 
-            <div className={styles.name}>{`${user.firstName} ${user.lastName}`}</div>
-            <Link to={"#"} className={styles.linkToChangeProfile}>
+            <div className={styles.name}>{`${user.user.firstName} ${user.user.lastName}`}</div>
+            <Link to={"/edit"} className={styles.linkToChangeProfile}>
+
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>
             </Link>
