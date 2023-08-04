@@ -65,6 +65,7 @@ const Header: React.FC = (): JSX.Element => {
           <img className={styles.bell} src={bell} alt="" />
           <div className={styles.search}>
             <input
+              onMouseMove={() => setOpen(true)}
               onChange={findUser}
               onClick={handleClick}
               value={searchUser}
@@ -74,7 +75,10 @@ const Header: React.FC = (): JSX.Element => {
             <img src={search} alt="" />
           </div>
           {open && (
-            <div className={styles.modalUsers}>
+            <div
+              onMouseLeave={() => setOpen(false)}
+              className={styles.modalUsers}
+            >
               <h5>Люди</h5>
               {newUsers.slice(0, 3).map((item) => {
                 return (
@@ -90,6 +94,7 @@ const Header: React.FC = (): JSX.Element => {
                       />
                       <div>
                         <Link
+                          onClick={() => setOpen(false)}
                           to={item._id}
                         >{`${item.firstName} ${item.lastName}`}</Link>
                         <p>{item.friends.length} followers</p>
@@ -101,7 +106,6 @@ const Header: React.FC = (): JSX.Element => {
                   </div>
                 );
               })}
-              <div className={styles.hr}></div>
               <div>
                 <h5>Группы</h5>
                 {groups.slice(0, 3).map((item) => {
@@ -117,7 +121,9 @@ const Header: React.FC = (): JSX.Element => {
                           alt=""
                         />
                         <div>
-                          <Link to={item._id}>{item.name}</Link>
+                          <Link onClick={() => setOpen(false)} to={item._id}>
+                            {item.name}
+                          </Link>
                           <p>{item.followers.length} followers</p>
                         </div>
                       </div>
@@ -127,7 +133,6 @@ const Header: React.FC = (): JSX.Element => {
                     </div>
                   );
                 })}
-                <div className={styles.hr}></div>
               </div>
             </div>
           )}

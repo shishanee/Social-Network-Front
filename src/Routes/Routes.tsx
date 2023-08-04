@@ -10,7 +10,6 @@ import Music from "../components/Music/Music";
 import Friends from "../components/Friends/Friends";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import Sidebar from "../components/Sidebar/Sidebar";
 import Messages from "../components/Messages/Messages";
 import OneChat from "../components/Messages/OneChat";
 
