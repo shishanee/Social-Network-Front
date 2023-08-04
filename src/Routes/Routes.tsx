@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Messages from "../components/Messages/Messages";
+import OneChat from "../components/Messages/OneChat";
 
 const Routers: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -33,6 +34,7 @@ const Routers: React.FC = (): JSX.Element => {
         <Routes>
           <Route path="/login" element={<Navigate to="/" />} />;
           <Route path="/edit" element={<Edit />} />
+          <Route path="/messages/:id" element={<OneChat />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<SignIn />} />
