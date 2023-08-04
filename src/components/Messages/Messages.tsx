@@ -5,6 +5,7 @@ import { RootState } from "../../app/store";
 import { parseJWT } from "../../helpers/parseJWT";
 import noimage from "../../../public/noimage.png";
 import { mounthCheck } from "../../helpers/mounthCheck.js";
+import { useNavigate } from "react-router-dom";
 
 const Messages: React.FC = (): JSX.Element => {
   const dialog = useSelector((state: RootState) => state.dialog.dialog);
@@ -22,6 +23,11 @@ const Messages: React.FC = (): JSX.Element => {
     }
   });
 
+  const navigate = useNavigate();
+  const linkToChat = (id) => {
+    navigate(id);
+  };
+
   return (
     <div className={styles.messageMain}>
       <div className={styles.inputBlock}>
@@ -31,7 +37,10 @@ const Messages: React.FC = (): JSX.Element => {
       <div className={styles.dialogsBlock}>
         {filtred.map((item) => {
           return (
-            <div className={styles.oneChat}>
+            <div
+              onClick={() => linkToChat(item._id)}
+              className={styles.oneChat}
+            >
               <>
                 <div className={styles.firstBlock}>
                   <img
@@ -59,7 +68,10 @@ const Messages: React.FC = (): JSX.Element => {
       <div>
         {filtred1.map((item) => {
           return (
-            <div className={styles.oneChat}>
+            <div
+              onClick={() => linkToChat(item._id)}
+              className={styles.oneChat}
+            >
               <>
                 <div className={styles.firstBlock}>
                   <img

@@ -1,0 +1,114 @@
+.chatMain {
+  width: 550px;
+  background: #222222;
+  border-radius: 20px;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  height: 660px;
+  overflow: auto;
+  overflow: hidden;
+  position: relative;
+  .inputBlock {
+    position: absolute;
+    bottom: 0;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: rgb(41, 41, 41);
+    border-top: 1px solid rgba(192, 192, 192, 0.221);
+    display: flex;
+    align-items: center;
+    img{
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+
+    input {
+      width: 85%;
+      padding-left: 10px;
+      height: 36px;
+      border-radius: 5px;
+      background: transparent;
+      border: 1px solid rgba(192, 192, 192, 0.135);
+      font-weight: 600;
+    }
+  }
+  .online {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 35px;
+    p {
+      font-size: 13px;
+    }
+  }
+  .oneBlockMessage {
+    display: flex;
+    padding: 10px 30px;
+    .textPar {
+      font-size: 14px;
+      width: 350px;
+    }
+    h5 {
+      color: rgb(100, 191, 248);
+    }
+    .blockName {
+      display: flex;
+      align-items: center;
+      p {
+        margin-left: 5px;
+        font-size: 13px;
+        color: grey;
+      }
+    }
+    img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+  }
+  .hr {
+    border-bottom: 1px solid rgba(192, 192, 192, 0.308);
+  }
+  .firstBlock {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+
+    .back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      img {
+        width: 15px;
+        height: 15px;
+        object-fit: cover;
+        margin-right: 6px;
+        margin-top: 3px;
+        transition: 0.3s;
+      }
+    }
+    .back:hover {
+      img {
+        padding-right: 5px;
+      }
+    }
+    p {
+      color: grey;
+      text-decoration: none;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}
