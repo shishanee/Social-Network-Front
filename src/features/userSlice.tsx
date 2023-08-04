@@ -53,6 +53,34 @@ export const getUser = createAsyncThunk<
   }
 });
 
+export const changeUser = createAsyncThunk<
+User[],
+void,
+{ rejectValue: string | unknown | null } >
+("change/user", async ({editName, editSurname, editNumber, editEmail, editAge}, thunkAPI) => {
+  
+  try {
+    const res = await fetch("http://localhost:4000/user",
+     {
+      method: "PATCH",
+      body: JSON.stringify({
+        firstName: editName, 
+        lastName: editSurname, 
+        number: editNumber, 
+        email: editEmail, 
+        age: editAge}),
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+    const data = await res.json();
+    return data
+  } catch (error) {
+    thunkApi.rejectWithValue(error)
+  }
+})
+
 export const allUsers = createAsyncThunk("all/users", async (_, ThunkAPI) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
@@ -81,7 +109,13 @@ const userSlice = createSlice({
       )
       .addCase(allUsers.fulfilled, (state, action) => {
         state.users = action.payload;
-      });
+      })
+      .addCase(changeUser.fulfilled, (state, action) => {
+       state.user.firstName = action.meta.arg.editName;
+       state.user.lastName = action.meta.arg.editSurname;
+       state.user.number = action.meta.arg.editNumber;
+       state.user.age = action.meta.arg.editAge
+      })
   },
 });
 
