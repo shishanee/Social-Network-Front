@@ -43,6 +43,7 @@ const EditFirst: React.FC = () => {
     dispatch(changeUser({editName, editSurname, editNumber, editEmail, editAge}))
   }
 
+
   return (
     <div className={styles.editFirst}>
       <div className={styles.avaName}>

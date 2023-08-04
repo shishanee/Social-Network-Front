@@ -1,4 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ReactNode } from 'react';
 
 export interface Grops {
   _id:string,
@@ -7,13 +8,14 @@ export interface Grops {
   discription: string,
   followers: string[],
   post: string[]
-  __v: number
+  __v: number,
+  image: string
 }
 
 export interface InitialState {
   group: Grops[];
   loading: boolean;
-  error: null | unknown | string;
+  error: null | unknown | string | ReactNode
 }
 
 export const initialState: InitialState = {
@@ -37,7 +39,7 @@ export const getGroups = createAsyncThunk<
   }
 });
 
-const groupSlice = createSlice({
+export const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {},

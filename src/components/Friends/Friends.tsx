@@ -8,29 +8,32 @@ import { AppDispatch, RootState } from "../../app/store";
 import { getUser } from "../../features/userSlice";
 
 const Friends: React.FC = (): JSX.Element => {
-    
-    const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
 
   const [actionYouFollowers, setActionYouFollowers] = useState<boolean>(true);
-  const [actionSubscriptions, setActionSubscriptions] = useState<boolean>(false);
+  const [open, setOpen] = useState(true);
+  const [actionSubscriptions, setActionSubscriptions] =
+    useState<boolean>(false);
 
-    const followers = useSelector((item: RootState)=>item.user.user)
+  const user = useSelector((item: RootState) => item.user.user);
+  const followers = useSelector((item: RootState) => item.user.followers);
+  const friends = useSelector((item: RootState) => item.user.friends);
+  console.log(friends);
 
-    console.log(followers)
-
-    useEffect(() => {
-      dispatch(getUser());
-    }, [])
-
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
 
   const handleActionYouFollowers = (): void => {
     setActionYouFollowers(true);
     setActionSubscriptions(false);
+    setOpen(true);
   };
 
   const handleActionSubscriptions = (): void => {
     setActionYouFollowers(false);
     setActionSubscriptions(true);
+    setOpen(false);
   };
 
   return (
@@ -51,8 +54,8 @@ const Friends: React.FC = (): JSX.Element => {
             onClick={handleActionSubscriptions}
             className={
               actionSubscriptions
-                ? styles.actionSubscriptions
-                : styles.subscriptions
+                ? styles.actionYouFollowers
+                : styles.youFollowers
             }
           >
             Ваши подписки
@@ -64,14 +67,34 @@ const Friends: React.FC = (): JSX.Element => {
         <div className={styles.siz}></div>
         <div>
           <div>
+            {open && (
               <div>
-                <FriendsCart
-                  image={test}
-                  firstName="Имя"
-                  lastName="Фамилия"
-                  buttonText="Отписаться"
-                />
+                {followers.map((item) => {
+                  return (
+                    <FriendsCart
+                        image={`http://localhost:4000/${item.image}`}
+                      firstName={item.firstName}
+                      lastName={item.lastName}
+                      buttonText="Отписать"
+                    />
+                  );
+                })}
               </div>
+            )}
+            {!open && (
+              <div>
+                {friends.map((item) => {
+                  return (
+                    <FriendsCart
+                      image={`http://localhost:4000/${item.image}`}
+                      firstName={item.firstName}
+                      lastName={item.lastName}
+                      buttonText="Отписаться"
+                    />
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ const Home: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
   const token = useSelector((state: RootState) => state.application.token);
 
+  
+  
+
   return (
     <>
       <div className={styles.homePage}>

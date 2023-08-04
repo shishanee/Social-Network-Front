@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getGroups } from "../../features/groupSlice";
+import { useSelector } from "react-redux";
 import styles from "./Group.module.scss";
 import { Link } from "react-router-dom";
-import { AppDispatch, RootState } from "../../app/store";
+import { RootState } from "../../app/store";
 
 const Group: React.FC = (): JSX.Element => {
   const group = useSelector((state: RootState) => state.group.group);
-  const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    dispatch(getGroups());
-  }, []);
+
   return (
     <div className={styles.group}>
       <div className={styles.buttons}>

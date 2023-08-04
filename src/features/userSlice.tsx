@@ -1,4 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../app/store";
+import { ReactNode } from "react";
 
 export interface User {
   age: string;
@@ -7,7 +9,7 @@ export interface User {
   followers: string[];
   friends: string[];
   groups: string[];
-  image: string;
+  image?: string;
   lastName: string;
   number: string;
   password: string;
@@ -20,38 +22,39 @@ export interface UserState {
   user: User[];
   users: User[];
   friends: User[];
+  followers: User[];
   loading: boolean;
-  error: null | string | unknown;
+  error: ReactNode | string | null | unknown;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   user: [],
   users: [],
   friends: [],
+  followers: [],
   loading: false,
   error: null,
 };
 
-export const getUser = createAsyncThunk<
-  User[],
-  void,
-  { rejectValue: string | unknown | null }
->("get/user", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("http://localhost:4000/user", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
-    const data = await res.json();
+export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
+  "get/user",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/user", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
 
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error);
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const changeUser = createAsyncThunk<
 User[],
@@ -81,12 +84,17 @@ void,
   }
 })
 
-export const allUsers = createAsyncThunk("all/users", async (_, ThunkAPI) => {
+
+export const allUsers = createAsyncThunk<
+  User[],
+  void,
+  { rejectValue: string | unknown | null }
+>("all/users", async (_) => {
   const res = await fetch("http://localhost:4000/users");
   const data = res.json();
   return data;
 });
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
@@ -94,6 +102,8 @@ const userSlice = createSlice({
     builder
       .addCase(getUser.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.user = action.payload;
+        state.followers = action.payload.followers;
+        state.friends = action.payload.friends;
         state.loading = false;
         state.error = null;
       })
@@ -107,7 +117,7 @@ const userSlice = createSlice({
           (state.error = action.payload), (state.loading = false);
         }
       )
-      .addCase(allUsers.fulfilled, (state, action) => {
+      .addCase(allUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.users = action.payload;
       })
       .addCase(changeUser.fulfilled, (state, action) => {
@@ -116,6 +126,20 @@ const userSlice = createSlice({
        state.user.number = action.meta.arg.editNumber;
        state.user.age = action.meta.arg.editAge
       })
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(
+        allUsers.rejected,
+        (state, action: PayloadAction<string | unknown | null>) => {
+          state.error = action.payload;
+          state.loading = false;
+        }
+      )
+      .addCase(allUsers.pending, (state, _) => {
+        state.error = null;
+        state.loading = true;
+      });
   },
 });
 

@@ -4,9 +4,71 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
+  .buttonFollow {
+    border: none;
+    background: transparent;
+    margin-right: 10px;
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+  }
+  .modalUsers {
+    position: absolute;
+    background: #222222;
+    top: 40px;
+    left: 100px;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    width: 350px;
+
+    h5{
+      margin-left: 15px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+     
+    }
+    .oneUser:hover{
+      background: #424242;
+      border-radius: 10px;
+    }
+    .userFirstBlock {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+
+      a{
+        text-decoration: none;
+        font-weight: 500;
+      }
+      p {
+        color: grey;
+        font-size: 14px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    .oneUser{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    width: 336px;
+
+    
+    }
+  
+  }
   .profile {
     position: relative;
     width: 100px;
+    cursor: pointer;
     img {
       width: 32px;
       height: 32px;
@@ -64,9 +126,58 @@
         width: 30px;
         margin-right: 10px;
       }
-      a{
+      a {
         text-decoration: none;
       }
     }
   }
+}
+.hr {
+  border-bottom: 1px solid rgba(192, 192, 192, 0.301);
+  display: flex;
+  justify-content: center;
+}
+
+.modal_window{
+  position: absolute;
+  border-radius: 10px;
+  right: 200px;
+  width: 200px;
+  background-color: #292929;
+  box-shadow: -12px 10px 15px rgba(0, 0, 0, 0.29);
+  a{
+    text-decoration: none;
+  }
+  .modal_profile{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    background-color:#424242;
+    border-radius: 10px;
+    padding: 0;
+
+    img{
+      width: 50px;
+      padding: 5px;
+      border-radius: 50%;
+
+    }
+  }
+  .div{
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    img {
+      padding: 5px;
+    }
+  }
+  .div:hover{
+    background-color:#424242;
+    cursor: pointer;
+    border-radius: 10px;
+
+  }
+  padding: 0;
+
 }
