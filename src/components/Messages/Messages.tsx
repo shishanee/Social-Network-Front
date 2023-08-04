@@ -1,0 +1,91 @@
+import React from "react";
+import styles from "./Message.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { parseJWT } from "../../helpers/parseJWT";
+import noimage from "../../../public/noimage.png";
+import { mounthCheck } from "../../helpers/mounthCheck.js";
+
+const Messages: React.FC = (): JSX.Element => {
+  const dialog = useSelector((state: RootState) => state.dialog.dialog);
+  const token = useSelector((state: RootState) => state.application.token);
+  const tokenId = parseJWT(token).id;
+  const filtred = dialog.filter((item) => {
+    if (tokenId === item.you._id) {
+      return item;
+    }
+  });
+
+  const filtred1 = dialog.filter((item) => {
+    if (tokenId === item.user._id) {
+      return item;
+    }
+  });
+
+  return (
+    <div className={styles.messageMain}>
+      <div className={styles.inputBlock}>
+        <input type="text" placeholder="Поиск" />
+        <div className={styles.hr}></div>
+      </div>
+      <div className={styles.dialogsBlock}>
+        {filtred.map((item) => {
+          return (
+            <div className={styles.oneChat}>
+              <>
+                <div className={styles.firstBlock}>
+                  <img
+                    src={
+                      !item.user.image
+                        ? noimage
+                        : `http://localhost:4000/${item.user.image}`
+                    }
+                    alt=""
+                  />
+                  <div>
+                    <h5>{`${item.user.firstName} ${item.user.lastName}`}</h5>
+                    <p>{item.messages[0].text}</p>
+                  </div>
+                </div>
+                <p>
+                  {item.messages[0].date.slice(8, 10)}{" "}
+                  {mounthCheck(item.messages[0].date.slice(5, 7))}
+                </p>
+              </>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        {filtred1.map((item) => {
+          return (
+            <div className={styles.oneChat}>
+              <>
+                <div className={styles.firstBlock}>
+                  <img
+                    src={
+                      !item.you.image
+                        ? noimage
+                        : `http://localhost:4000/${item.you.image}`
+                    }
+                    alt=""
+                  />
+                  <div>
+                    <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>
+                    <p>{item.messages[0].text}</p>
+                  </div>
+                </div>
+                <p>
+                  {item.messages[0].date.slice(8, 10)}{" "}
+                  {mounthCheck(item.messages[0].date.slice(5, 7))}
+                </p>
+              </>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Messages;
