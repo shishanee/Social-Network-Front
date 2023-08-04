@@ -57,33 +57,37 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
 );
 
 export const changeUser = createAsyncThunk<
-User[],
-void,
-{ rejectValue: string | unknown | null } >
-("change/user", async ({editName, editSurname, editNumber, editEmail, editAge}, thunkAPI) => {
-  
-  try {
-    const res = await fetch("http://localhost:4000/user",
-     {
-      method: "PATCH",
-      body: JSON.stringify({
-        firstName: editName, 
-        lastName: editSurname, 
-        number: editNumber, 
-        email: editEmail, 
-        age: editAge}),
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
-    const data = await res.json();
-    return data
-  } catch (error) {
-    thunkApi.rejectWithValue(error)
+  User[],
+  void,
+  { rejectValue: string | unknown | null }
+>(
+  "change/user",
+  async (
+    { editName, editSurname, editNumber, editEmail, editAge },
+    thunkAPI
+  ) => {
+    try {
+      const res = await fetch("http://localhost:4000/user", {
+        method: "PATCH",
+        body: JSON.stringify({
+          firstName: editName,
+          lastName: editSurname,
+          number: editNumber,
+          email: editEmail,
+          age: editAge,
+        }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
+    }
   }
-})
-
+);
 
 export const allUsers = createAsyncThunk<
   User[],
@@ -121,13 +125,10 @@ export const userSlice = createSlice({
         state.users = action.payload;
       })
       .addCase(changeUser.fulfilled, (state, action) => {
-       state.user.firstName = action.meta.arg.editName;
-       state.user.lastName = action.meta.arg.editSurname;
-       state.user.number = action.meta.arg.editNumber;
-       state.user.age = action.meta.arg.editAge
-      })
-        state.error = null;
-        state.loading = false;
+        state.user.firstName = action.meta.arg.editName;
+        state.user.lastName = action.meta.arg.editSurname;
+        state.user.number = action.meta.arg.editNumber;
+        state.user.age = action.meta.arg.editAge;
       })
       .addCase(
         allUsers.rejected,
