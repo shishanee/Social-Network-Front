@@ -53,12 +53,12 @@ const Messages: React.FC = (): JSX.Element => {
                   />
                   <div>
                     <h5>{`${item.user.firstName} ${item.user.lastName}`}</h5>
-                    <p>{item.messages[0].text}</p>
+                    <p>{item.messages.at(-1).text}</p>
                   </div>
                 </div>
                 <p>
-                  {item.messages[0].date.slice(8, 10)}{" "}
-                  {mounthCheck(item.messages[0].date.slice(5, 7))}
+                  {item.messages.at(-1).date.slice(8, 10)}{" "}
+                  {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
                 </p>
               </>
             </div>
@@ -84,12 +84,12 @@ const Messages: React.FC = (): JSX.Element => {
                   />
                   <div>
                     <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>
-                    <p>{item.messages[0].text}</p>
+                    <p>{item.messages.at(-1).text}</p>
                   </div>
                 </div>
                 <p>
-                  {item.messages[0].date.slice(8, 10)}{" "}
-                  {mounthCheck(item.messages[0].date.slice(5, 7))}
+                  {item.messages.at(-1).date.slice(8, 10)}{" "}
+                  {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
                 </p>
               </>
             </div>
