@@ -1,0 +1,61 @@
+.peopleBlock {
+  display: flex;
+  background: #222222;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  width: 911px;
+  height: 190px;
+  padding: 20px;
+  border-radius: 12px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  .buttonBlock {
+    display: flex;
+    align-items: center;
+    .downArrow {
+      display: flex;
+      align-items: center;
+      border: none;
+      border-radius: 10px;
+      background: #4d4b4b;
+      font-weight: 600;
+      padding: 7px;
+      img {
+        width: 15px;
+        height: 15px;
+        object-fit: cover;
+      }
+      button {
+        border: none;
+        background: transparent;
+        color: #dbdbdb;
+        font-weight: 600;
+      }
+    }
+  }
+  .followButton {
+    padding: 7px;
+    background: #ffffff;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  .avaBlock {
+    display: flex;
+
+    align-items: center;
+    h2 {
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+}
