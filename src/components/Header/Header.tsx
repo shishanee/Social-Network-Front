@@ -28,8 +28,6 @@ const Header: React.FC = (): JSX.Element => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const tokenId = parseJWT(token).id;
-
   const [searchUser, setSearchUser] = useState<string>("");
 
   const findUser = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,7 +120,7 @@ const Header: React.FC = (): JSX.Element => {
                       </div>
                     </div>
                     <div>
-                      {item.followers == tokenId ? (
+                      {item.followers == user._id ? (
                         <button className={styles.buttonFollow}>
                           <img
                             onClick={() => deleteFollow(item._id)}

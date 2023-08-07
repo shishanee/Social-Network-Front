@@ -90,7 +90,11 @@ const Friends: React.FC = (): JSX.Element => {
                 {friends.map((item) => {
                   return (
                     <FriendsCart
-                      image={`http://localhost:4000/${item.image}`}
+                      image={
+                        !item.image
+                          ? noimage
+                          : `http://localhost:4000/${item.image}`
+                      }
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписаться"
