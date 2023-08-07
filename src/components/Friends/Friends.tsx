@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { getUser } from "../../features/userSlice";
 import noimage from "../../../public/noimage.png";
+import FriendCart from "./FriendCart";
 
 const Friends: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
@@ -69,7 +70,7 @@ const Friends: React.FC = (): JSX.Element => {
               <div>
                 {followers.map((item) => {
                   return (
-                    <FriendsCart
+                    <FriendCart
                       image={
                         !item.image
                           ? noimage
@@ -78,6 +79,7 @@ const Friends: React.FC = (): JSX.Element => {
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписать"
+                      id={item._id}
                     />
                   );
                 })}

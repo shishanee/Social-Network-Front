@@ -36,6 +36,23 @@ export const initialState: UserState = {
   error: null,
 };
 
+export const unFollow = createAsyncThunk("un/follow", async (id, thunkAPI) => {
+  try {
+    const res = await fetch("http://localhost:4000/deletefriends", {
+      method: "PATCH",
+      body: JSON.stringify({ followers: id }),
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (error: string | unknown | null) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
+
 export const deleteUser = createAsyncThunk(
   "delete/user",
   async (id, thunkAPI) => {
