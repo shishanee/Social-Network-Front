@@ -118,12 +118,12 @@
   background: #222222;
   border: 1px solid rgba(192, 192, 192, 0.135);
   border-radius: 12px;
+  margin-bottom: 10px;
 }
 .people {
-  padding: 15px 0px 0px 0px;
+  padding: 15px 0px 10px 0px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   img {
     width: 64px;
     height: 64px;
@@ -137,6 +137,10 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
+  }
+  .oneFollow:hover{
+    background: #333333;
+    border-radius: 10px;
   }
 }
 .followBlock {

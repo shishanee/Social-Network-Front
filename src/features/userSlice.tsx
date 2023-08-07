@@ -25,6 +25,7 @@ export interface UserState {
   followers: User[];
   oneUser: User[];
   oneUserFollow: User[];
+  oneUserFriends: User[];
   loading: boolean;
   error: ReactNode | string | null | unknown;
 }
@@ -38,6 +39,7 @@ export const initialState: UserState = {
   error: null,
   oneUser: [],
   oneUserFollow: [],
+  oneUserFriends: [],
 };
 
 export const oneUser = createAsyncThunk("one/user", async (id, thunkAPI) => {
@@ -215,6 +217,7 @@ export const userSlice = createSlice({
       .addCase(oneUser.fulfilled, (state, action) => {
         state.oneUser = action.payload;
         state.oneUserFollow = action.payload.followers;
+        state.oneUserFriends = action.payload.friends;
       });
   },
 });

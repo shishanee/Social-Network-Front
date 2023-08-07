@@ -25,6 +25,8 @@ const Header: React.FC = (): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
 
+  const tokenId = parseJWT(token).id;
+
   const dispatch = useDispatch<AppDispatch>();
 
   const [searchUser, setSearchUser] = useState<string>("");
@@ -68,7 +70,7 @@ const Header: React.FC = (): JSX.Element => {
 
   const deleteFollow = (id) => {
     dispatch(deleteUser(id));
-    location.reload();
+      location.reload();
   };
   return (
     <>
@@ -119,7 +121,7 @@ const Header: React.FC = (): JSX.Element => {
                       </div>
                     </div>
                     <div>
-                      {item.followers == user._id ? (
+                      {item.followers == tokenId ? (
                         <button className={styles.buttonFollow}>
                           <img
                             onClick={() => deleteFollow(item._id)}

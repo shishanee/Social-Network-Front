@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 
   .contentHeader {
     .avaName {
@@ -42,7 +41,7 @@
           }
           .linkToChangeProfile {
             text-decoration: none;
-            color: #77AAEB;
+            color: #77aaeb;
             font-size: 13px;
 
             .arrowLink {
@@ -74,7 +73,7 @@
             border: none;
             cursor: pointer;
 
-            p{
+            p {
               margin-top: 4.5px;
             }
           }
@@ -136,7 +135,7 @@
             background: transparent;
             text-decoration: none;
             margin-bottom: 10px;
-            
+
             .photoIcon {
               width: 20px;
               margin-top: 5px;
@@ -200,9 +199,10 @@
             background: #4d4b4b;
             color: #fff;
             padding: 0px 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
+            font-weight: 600;
 
             p {
               padding: 6px 16px;
@@ -219,7 +219,8 @@
             background: #4d4b4b;
             color: #e1e3e6;
             padding: 0px 16px;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
 
@@ -261,69 +262,69 @@
         }
       }
 
-      .blockForNotes{
+      .blockForNotes {
         margin-top: 15px;
         width: 550px;
         border: 1px solid rgba(192, 192, 192, 0.135);
         border-radius: 12px;
         background: #222222;
-        .namesBlock{
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            align-content: center;
-            padding: 18px 20px;
-            
-            .linkk2:hover{
-                background: #333333;
-                transition: 0.2s;
-            }
+        .namesBlock {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          align-content: center;
+          padding: 18px 20px;
 
-            .linkk{
-                border: 1px solid rgba(192, 192, 192, 0.135);
-                transition: 0.2s;
-                font-size: 14px;
-                text-decoration: none;
-                color: #e1e3e6;
-                padding: 4px 8px;
-                border-radius: 12px;
-                cursor: pointer;
-            }
-            .linkk2{
-                transition: 0.2s;
-                font-size: 14px;
-                text-decoration: none;
-                color: #828282;
-                padding: 4px 8px;
-                border-radius: 5px;
-                border: none;
-                cursor: pointer;
-            }
+          .linkk2:hover {
+            background: #333333;
+            transition: 0.2s;
+          }
+
+          .linkk {
+            border: 1px solid rgba(192, 192, 192, 0.135);
+            transition: 0.2s;
+            font-size: 14px;
+            text-decoration: none;
+            color: #e1e3e6;
+            padding: 4px 8px;
+            border-radius: 12px;
+            cursor: pointer;
+          }
+          .linkk2 {
+            transition: 0.2s;
+            font-size: 14px;
+            text-decoration: none;
+            color: #828282;
+            padding: 4px 8px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+          }
         }
-        hr{
-            height: 1px;
-            border: 0.1px solid #828282;
+        hr {
+          height: 1px;
+          border: 0.1px solid #828282;
         }
-        .withoutNotes{
-            padding: 36px 20px;
-            margin: 0px 0px 15px;
-            div{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            p{
-                color: #828282;
-                font-size: 13px;
+        .withoutNotes {
+          padding: 36px 20px;
+          margin: 0px 0px 15px;
+          div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p {
+              color: #828282;
+              font-size: 13px;
             }
-            img{
-                margin: 0px 0px 12px;
-                width: 43px;
-                height: 43;
-                object-fit: contain;
+            img {
+              margin: 0px 0px 12px;
+              width: 43px;
+              height: 43;
+              object-fit: contain;
             }
+          }
         }
-    }
       }
     }
 
