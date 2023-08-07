@@ -72,7 +72,7 @@ const Friends: React.FC = (): JSX.Element => {
                 {followers.map((item) => {
                   return (
                     <FriendsCart
-                        image={`http://localhost:4000/${item.image}`}
+                      image={`http://localhost:4000/${item.image}`}
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписать"
@@ -90,6 +90,7 @@ const Friends: React.FC = (): JSX.Element => {
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписаться"
+                      id={item._id}
                     />
                   );
                 })}

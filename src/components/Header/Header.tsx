@@ -13,6 +13,7 @@ import setting from "../../../public/setting.svg";
 import signOut from "../../../public/sigOut.svg";
 import tema from "../../../public/tema.svg";
 import { authSignOut } from "../../features/applicationSlice";
+import { followUser } from "../../features/userSlice";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -51,6 +52,10 @@ const Header: React.FC = (): JSX.Element => {
 
   const signout = () => {
     dispatch(authSignOut());
+  };
+
+  const handleFollow = (id) => {
+    dispatch(followUser(id));
   };
   return (
     <>
@@ -101,7 +106,10 @@ const Header: React.FC = (): JSX.Element => {
                       </div>
                     </div>
                     <button className={styles.buttonFollow}>
-                      <img src={addUser} />
+                      <img
+                        onClick={() => handleFollow(item._id)}
+                        src={addUser}
+                      />
                     </button>
                   </div>
                 );

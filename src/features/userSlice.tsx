@@ -36,6 +36,46 @@ export const initialState: UserState = {
   error: null,
 };
 
+export const deleteUser = createAsyncThunk(
+  "delete/user",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/deletefollow", {
+        method: "PATCH",
+        body: JSON.stringify({ friends: id }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const followUser = createAsyncThunk(
+  "follow/user",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/addfollow", {
+        method: "PATCH",
+        body: JSON.stringify({ friends: id }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   "get/user",
   async (_, thunkAPI) => {
