@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./MyFeed.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { createPosts, getPosts } from "../../features/postsSlice";
 
 const LeftSide: React.FC = ():JSX.Element => {
+  const [text, setText] = useState('');
+  const handleChange = (e) => {
+    setText(e.target.value)
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(createPosts({text}))
+    // setText('')
+  }
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.userPosts);
+  useEffect(() => {
+  dispatch(getPosts())
+  }, []);
+  console.log(posts);
+  
+  
   return (
     <div className={styles.leftSide}>
       <div className={styles.blockMainLeft}>
@@ -45,11 +65,11 @@ const LeftSide: React.FC = ():JSX.Element => {
         </div>
       </div>
 
-      <div className={styles.post}>
+      <form onSubmit={handleClick} className={styles.post}>
           <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
           
-          <input type="text" placeholder="Что у вас нового?" />
-        </div>
+          <input value={text} onChange={handleChange} type="text" placeholder="Что у вас нового?" />
+        </form>
 
         <div className={styles.blockForNotes}>
             <div className={styles.namesBlock}>
@@ -61,12 +81,24 @@ const LeftSide: React.FC = ():JSX.Element => {
             <hr className={styles.hr} />
             <br />
 
+            {(posts[0] === false) ? 
             <div className={styles.withoutNotes}>
               <div>
               <img src="https://i.ibb.co/SJnt2jL/notes.png" alt="notes" />
               <p>На стене пока нет ни одной записи</p>
               </div>
             </div>
+            : posts.map((item) => {
+              return (
+              <div>
+                <p>{item.user.firstName}</p>
+                <p>{item.user.lastName}</p>
+                <p>{item.text}</p>
+                <p>{item.date}</p>
+                </div>
+  )}) 
+            }
+
         </div>
     </div>
   );

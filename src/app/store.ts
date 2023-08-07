@@ -3,6 +3,7 @@ import group from "../features/groupSlice";
 import application from "../features/applicationSlice";
 import user from "../features/userSlice";
 import dialog from "../features/dialogSlice";
+import posts from "../features/postsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     application,
     user,
     dialog,
+    posts
   },
 });
 
