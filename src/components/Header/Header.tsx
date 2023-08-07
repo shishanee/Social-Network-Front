@@ -70,7 +70,7 @@ const Header: React.FC = (): JSX.Element => {
 
   const deleteFollow = (id) => {
     dispatch(deleteUser(id));
-      location.reload();
+    location.reload();
   };
   return (
     <>

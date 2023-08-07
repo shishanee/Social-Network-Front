@@ -6,6 +6,26 @@ export const initialState = {
   loading: false,
 };
 
+export const createDialog = createAsyncThunk(
+  "create/dialog",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/createdialog`, {
+        method: "POST",
+        body: JSON.stringify({ user: id }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const getDialog = createAsyncThunk("get/dialog", async (_, thunkAPI) => {
   try {
     const res = await fetch("http://localhost:4000/getdialogs");
@@ -15,7 +35,6 @@ export const getDialog = createAsyncThunk("get/dialog", async (_, thunkAPI) => {
     thunkAPI.rejectWithValue(error);
   }
 });
-// /addmessage/:id
 
 export const addMessage = createAsyncThunk(
   "add/message",

@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import noimage from "../../../public/noimage.png";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
 import { AppDispatch, RootState } from "../../app/store";
+import { createDialog } from "../../features/dialogSlice";
 
-const OnePeopleHeader: React.FC = ():JSX.Element => {
+const OnePeopleHeader: React.FC = (): JSX.Element => {
   useEffect(() => {
     dispatch(oneUser(id));
   }, []);
 
   const { id } = useParams();
-  const user = useSelector((state:RootState) => state.user.oneUser);
+  const user = useSelector((state: RootState) => state.user.oneUser);
   const friends = useSelector((state: RootState) => state.user.friends);
   const finded = friends.find((item) => item._id === id);
   const dispatch = useDispatch<AppDispatch>();
@@ -28,6 +29,10 @@ const OnePeopleHeader: React.FC = ():JSX.Element => {
     setText("Подписаться");
     dispatch(deleteUser(id));
     location.reload();
+  };
+
+  const handleChat = () => {
+    dispatch(createDialog(id));
   };
 
   return (
@@ -56,7 +61,7 @@ const OnePeopleHeader: React.FC = ():JSX.Element => {
           </button>
         )}
         <div className={styles.downArrow}>
-          <button>Написать сообщение</button>
+          <button onClick={handleChat}>Написать сообщение</button>
         </div>
       </div>
     </div>
