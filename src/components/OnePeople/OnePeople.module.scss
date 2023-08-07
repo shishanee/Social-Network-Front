@@ -7,7 +7,7 @@
   padding: 20px;
   border-radius: 12px;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   .buttonBlock {
     display: flex;
     align-items: center;
@@ -57,5 +57,95 @@
       font-weight: 600;
       font-size: 20px;
     }
+  }
+}
+
+.imgBlock {
+  width: 560px;
+  background: #222222;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  border-radius: 12px;
+  padding: 15px;
+  margin-right: 10px;
+  .images {
+    padding: 15px 5px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 167px;
+      height: 167px;
+      object-fit: cover;
+      border-radius: 6px;
+      padding: 2px;
+    }
+  }
+  .buttonBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 30px;
+    border: 1px solid rgba(192, 192, 192, 0.135);
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+  }
+  .buttonBlock:hover {
+    background: #333333;
+  }
+  .buttonBlock button {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .buttonBlock img {
+    width: 20px;
+    margin-top: 5px;
+    margin-right: 6px;
+    object-fit: cover;
+  }
+}
+
+.leftRightBlock {
+  display: flex;
+}
+
+.followersBlock {
+  width: 345px;
+  padding: 15px 15px 0px 15px;
+  background: #222222;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  border-radius: 12px;
+}
+.people {
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  display: flex;
+  .oneFollow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+.followBlock {
+  display: flex;
+  h4 {
+    color: #dbdbdb;
+  }
+  p {
+    color: grey;
+    margin-left: 5px;
   }
 }
