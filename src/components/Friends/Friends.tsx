@@ -2,10 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./Friends.module.scss";
 import FriendsCart from "./FriendsCart";
-import test from "../../a/01_18_-_.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { getUser } from "../../features/userSlice";
+import noimage from "../../../public/noimage.png";
+import FriendCart from "./FriendCart";
 
 const Friends: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,10 +16,8 @@ const Friends: React.FC = (): JSX.Element => {
   const [actionSubscriptions, setActionSubscriptions] =
     useState<boolean>(false);
 
-  const user = useSelector((item: RootState) => item.user.user);
   const followers = useSelector((item: RootState) => item.user.followers);
   const friends = useSelector((item: RootState) => item.user.friends);
-  console.log(friends);
 
   useEffect(() => {
     dispatch(getUser());
@@ -71,11 +70,16 @@ const Friends: React.FC = (): JSX.Element => {
               <div>
                 {followers.map((item) => {
                   return (
-                    <FriendsCart
-                        image={`http://localhost:4000/${item.image}`}
+                    <FriendCart
+                      image={
+                        !item.image
+                          ? noimage
+                          : `http://localhost:4000/${item.image}`
+                      }
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписать"
+                      id={item._id}
                     />
                   );
                 })}
@@ -86,10 +90,15 @@ const Friends: React.FC = (): JSX.Element => {
                 {friends.map((item) => {
                   return (
                     <FriendsCart
-                      image={`http://localhost:4000/${item.image}`}
+                      image={
+                        !item.image
+                          ? noimage
+                          : `http://localhost:4000/${item.image}`
+                      }
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписаться"
+                      id={item._id}
                     />
                   );
                 })}

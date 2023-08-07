@@ -39,6 +39,26 @@ export const getGroups = createAsyncThunk<
   }
 });
 
+export const postGroup = createAsyncThunk("post/group", async({ groupName, groupDescription, userId }, thunkAPI) => {
+  console.log(groupName, groupDescription )
+  try {
+    const res = await fetch("http://localhost:4000/group", {
+      method: "POST",
+      body: JSON.stringify({name:groupName, discription:groupDescription, user:userId}),
+      headers: {
+      "Content-type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+ 
+  return data;
+
+  } catch (error) {
+    thunkAPI.rejectWithValue(error)
+  }
+})
+
 export const groupSlice = createSlice({
   name: "group",
   initialState,
@@ -57,6 +77,19 @@ export const groupSlice = createSlice({
       .addCase(getGroups.rejected, (state, action:PayloadAction<string | unknown>)=>{
         state.loading = false
         state.error = action.payload
+      })
+      .addCase(postGroup.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(postGroup.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(postGroup.fulfilled, (state, action) => {
+        state.loading = false;
+        state.group = action.payload
+        console.log(action.payload);
+        
       })
   },
 });

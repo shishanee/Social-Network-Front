@@ -23,6 +23,7 @@
     padding: 10px;
     border-radius: 0px 0px 10px 10px;
     width: 350px;
+    z-index: 1;
 
     h5{
       margin-left: 15px;
@@ -168,7 +169,7 @@
     }
   }
   .div{
-    font-size: 15px;
+    font-size: 13px;
     padding: 10px;
     display: flex;
     align-items: center;

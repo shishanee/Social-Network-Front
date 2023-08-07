@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../../public/letter-d (1).png";
 import search from "../../../public/loupe.png";
@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { Link } from "react-router-dom";
 import addUser from "../../../public/add-user (1).png";
+import unFollow from "../../../public/add-friend (1).png";
 import noimage from "../../../public/noimage.png";
 import setting from "../../../public/setting.svg";
 import signOut from "../../../public/sigOut.svg";
 import tema from "../../../public/tema.svg";
 import { authSignOut } from "../../features/applicationSlice";
+import { deleteUser, followUser, oneUser } from "../../features/userSlice";
+import { parseJWT } from "../../helpers/parseJWT";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -51,6 +54,21 @@ const Header: React.FC = (): JSX.Element => {
 
   const signout = () => {
     dispatch(authSignOut());
+  };
+
+  const handleFollow = (id) => {
+    dispatch(followUser(id));
+    location.reload();
+  };
+
+  const handleCheck = (id) => {
+    dispatch(oneUser(id));
+    setOpen(false);
+  };
+
+  const deleteFollow = (id) => {
+    dispatch(deleteUser(id));
+    location.reload();
   };
   return (
     <>
@@ -94,15 +112,29 @@ const Header: React.FC = (): JSX.Element => {
                       />
                       <div>
                         <Link
-                          onClick={() => setOpen(false)}
-                          to={item._id}
+                          onClick={() => handleCheck(item._id)}
+                          to={`/people/${item._id}`}
                         >{`${item.firstName} ${item.lastName}`}</Link>
-                        <p>{item.friends.length} followers</p>
+                        <p>{item.followers.length} followers</p>
                       </div>
                     </div>
-                    <button className={styles.buttonFollow}>
-                      <img src={addUser} />
-                    </button>
+                    <div>
+                      {item.followers == user._id ? (
+                        <button className={styles.buttonFollow}>
+                          <img
+                            onClick={() => deleteFollow(item._id)}
+                            src={unFollow}
+                          />
+                        </button>
+                      ) : (
+                        <button className={styles.buttonFollow}>
+                          <img
+                            onClick={() => handleFollow(item._id)}
+                            src={addUser}
+                          />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -161,17 +193,19 @@ const Header: React.FC = (): JSX.Element => {
               {`${user.firstName} ${user.lastName}`}
             </div>
           </Link>
-          <div className={styles.div}>
-            <img src={setting} alt="" />
-            <span>Настройки</span>
-          </div>
+          <Link to={"/edit"}>
+            <div className={styles.div}>
+              <img src={setting} alt="" />
+              <span>Редактировать профиль</span>
+            </div>
+          </Link>
           <div className={styles.div}>
             <img src={tema} alt="" />
             <span>Тема</span>
           </div>
           <div className={styles.div} onClick={signout}>
             <img src={signOut} alt="" />
-            <span>Выйти</span>
+            <Link to={"/login"}>Выйти</Link>
           </div>
         </div>
       ) : null}
