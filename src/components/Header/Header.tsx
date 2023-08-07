@@ -22,7 +22,6 @@ const Header: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
   const users = useSelector((state: RootState) => state.user.users);
   const group = useSelector((state: RootState) => state.group.group);
-  const friends = useSelector((state: RootState) => state.user.friends);
   const [open, setOpen] = useState<boolean>(false);
   const [modal, setModal] = useState(false);
 
@@ -206,7 +205,7 @@ const Header: React.FC = (): JSX.Element => {
           </div>
           <div className={styles.div} onClick={signout}>
             <img src={signOut} alt="" />
-            <Link to={'/login'}>Выйти</Link>
+            <Link to={"/login"}>Выйти</Link>
           </div>
         </div>
       ) : null}

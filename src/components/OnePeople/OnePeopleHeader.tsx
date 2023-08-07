@@ -6,7 +6,7 @@ import noimage from "../../../public/noimage.png";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
 import { AppDispatch, RootState } from "../../app/store";
 
-const OnePeopleHeader: React.FC = () => {
+const OnePeopleHeader: React.FC = ():JSX.Element => {
   useEffect(() => {
     dispatch(oneUser(id));
   }, []);
