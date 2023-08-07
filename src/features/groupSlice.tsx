@@ -39,12 +39,12 @@ export const getGroups = createAsyncThunk<
   }
 });
 
-export const postGroup = createAsyncThunk("post/group", async({ groupName, groupDescription }, thunkAPI) => {
+export const postGroup = createAsyncThunk("post/group", async({ groupName, groupDescription, userId }, thunkAPI) => {
   console.log(groupName, groupDescription )
   try {
-    const res =await fetch("http://localhost:4000/group", {
+    const res = await fetch("http://localhost:4000/group", {
       method: "POST",
-      body: JSON.stringify({name:groupName, discription:groupDescription}),
+      body: JSON.stringify({name:groupName, discription:groupDescription, user:userId}),
       headers: {
       "Content-type": "application/json",
     },
@@ -88,6 +88,8 @@ export const groupSlice = createSlice({
       .addCase(postGroup.fulfilled, (state, action) => {
         state.loading = false;
         state.group = action.payload
+        console.log(action.payload);
+        
       })
   },
 });

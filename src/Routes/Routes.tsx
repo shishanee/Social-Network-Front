@@ -14,6 +14,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import Favorite from "../components/Favorite/Favorite";
 import Messages from "../components/Messages/Messages";
 import OneChat from "../components/Messages/OneChat";
+import GroupMore from "../components/Group/GroupMore";
 
 const Routers: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -42,6 +43,7 @@ const Routers: React.FC = (): JSX.Element => {
           <Route path="/myFeed" element={<MyFeed />} />
           <Route path="/" element={<Home />} />
           <Route path="/group" element={<Group />} />
+          <Route path="/group/:id" element={<GroupMore />} />
           <Route path="/music" element={<Music />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/favorite" element={<Favorite />} />

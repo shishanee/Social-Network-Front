@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Group.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../app/store";
 import { useState } from "react"
 import icon from "../../../public/letter-d.png"
 import { postGroup } from "../../features/groupSlice";
+import noimage from "../../../public/noimage.png"
 
 const Group: React.FC = (): JSX.Element => {
   const group = useSelector((state: RootState) => state.group.group);
@@ -15,9 +16,13 @@ const Group: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleCreateGroup = () => {
-    dispatch(postGroup({ groupName, groupDescription }))
+    dispatch(postGroup({ groupName, groupDescription, userId }))
   }
-
+  
+  const userId = useSelector((state) => state.user.user._id)
+  
+  
+  
   const changeGroupName = (e) => {
     setGroupName(e.target.value)
   }
@@ -77,11 +82,11 @@ const Group: React.FC = (): JSX.Element => {
               <div className={styles.oneGroup}>
                 <div className={styles.groupName}>
                   <img
-                    src="https://grozny.tv/storage/images/27b10e7d-9d8f-4f6e-a612-865147245920.jpg"
+                    src={item.image ?`http://localhost:4000/${item.image}` : noimage}
                     alt=""
                   />
                   <div>
-                    <Link to="#">{item.name}</Link>
+                    <Link to={`/group/${item._id}`}>{item.name}</Link>
                     <h5>{item.followers.length} участников</h5>
                   </div>
                 </div>
