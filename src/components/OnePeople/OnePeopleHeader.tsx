@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./OnePeople.module.scss";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import noimage from "../../../public/noimage.png";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
-import { AppDispatch } from "../../app/store";
+import { AppDispatch, RootState } from "../../app/store";
 
 const OnePeopleHeader: React.FC = () => {
   useEffect(() => {
@@ -12,8 +12,8 @@ const OnePeopleHeader: React.FC = () => {
   }, []);
 
   const { id } = useParams();
-  const user = useSelector((state) => state.user.oneUser);
-  const friends = useSelector((state) => state.user.friends);
+  const user = useSelector((state:RootState) => state.user.oneUser);
+  const friends = useSelector((state: RootState) => state.user.friends);
   const finded = friends.find((item) => item._id === id);
   const dispatch = useDispatch<AppDispatch>();
   const [text, setText] = useState("");

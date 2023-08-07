@@ -5,9 +5,11 @@ import ImageBlock from "./ImageBlock";
 const OnePeople: React.FC = () => {
   return (
     <div>
-      <div>
-        <ImageBlock />
-      </div>
+    <OnePeopleHeader/>
+    <div>
+      <ImageBlock/>
+    </div>
+    
     </div>
   );
 };
