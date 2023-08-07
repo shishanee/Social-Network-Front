@@ -10,6 +10,8 @@ import Music from "../components/Music/Music";
 import Friends from "../components/Friends/Friends";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Favorite from "../components/Favorite/Favorite";
 import Messages from "../components/Messages/Messages";
 import OneChat from "../components/Messages/OneChat";
 
@@ -42,6 +44,7 @@ const Routers: React.FC = (): JSX.Element => {
           <Route path="/group" element={<Group />} />
           <Route path="/music" element={<Music />} />
           <Route path="/friends" element={<Friends />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       )}
     </>

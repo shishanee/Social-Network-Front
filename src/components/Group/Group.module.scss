@@ -111,3 +111,56 @@
 button {
   cursor: pointer;
 }
+
+.modal_main{
+  position: fixed;
+  display: flex;
+  span{
+    padding-right: 10px;
+  }
+  .createGroupModal {
+    border-radius: 10px;
+    background-color: #292929;
+    width: 750px;
+    display: flex;
+    justify-content: space-evenly;
+    .closeModal{
+      cursor: pointer;
+    }
+    .createGroup{
+      display: flex;
+      flex-direction: column;
+    text-align: center ;
+    span {
+      font-weight: 700;
+    }
+  }
+  img {
+    padding: 30px;
+    width: 200px;
+    margin-top: 20px;
+  }
+  .groups_redactor{
+    padding: 20px;
+    h3 {
+      text-align: center;
+    }
+    textarea{
+      background-color:#222222;
+      margin: 17px;
+      padding-left: 10px;
+      padding-top: 10px;
+      border: 0;
+    }
+    button{
+      padding: 10px;
+      color: #292929;
+      width: 95%;
+      margin: 14px;
+      border-radius: 5px;
+      border: 0;
+    }
+  }
+  
+}
+}
