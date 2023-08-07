@@ -17,13 +17,14 @@
       background: #222222;
       border: 1px solid rgba(192, 192, 192, 0.135);
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       padding: 20px;
 
       .avaImg {
         width: 150px;
         height: 150px;
         border-radius: 50%;
+        margin-right: 15px;
       }
 
       .blockWithoutImg {
@@ -38,6 +39,7 @@
 
           .name {
             font-size: 21px;
+            font-weight: 500;
           }
           .linkToChangeProfile {
             text-decoration: none;
@@ -132,9 +134,10 @@
             border: 1px solid rgba(192, 192, 192, 0.135);
             border-radius: 10px;
             cursor: pointer;
-            background: transparent;
             text-decoration: none;
             margin-bottom: 10px;
+            background: #4d4b4b;
+
 
             .photoIcon {
               width: 20px;
@@ -203,6 +206,7 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
+            
 
             p {
               padding: 6px 16px;
@@ -290,6 +294,7 @@
             padding: 4px 8px;
             border-radius: 12px;
             cursor: pointer;
+            background: #4d4b4b;
           }
           .linkk2 {
             transition: 0.2s;
@@ -367,6 +372,7 @@
           margin: 4px 8px;
           text-decoration: none;
           border-radius: 12px;
+          padding: 5px;
 
           .friendsAva {
             width: 64px;
@@ -375,7 +381,7 @@
           }
 
           .friendsName {
-            font-size: 12px;
+            font-size: 14px;
             padding: 2px 4px 8px;
           }
         }

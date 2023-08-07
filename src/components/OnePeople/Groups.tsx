@@ -1,28 +1,25 @@
 import React from "react";
 import styles from "./OnePeople.module.scss";
-import noimage from "../../../public/noimage.png";
-import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import noimage from "../../../public/noimage.png";
+import { useNavigate } from "react-router-dom";
 
-const Friends: React.FC = (): JSX.Element => {
-  const friends = useSelector((state: RootState) => state.user.oneUserFriends);
-
+const Groups: React.FC = (): JSX.Element => {
+  const group = useSelector((state: RootState) => state.user.oneUserGroup);
   const navigate = useNavigate();
-
-  
   const handleClick = (id) => {
-    navigate(`/people/${id}`);
+    navigate(`/group/${id}`);
     location.reload();
   };
   return (
     <div className={styles.followersBlock}>
       <div className={styles.followBlock}>
-        <h4>Подписки</h4>
-        <p>{friends.length}</p>
+        <h4>Сообщества</h4>
+        <p>{group.length}</p>
       </div>
       <div className={styles.people}>
-        {friends.slice(0, 6).map((item) => {
+        {group.slice(0, 6).map((item) => {
           return (
             <div className={styles.oneFollow}>
               <img
@@ -31,7 +28,7 @@ const Friends: React.FC = (): JSX.Element => {
                 }
                 alt=""
               />
-              <p onClick={() => handleClick(item._id)}>{item.firstName}</p>
+              <p onClick={() => handleClick(item._id)}></p>
             </div>
           );
         })}
@@ -40,4 +37,4 @@ const Friends: React.FC = (): JSX.Element => {
   );
 };
 
-export default Friends;
+export default Groups;

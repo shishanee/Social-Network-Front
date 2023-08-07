@@ -40,6 +40,7 @@ export const initialState: UserState = {
   oneUser: [],
   oneUserFollow: [],
   oneUserFriends: [],
+  oneUserGroup: [],
 };
 
 export const oneUser = createAsyncThunk("one/user", async (id, thunkAPI) => {
@@ -218,6 +219,7 @@ export const userSlice = createSlice({
         state.oneUser = action.payload;
         state.oneUserFollow = action.payload.followers;
         state.oneUserFriends = action.payload.friends;
+        state.oneUserGroup = action.payload.groups;
       });
   },
 });

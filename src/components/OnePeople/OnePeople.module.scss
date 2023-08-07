@@ -63,10 +63,12 @@
 .imgBlock {
   width: 560px;
   background: #222222;
+
   border: 1px solid rgba(192, 192, 192, 0.135);
   border-radius: 12px;
   padding: 15px;
   margin-right: 10px;
+  margin-bottom: 10px;
   .images {
     padding: 15px 5px;
     display: flex;
@@ -89,7 +91,7 @@
     border: 1px solid rgba(192, 192, 192, 0.135);
     border-radius: 10px;
     cursor: pointer;
-    background: transparent;
+    background: #4d4b4b;
   }
   .buttonBlock:hover {
     background: #333333;
@@ -138,7 +140,7 @@
     justify-content: center;
     padding: 10px;
   }
-  .oneFollow:hover{
+  .oneFollow:hover {
     background: #333333;
     border-radius: 10px;
   }
@@ -151,5 +153,36 @@
   p {
     color: grey;
     margin-left: 5px;
+  }
+}
+
+.recordsBlock {
+  width: 560px;
+  background: #222222;
+  border: 1px solid rgba(192, 192, 192, 0.135);
+  border-radius: 12px;
+  padding: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  .hr {
+    border-bottom: 1px solid rgba(192, 192, 192, 0.454);
+    margin-bottom: 15px;
+
+  }
+  .recordsButton {
+    margin-bottom: 15px;
+  }
+  .recordsButton button {
+    padding: 3px 10px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    border: 1px solid rgba(192, 192, 192, 0.135);
+    font-weight: 600;
+    font-size: 15px;
+    background: #4d4b4b;
+  }
+  .recordsButton button:hover {
+    background: #333333;
   }
 }

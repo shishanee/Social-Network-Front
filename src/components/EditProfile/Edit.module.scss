@@ -5,96 +5,95 @@
   display: flex;
   flex-direction: column;
 
-  .editSecond{
-  .editFirst {
-    // height: 50vh;
-    width: 550px;
-    border: 1px solid #7d7474;
-    background: #19191a;
-    border-radius: 12px;
-    .avaName {
+  .editSecond {
+    .editFirst {
+      width: 550px;
+      border: 1px solid #7d7474;
+      border-radius: 12px;
+      background: #222222;
+      .avaName {
         padding: 16px 16px 2px;
         display: flex;
         align-items: flex-end;
         gap: 12px;
-      img {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;;
-      }
-      div {
-
-        h3 {
+        img {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+        }
+        div {
+          h3 {
             font-size: 17px;
             font-weight: 400;
-        }
-        h5 {
+          }
+          h5 {
             font-size: 13px;
             font-weight: 200;
-            color: #76787A;
+            color: #76787a;
+          }
         }
       }
-    }
-    .editBlock{
+      .editBlock {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        .firstBlock{
-            display: flex;
-            padding: 12px 16px;
+        .firstBlock {
+          display: flex;
+          padding: 12px 16px;
 
-            div{
-                margin: 0px 10px;
-            }
+          div {
+            margin: 0px 10px;
+          }
 
-            p{
-                padding: 2px 0px 6px;
-                color: #969A9F;
-                font-size: 13px;
-            }
+          p {
+            padding: 2px 0px 6px;
+            color: #969a9f;
+            font-size: 13px;
+          }
 
-            input{
-                width: 244px;
-                background: #333333;
-                border: 0.5px solid #969A9F;
-                line-height: 20px;
-                font-size: 14px;
-                border-radius: 5px;
-                height: 36px;
-                color: #fff;
-                padding: 4px 10px;
-            }
+          input {
+            width: 244px;
+            background: #333333;
+            border: 0.5px solid #969a9f;
+            line-height: 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            height: 36px;
+            color: #fff;
+            padding: 4px 10px;
+          }
 
-            .ageInput{
-                width: 70px;
-            }
+          .ageInput {
+            width: 70px;
+          }
 
-            .emailInput{
-                width: 210px;
-            }
+          .emailInput {
+            width: 210px;
+          }
 
-            .phoneInput{
-                width: 190px;
-            }
+          .phoneInput {
+            width: 190px;
+          }
         }
-        .blockButton{
-            padding: 8px 8px;
-            margin-top: 90px;
-            margin-left: 19px;
+        .blockButton {
+          padding: 8px 8px;
+          margin-top: 90px;
+          margin-left: 19px;
 
-            button{
-                width: 105px;
-                padding: 0px 16px;
-                color: #000000;
-                text-align: center;
-                border-radius: 5px;
-                font-size: 14px;
-                line-height: 20px;
-                border: none;
-                height: 32px;
-            }
+          button {
+            width: 105px;
+            padding: 0px 16px;
+            color: #000000;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 20px;
+            border: none;
+            height: 32px;
+            font-weight: 500;
+          }
         }
+      }
     }
   }
-}
 }
