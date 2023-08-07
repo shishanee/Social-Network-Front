@@ -206,7 +206,7 @@ const Header: React.FC = (): JSX.Element => {
           </div>
           <div className={styles.div} onClick={signout}>
             <img src={signOut} alt="" />
-            <span>Выйти</span>
+            <Link to={'/login'}>Выйти</Link>
           </div>
         </div>
       ) : null}

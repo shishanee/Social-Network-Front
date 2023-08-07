@@ -11,8 +11,8 @@ import { authSignIn } from "../../features/applicationSlice";
 import { AppDispatch, RootState } from "../../app/store";
 
 const SignIn: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [isSign, setIsSign] = useState<boolean>(false);
   const error = useSelector((state: RootState) => state.application.error);
 
@@ -27,10 +27,13 @@ const SignIn: React.FC = (): JSX.Element => {
     setPassword(e.target.value);
   };
 
-  const handleSignIn = async (e:MouseEvent<HTMLButtonElement>) => {
+  const handleSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(authSignIn({ email, password }));
     setIsSign(true);
+    setTimeout(() => {
+      location.reload();
+    }, 200);
   };
   useEffect(() => {
     if (isSign && !error) {
