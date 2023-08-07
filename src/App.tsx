@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Routers from "./Routes/Routes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./app/store";
-import { allUsers, getUser } from "./features/userSlice";
+import { allUsers, getUser, oneUser } from "./features/userSlice";
 import { getGroups } from "./features/groupSlice";
 import { getDialog} from "./features/dialogSlice";
 

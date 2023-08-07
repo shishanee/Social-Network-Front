@@ -23,6 +23,8 @@ export interface UserState {
   users: User[];
   friends: User[];
   followers: User[];
+  oneUser: User[];
+  oneUserFollow: User[];
   loading: boolean;
   error: ReactNode | string | null | unknown;
 }
@@ -34,7 +36,19 @@ export const initialState: UserState = {
   followers: [],
   loading: false,
   error: null,
+  oneUser: [],
+  oneUserFollow: [],
 };
+
+export const oneUser = createAsyncThunk("one/user", async (id, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/user/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error: string | unknown | null) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const unFollow = createAsyncThunk("un/follow", async (id, thunkAPI) => {
   try {
@@ -197,6 +211,10 @@ export const userSlice = createSlice({
       .addCase(allUsers.pending, (state, _) => {
         state.error = null;
         state.loading = true;
+      })
+      .addCase(oneUser.fulfilled, (state, action) => {
+        state.oneUser = action.payload;
+        state.oneUserFollow = action.payload.followers;
       });
   },
 });
