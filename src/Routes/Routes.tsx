@@ -11,6 +11,7 @@ import Friends from "../components/Friends/Friends";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import Sidebar from "../components/Sidebar/Sidebar";
+import Favorite from "../components/Favorite/Favorite";
 
 const Routers: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -39,6 +40,7 @@ const Routers: React.FC = (): JSX.Element => {
           <Route path="/group" element={<Group />} />
           <Route path="/music" element={<Music />} />
           <Route path="/friends" element={<Friends />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       )}
     </>

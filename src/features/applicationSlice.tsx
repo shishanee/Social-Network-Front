@@ -56,7 +56,7 @@ export const authSignUp = createAsyncThunk<
       method: "POST",
       body: JSON.stringify({ firstName, lastName, email, password }),
       headers: {
-        "Content-type": "application/json",
+          
       },
     });
 

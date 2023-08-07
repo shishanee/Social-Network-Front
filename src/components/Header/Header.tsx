@@ -141,10 +141,12 @@ const Header: React.FC = (): JSX.Element => {
               {`${user.firstName} ${user.lastName}`}
             </div>
           </Link>
+          <Link to={"/edit"}>
           <div className={styles.div}>
             <img src={setting} alt="" />
-            <span>Настройки</span>
+            <span>Редактировать профиль</span>
           </div>
+          </Link>
           <div className={styles.div}>
             <img src={tema} alt="" />
             <span>Тема</span>
