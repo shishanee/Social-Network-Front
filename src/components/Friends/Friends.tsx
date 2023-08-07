@@ -90,6 +90,7 @@ const Friends: React.FC = (): JSX.Element => {
                       firstName={item.firstName}
                       lastName={item.lastName}
                       buttonText="Отписаться"
+                      id={item._id}
                     />
                   );
                 })}

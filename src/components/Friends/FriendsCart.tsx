@@ -1,14 +1,22 @@
+import { useDispatch } from "react-redux";
 import styles from "./Friends.module.scss";
+import { deleteUser } from "../../features/userSlice";
 
 interface Props {
   image: string;
   firstName: string;
   lastName: string;
   buttonText: string;
+  id: string,
 }
 
 const FriendsCart = (props: Props): JSX.Element => {
-  const { image, firstName, lastName, buttonText } = props;
+  const { id, image, firstName, lastName, buttonText } = props;
+  const dispatch = useDispatch()
+
+  const handleUnFollow = (id) => {
+    dispatch(deleteUser(id))
+  }
 
   return (
     <div className={styles.userCartContainer}>
@@ -22,7 +30,7 @@ const FriendsCart = (props: Props): JSX.Element => {
       </div>
       </div>
       <div>
-        <button className={styles.buttonDelete}>{buttonText}</button>
+        <button onClick={() => handleUnFollow(id)} className={styles.buttonDelete}>{buttonText}</button>
       </div>
     </div>
   );

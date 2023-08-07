@@ -8,14 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./app/store";
 import { allUsers, getUser } from "./features/userSlice";
 import { getGroups } from "./features/groupSlice";
+import { getDialog} from "./features/dialogSlice";
 
 const App: React.FC = (): JSX.Element => {
-  const token = useSelector((state:RootState) => state.application.token)
+  const token = useSelector((state: RootState) => state.application.token);
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     dispatch(getUser());
     dispatch(allUsers());
     dispatch(getGroups());
+    dispatch(getDialog());
   }, []);
   return (
     <>

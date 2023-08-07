@@ -36,6 +36,46 @@ export const initialState: UserState = {
   error: null,
 };
 
+export const deleteUser = createAsyncThunk(
+  "delete/user",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/deletefollow", {
+        method: "PATCH",
+        body: JSON.stringify({ friends: id }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const followUser = createAsyncThunk(
+  "follow/user",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/addfollow", {
+        method: "PATCH",
+        body: JSON.stringify({ friends: id }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error: string | unknown | null) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   "get/user",
   async (_, thunkAPI) => {
@@ -52,6 +92,39 @@ export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
       return data;
     } catch (error: string | unknown | null) {
       thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const changeUser = createAsyncThunk<
+  User[],
+  void,
+  { rejectValue: string | unknown | null }
+>(
+  "change/user",
+  async (
+    { editName, editSurname, editNumber, editEmail, editAge },
+    thunkAPI
+  ) => {
+    try {
+      const res = await fetch("http://localhost:4000/user", {
+        method: "PATCH",
+        body: JSON.stringify({
+          firstName: editName,
+          lastName: editSurname,
+          number: editNumber,
+          email: editEmail,
+          age: editAge,
+        }),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkApi.rejectWithValue(error);
     }
   }
 );
@@ -90,8 +163,12 @@ export const userSlice = createSlice({
       )
       .addCase(allUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
         state.users = action.payload;
-        state.error = null;
-        state.loading = false;
+      })
+      .addCase(changeUser.fulfilled, (state, action) => {
+        state.user.firstName = action.meta.arg.editName;
+        state.user.lastName = action.meta.arg.editSurname;
+        state.user.number = action.meta.arg.editNumber;
+        state.user.age = action.meta.arg.editAge;
       })
       .addCase(
         allUsers.rejected,

@@ -8,11 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { Link } from "react-router-dom";
 import addUser from "../../../public/add-user (1).png";
-import noimage from "../../../public/noimage.png"
-import setting from "../../../public/setting.svg"
-import signOut from "../../../public/sigOut.svg"
-import tema from "../../../public/tema.svg"
+import noimage from "../../../public/noimage.png";
+import setting from "../../../public/setting.svg";
+import signOut from "../../../public/sigOut.svg";
+import tema from "../../../public/tema.svg";
 import { authSignOut } from "../../features/applicationSlice";
+import { followUser } from "../../features/userSlice";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -20,7 +21,7 @@ const Header: React.FC = (): JSX.Element => {
   const users = useSelector((state: RootState) => state.user.users);
   const group = useSelector((state: RootState) => state.group.group);
   const [open, setOpen] = useState<boolean>(false);
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -46,93 +47,120 @@ const Header: React.FC = (): JSX.Element => {
   });
 
   const handleModal = () => {
-    setModal(!modal)
-  }
-  
+    setModal(!modal);
+  };
+
   const signout = () => {
-    dispatch(authSignOut())
-  }
+    dispatch(authSignOut());
+  };
+
+  const handleFollow = (id) => {
+    dispatch(followUser(id));
+  };
   return (
     <>
-    <header className={styles.header}>
-      <div className={styles.logoAndSearch}>
-        <div className={styles.logo}>
-          <img src={logo} alt="" />
-          <Link to="/">
-            <h3>DICAR</h3>
-          </Link>
-        </div>
-        <img className={styles.bell} src={bell} alt="" />
-        <div className={styles.search}>
-          <input
-            onChange={findUser}
-            onClick={handleClick}
-            value={searchUser}
-            type="text"
-            placeholder="Поиск"
+      <header className={styles.header}>
+        <div className={styles.logoAndSearch}>
+          <div className={styles.logo}>
+            <img src={logo} alt="" />
+            <Link to="/">
+              <h3>DICAR</h3>
+            </Link>
+          </div>
+          <img className={styles.bell} src={bell} alt="" />
+          <div className={styles.search}>
+            <input
+              onMouseMove={() => setOpen(true)}
+              onChange={findUser}
+              onClick={handleClick}
+              value={searchUser}
+              type="text"
+              placeholder="Поиск"
             />
-          <img src={search} alt="" />
-        </div>
-        {open && (
-          <div className={styles.modalUsers}>
-            <h5>Люди</h5>
-            {newUsers.slice(0, 3).map((item) => {
-              return (
-                <div className={styles.oneUser}>
-                  <div className={styles.userFirstBlock}>
-                    <img src={!item.image ? noimage :`http://localhost:4000/${item.image}`} alt="" />
-                    <div>
-                      <Link
-                        to={item._id}
-                        >{`${item.firstName} ${item.lastName}`}</Link>
-                      <p>{item.friends.length} followers</p>
-                    </div>
-                  </div>
-                  <button className={styles.buttonFollow}>
-                    <img src={addUser} />
-                  </button>
-                </div>
-              );
-            })}
-            <div className={styles.hr}></div>
-            <div>
-              <h5>Группы</h5>
-              {groups.slice(0, 3).map((item) => {
+            <img src={search} alt="" />
+          </div>
+          {open && (
+            <div
+              onMouseLeave={() => setOpen(false)}
+              className={styles.modalUsers}
+            >
+              <h5>Люди</h5>
+              {newUsers.slice(0, 3).map((item) => {
                 return (
                   <div className={styles.oneUser}>
                     <div className={styles.userFirstBlock}>
-                      <img src={!item.image ? noimage:`http://localhost:4000/${item.image}`} alt="" />
+                      <img
+                        src={
+                          !item.image
+                            ? noimage
+                            : `http://localhost:4000/${item.image}`
+                        }
+                        alt=""
+                      />
                       <div>
-                        <Link to={item._id}>{item.name}</Link>
-                        <p>{item.followers.length} followers</p>
+                        <Link
+                          onClick={() => setOpen(false)}
+                          to={item._id}
+                        >{`${item.firstName} ${item.lastName}`}</Link>
+                        <p>{item.friends.length} followers</p>
                       </div>
                     </div>
                     <button className={styles.buttonFollow}>
-                      <img src={addUser} />
+                      <img
+                        onClick={() => handleFollow(item._id)}
+                        src={addUser}
+                      />
                     </button>
                   </div>
                 );
               })}
-              <div className={styles.hr}></div>
+              <div>
+                <h5>Группы</h5>
+                {groups.slice(0, 3).map((item) => {
+                  return (
+                    <div className={styles.oneUser}>
+                      <div className={styles.userFirstBlock}>
+                        <img
+                          src={
+                            !item.image
+                              ? noimage
+                              : `http://localhost:4000/${item.image}`
+                          }
+                          alt=""
+                        />
+                        <div>
+                          <Link onClick={() => setOpen(false)} to={item._id}>
+                            {item.name}
+                          </Link>
+                          <p>{item.followers.length} followers</p>
+                        </div>
+                      </div>
+                      <button className={styles.buttonFollow}>
+                        <img src={addUser} />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-      <div className={styles.profile} onClick={handleModal}>
-        {token && (
-          <img
-          src={user.image ? `http://localhost:4000/${user.image}` : noimage}
-          alt=""
-          />
           )}
-        <img className={styles.down} src={down} alt="" />
-      </div>
-    </header>
+        </div>
+        <div className={styles.profile} onClick={handleModal}>
+          {token && (
+            <img
+              src={user.image ? `http://localhost:4000/${user.image}` : noimage}
+              alt=""
+            />
+          )}
+          <img className={styles.down} src={down} alt="" />
+        </div>
+      </header>
       {modal ? (
         <div className={styles.modal_window}>
           <Link to={"/myFeed"}>
             <div className={styles.modal_profile}>
-              <img className={styles.imgProfil}
+              <img
+                className={styles.imgProfil}
                 src={
                   user.image ? `http://localhost:4000/${user.image}` : noimage
                 }
@@ -157,7 +185,7 @@ const Header: React.FC = (): JSX.Element => {
           </div>
         </div>
       ) : null}
-          </>
+    </>
   );
 };
 

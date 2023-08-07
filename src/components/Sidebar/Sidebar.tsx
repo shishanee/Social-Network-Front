@@ -29,7 +29,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to="#">
+          <Link to="/messages">
             {" "}
             <img src={message} alt="" />
             Мессенджер
