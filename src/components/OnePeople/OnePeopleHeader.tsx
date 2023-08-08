@@ -6,8 +6,10 @@ import noimage from "../../../public/noimage.png";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
 import { AppDispatch, RootState } from "../../app/store";
 import { createDialog } from "../../features/dialogSlice";
+import ModalOnePeople from "./ModalOnePeople";
 
 const OnePeopleHeader: React.FC = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     dispatch(oneUser(id));
   }, []);
@@ -33,6 +35,7 @@ const OnePeopleHeader: React.FC = (): JSX.Element => {
 
   const handleChat = () => {
     dispatch(createDialog(id));
+    setOpen(true);
   };
 
   return (
@@ -64,6 +67,7 @@ const OnePeopleHeader: React.FC = (): JSX.Element => {
           <button onClick={handleChat}>Написать сообщение</button>
         </div>
       </div>
+      {open && <ModalOnePeople open={open} setOpen={setOpen} />}
     </div>
   );
 };
