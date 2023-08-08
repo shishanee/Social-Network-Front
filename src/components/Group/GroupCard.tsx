@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { followGroup, unFollowGroup } from "../../features/groupSlice";
 
-const GroupCard = (props: Props): JSX.Element => {
+const GroupCard: React.FC = (props: Props): JSX.Element => {
   const { id, image, name, followers } = props;
   const dispatch = useDispatch();
   const handleFollow = (id) => {
@@ -20,8 +20,6 @@ const GroupCard = (props: Props): JSX.Element => {
   const userId = useSelector((state) => state.user.user._id);
 
   const userGroups = followers.includes(userId);
-
-  console.log(userGroups);
 
   return (
     <div>

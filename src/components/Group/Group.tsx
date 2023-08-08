@@ -1,14 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Group.module.scss";
-import { Link, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../app/store";
 import { useState } from "react";
 import icon from "../../../public/letter-d.png";
-import {
-  followGroup,
-  postGroup,
-  unFollowGroup,
-} from "../../features/groupSlice";
+import { postGroup } from "../../features/groupSlice";
 import noimage from "../../../public/noimage.png";
 import GroupCard from "./GroupCard";
 
@@ -19,18 +14,13 @@ const Group: React.FC = (): JSX.Element => {
   const [groupDescription, setGroupDescription] = useState("");
 
   const userId = useSelector((state) => state.user.user._id);
-  const userFollow = useSelector((state) => state.user.user.groups);
-  const groups = useSelector((state) => state.group.group);
 
   const dispatch = useDispatch<AppDispatch>();
 
   const handleCreateGroup = () => {
     dispatch(postGroup({ groupName, groupDescription, userId }));
-    setCreateGroup(false)
+    setCreateGroup(false);
   };
-
- 
-  
 
   const changeGroupName = (e) => {
     setGroupName(e.target.value);
@@ -47,14 +37,6 @@ const Group: React.FC = (): JSX.Element => {
     setCreateGroup(false);
   };
 
-  const handleFollow = (groupId) => {
-    dispatch(followers(groupId));
-  };
-
-  const handleUnFollow = (groupId) => {
-    dispatch(unFollowGroup(groupId));
-  };
-
   return (
     <div className={styles.group}>
       {createGroup ? (
@@ -62,7 +44,6 @@ const Group: React.FC = (): JSX.Element => {
           <div className={styles.createGroupModal}>
             <div className={styles.createGroup}>
               <img src={icon} alt="" />
-              {/* <span>DICAR GROUPS</span> */}
             </div>
             <div className={styles.groups_redactor}>
               <h3>Создай свое сообщество</h3>
@@ -77,7 +58,7 @@ const Group: React.FC = (): JSX.Element => {
                 placeholder="Описание группы"
                 value={groupDescription}
                 onChange={changeDescrition}
-                cols="71"
+                cols="70"
                 rows="10"
               ></textarea>
               <button onClick={handleCreateGroup}>Продолжить</button>
@@ -105,9 +86,14 @@ const Group: React.FC = (): JSX.Element => {
       <div className={styles.groupsMain}>
         {group.map((item) => {
           return (
-            <GroupCard image={!item.image
-              ? noimage
-              : `http://localhost:4000/${item.image}`} id={item._id} name={item.name} followers={item.followers}/>
+            <GroupCard
+              image={
+                !item.image ? noimage : `http://localhost:4000/${item.image}`
+              }
+              id={item._id}
+              name={item.name}
+              followers={item.followers}
+            />
           );
         })}
       </div>
