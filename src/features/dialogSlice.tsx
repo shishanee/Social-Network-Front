@@ -6,6 +6,21 @@ export const initialState = {
   loading: false,
 };
 
+export const deleteDialog = createAsyncThunk(
+  "delete/dialog",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/dialogdelete/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const createDialog = createAsyncThunk(
   "create/dialog",
   async (id, thunkAPI) => {
@@ -87,6 +102,17 @@ export const dialogSlice = createSlice({
       })
       .addCase(addMessage.fulfilled, (state, action) => {
         state.oneChat[0] = action.payload;
+      })
+      .addCase(createDialog.fulfilled, (state, action) => {
+        state.dialog = action.payload;
+      })
+      .addCase(deleteDialog.fulfilled, (state, action) => {
+        state.dialog = state.dialog.map((item) => {
+          if (item._id !== action.payload._id) {
+            return item;
+          }
+          return item;
+        });
       });
   },
 });
