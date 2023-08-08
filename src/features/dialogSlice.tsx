@@ -105,7 +105,11 @@ export const dialogSlice = createSlice({
         state.oneChat[0] = action.payload;
       })
       .addCase(createDialog.fulfilled, (state, action) => {
-        state.dialogId = action.payload[0]._id;
+        state.dialogId = action.payload.find((item) => {
+          if (item.user._id === action.meta.arg) {
+            return item
+          }
+        });
         state.dialog = action.payload;
       })
       .addCase(deleteDialog.fulfilled, (state, action) => {

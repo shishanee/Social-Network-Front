@@ -16,6 +16,7 @@ const Messages: React.FC = (): JSX.Element => {
       return item;
     }
   });
+  console.log(dialog)
   const filtred1 = dialog.filter((item) => {
     if (tokenId === item.user._id) {
       return item;
@@ -78,7 +79,7 @@ const Messages: React.FC = (): JSX.Element => {
         {filtred1.map((item) => {
           return (
             <div>
-              {item.messages !== 0 && (
+              {item.messages.length !== 0 && (
                 <div
                   onClick={() => linkToChat(item._id)}
                   className={styles.oneChat}
