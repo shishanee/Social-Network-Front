@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./app/store";
 import { allUsers, getUser, oneUser } from "./features/userSlice";
 import { getGroups } from "./features/groupSlice";
-import { getDialog} from "./features/dialogSlice";
+import { getDialog } from "./features/dialogSlice";
 
 const App: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -23,7 +23,7 @@ const App: React.FC = (): JSX.Element => {
   return (
     <>
       <BtnScrollUp />
-      <Header />
+      {token && <Header />}
       <div className="home">
         <div className="homePage">
           {token && <Sidebar />}

@@ -46,17 +46,24 @@ export interface dataSingIn {
   email: string;
   password: string;
 }
+
 export const authSignUp = createAsyncThunk<
   Grops,
   dataSingUp,
   { rejectValue: string | unknown | null }
 >("auth/signUp", async ({ firstName, lastName, email, password }, thunkAPI) => {
+  console.log(firstName, lastName, email, password);
   try {
     const res = await fetch("http://localhost:4000/auth", {
       method: "POST",
-      body: JSON.stringify({ firstName, lastName, email, password }),
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      }),
       headers: {
-          
+        "Content-type": "application/json",
       },
     });
 

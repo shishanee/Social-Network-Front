@@ -27,17 +27,23 @@ const SignIn: React.FC = (): JSX.Element => {
     setPassword(e.target.value);
   };
 
+  console.log(error);
   const handleSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(authSignIn({ email, password }));
     setIsSign(true);
-    setTimeout(() => {
-      location.reload();
-    }, 200);
-  };
-  useEffect(() => {
+
     if (isSign && !error) {
       navigate("/");
+      setTimeout(() => {
+        location.reload();
+      }, 200);
+    }
+  };
+
+  useEffect(() => {
+    if (isSign && !error) {
+      // navigate("/");
     }
   }, [isSign, error, navigate]);
 
