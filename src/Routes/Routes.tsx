@@ -10,10 +10,12 @@ import Music from "../components/Music/Music";
 import Friends from "../components/Friends/Friends";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import Sidebar from "../components/Sidebar/Sidebar";
 import Favorite from "../components/Favorite/Favorite";
 import Messages from "../components/Messages/Messages";
 import OneChat from "../components/Messages/OneChat";
+import GroupMore from "../components/Group/GroupMore";
+import OnePeople from "../components/OnePeople/OnePeople";
+import Image from "../components/Image/Image";
 
 const Routers: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -35,6 +37,7 @@ const Routers: React.FC = (): JSX.Element => {
         <Routes>
           <Route path="/login" element={<Navigate to="/" />} />;
           <Route path="/edit" element={<Edit />} />
+          <Route path="/image" element={<Image />} />
           <Route path="/messages/:id" element={<OneChat />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/register" element={<SignUp />} />
@@ -42,9 +45,11 @@ const Routers: React.FC = (): JSX.Element => {
           <Route path="/myFeed" element={<MyFeed />} />
           <Route path="/" element={<Home />} />
           <Route path="/group" element={<Group />} />
+          <Route path="/group/:id" element={<GroupMore />} />
           <Route path="/music" element={<Music />} />
           <Route path="/friends" element={<Friends />} />
           <Route path="/favorite" element={<Favorite />} />
+          <Route path="/people/:id" element={<OnePeople />} />
         </Routes>
       )}
     </>

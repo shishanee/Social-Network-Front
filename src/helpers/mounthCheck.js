@@ -1,15 +1,15 @@
 export const mounthCheck = (num) => {
   if(num == '01'){
-    return 'Января'
+    return 'Янв'
   }
   if(num == '02'){
-    return 'Февраля'
+    return 'Фев'
   }
   if(num == '03'){
-    return 'Марта'
+    return 'Март'
   }
   if(num == '04'){
-    return 'Апреля'
+    return 'Апр'
   }
   if(num == '05'){
     return 'Мая'
@@ -21,18 +21,18 @@ export const mounthCheck = (num) => {
     return 'Июля'
   }
   if(num == '08'){
-    return 'Августа'
+    return 'Авг'
   }
   if(num == '09'){
-    return 'Сентября'
+    return 'Сент'
   }
   if(num == '10'){
-    return 'Октября'
+    return 'Окт'
   }
   if(num == '11'){
-    return 'Ноября' 
+    return 'Нояб' 
   }
   if (num == "12") {
-    return "Декабря";
+    return "Дек";
   }
 };

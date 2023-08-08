@@ -35,7 +35,8 @@ export const getPosts = createAsyncThunk("get/post", async (_, thunkAPI) => {
         method: "POST",
         body: formData,
         headers: {
-        //   "Content-type": "application/json",
+         "Content-type": "application/json",
+
           Authorization: `Bearer ${thunkAPI.getState().application.token}`,
         },
       });
@@ -82,6 +83,7 @@ export const postsSlice = createSlice({
           })
         .addCase(createPosts.fulfilled, (state, action) => {
             state.userPosts.unshift(action.payload)
+
             state.loading = false
         })
         .addCase(createPosts.pending, (state, action) => {

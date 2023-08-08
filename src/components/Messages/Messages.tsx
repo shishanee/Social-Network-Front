@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Message.module.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
 import { parseJWT } from "../../helpers/parseJWT";
 import noimage from "../../../public/noimage.png";
 import { mounthCheck } from "../../helpers/mounthCheck.js";
@@ -16,7 +16,6 @@ const Messages: React.FC = (): JSX.Element => {
       return item;
     }
   });
-
   const filtred1 = dialog.filter((item) => {
     if (tokenId === item.user._id) {
       return item;
@@ -37,30 +36,40 @@ const Messages: React.FC = (): JSX.Element => {
       <div className={styles.dialogsBlock}>
         {filtred.map((item) => {
           return (
-            <div
-              onClick={() => linkToChat(item._id)}
-              className={styles.oneChat}
-            >
-              <>
-                <div className={styles.firstBlock}>
-                  <img
-                    src={
-                      !item.user.image
-                        ? noimage
-                        : `http://localhost:4000/${item.user.image}`
-                    }
-                    alt=""
-                  />
-                  <div>
-                    <h5>{`${item.user.firstName} ${item.user.lastName}`}</h5>
-                    <p>{item.messages.at(-1).text}</p>
-                  </div>
+            <div>
+              {item.messages.length !== 0 && (
+                <div
+                  onClick={() => linkToChat(item._id)}
+                  className={styles.oneChat}
+                >
+                  <>
+                    <div
+                      className={styles.firstBlock}
+                      onClick={() => linkToChat(item._id)}
+                    >
+                      <img
+                        className={styles.oneChatImage}
+                        src={
+                          !item.user.image
+                            ? noimage
+                            : `http://localhost:4000/${item.user.image}`
+                        }
+                        alt=""
+                      />
+                      <div>
+                        <h5>{`${item.user.firstName} ${item.user.lastName}`}</h5>
+
+                        <p>{item.messages.at(-1).text}</p>
+                      </div>
+                    </div>
+
+                    <p>
+                      {item.messages.at(-1).date.slice(8, 10)}{" "}
+                      {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
+                    </p>
+                  </>
                 </div>
-                <p>
-                  {item.messages.at(-1).date.slice(8, 10)}{" "}
-                  {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
-                </p>
-              </>
+              )}
             </div>
           );
         })}
@@ -68,30 +77,35 @@ const Messages: React.FC = (): JSX.Element => {
       <div>
         {filtred1.map((item) => {
           return (
-            <div
-              onClick={() => linkToChat(item._id)}
-              className={styles.oneChat}
-            >
-              <>
-                <div className={styles.firstBlock}>
-                  <img
-                    src={
-                      !item.you.image
-                        ? noimage
-                        : `http://localhost:4000/${item.you.image}`
-                    }
-                    alt=""
-                  />
-                  <div>
-                    <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>
-                    <p>{item.messages.at(-1).text}</p>
-                  </div>
+            <div>
+              {item.messages !== 0 && (
+                <div
+                  onClick={() => linkToChat(item._id)}
+                  className={styles.oneChat}
+                >
+                  <>
+                    <div className={styles.firstBlock}>
+                      <img
+                        src={
+                          !item.you.image
+                            ? noimage
+                            : `http://localhost:4000/${item.you.image}`
+                        }
+                        alt=""
+                      />
+                      <div>
+                        <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>(
+                        <p>{item.messages.at(-1).text}</p>)
+                      </div>
+                    </div>
+
+                    <p>
+                      {item.messages.at(-1).date.slice(8, 10)}{" "}
+                      {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
+                    </p>
+                  </>
                 </div>
-                <p>
-                  {item.messages.at(-1).date.slice(8, 10)}{" "}
-                  {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
-                </p>
-              </>
+              )}
             </div>
           );
         })}

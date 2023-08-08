@@ -1,5 +1,4 @@
 import React from 'react'
-import EditFirst from './EditFirst'
 import EditSecond from './EditSecond'
 import styles from './Edit.module.scss'
 

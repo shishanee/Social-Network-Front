@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { addMessage, oneDialog } from "../../features/dialogSlice";
-import { RootState } from "../../app/store";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  addMessage,
+  deleteDialog,
+  oneDialog,
+} from "../../features/dialogSlice";
+import { AppDispatch, RootState } from "../../app/store";
 import styles from "./OneChat.module.scss";
 import { parseJWT } from "../../helpers/parseJWT";
 import noimage from "../../../public/noimage.png";
 import arrow from "../../../public/left-arrow (1).png";
 import enter from "../../../public/send-message.png";
+import more from "../../../public/more.png";
+import trash from "../../../public/trash.png";
+import mute from "../../../public/mute.png";
 
 const OneChat: React.FC = (): JSX.Element => {
   const chat = useSelector((state: RootState) => state.dialog.oneChat);
-  console.log(chat[0])
-  const loading = useSelector((state: RootState) => state.dialog.loading);
   const token = useSelector((state: RootState) => state.application.token);
   const [text, setText] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
   const tokenId = parseJWT(token).id;
 
   const handleMessage = (e) => {
     setText(e.target.value);
   };
   const addMes = () => {
-    dispatch(addMessage({ id, text }))
-    setText('')
+    dispatch(addMessage({ id, text }));
+    setText("");
   };
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(oneDialog(id));
   }, []);
@@ -34,6 +40,11 @@ const OneChat: React.FC = (): JSX.Element => {
     navigate("/messages");
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteDialog(id));
+    navigate("/messages");
+    location.reload();
+  };
   return (
     <div className={styles.chatMain}>
       <div className={styles.firstBlock}>
@@ -50,9 +61,32 @@ const OneChat: React.FC = (): JSX.Element => {
                     ? `${item.user.firstName} ${item.user.lastName}`
                     : `${item.you.firstName} ${item.you.lastName}`}
                 </h4>
+
                 <p>был в сети недавно</p>
               </div>
               <img
+                onClick={() => setOpen(!open)}
+                className={styles.moreButton}
+                src={more}
+                alt=""
+              />
+              {open && (
+                <div className={styles.popUp}>
+                  <div
+                    onClick={() => handleDelete(item._id)}
+                    className={styles.links}
+                  >
+                    <img src={trash} alt="" />
+                    <p>Удалить чат у всех</p>
+                  </div>
+                  <div className={styles.links}>
+                    <img src={mute} alt="" />
+                    <p>Отключить уведомления</p>
+                  </div>
+                </div>
+              )}
+              <img
+                className={styles.profileImage}
                 src={
                   !item.you.image || !item.user.image
                     ? noimage

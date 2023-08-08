@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authSignUp } from "../../features/applicationSlice";
 import { AppDispatch, RootState } from "../../app/store";
 
-const SignUp: React.FC = ():JSX.Element => {
+const SignUp: React.FC = (): JSX.Element => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -34,7 +34,7 @@ const SignUp: React.FC = ():JSX.Element => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = async (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handleRegister = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(authSignUp({ firstName, lastName, email, password }));
     setIsSign(true);

@@ -20,7 +20,7 @@
     border-top: 1px solid rgba(192, 192, 192, 0.221);
     display: flex;
     align-items: center;
-    border-radius:  0px 0px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
 
     img {
       width: 20px;
@@ -108,11 +108,44 @@
       color: grey;
       text-decoration: none;
     }
-    img {
+    .profileImage {
       width: 30px;
       height: 30px;
       border-radius: 50%;
       object-fit: cover;
     }
+  }
+}
+
+.moreButton {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  position: absolute;
+  right: 70px;
+}
+
+.popUp {
+  position: absolute;
+  right: 1px;
+  top: 50px;
+  padding: 10px;
+  background: #333333;
+  border-radius: 10px;
+  .links {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 3px;
+  }
+  .links:hover {
+    background: rgba(128, 128, 128, 0.388);
+  }
+  img {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 5px;
   }
 }
