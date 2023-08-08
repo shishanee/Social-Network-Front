@@ -26,6 +26,7 @@ const Group: React.FC = (): JSX.Element => {
 
   const handleCreateGroup = () => {
     dispatch(postGroup({ groupName, groupDescription, userId }));
+    setCreateGroup(false)
   };
 
  
@@ -61,7 +62,7 @@ const Group: React.FC = (): JSX.Element => {
           <div className={styles.createGroupModal}>
             <div className={styles.createGroup}>
               <img src={icon} alt="" />
-              <span>DICAR GROUPS</span>
+              {/* <span>DICAR GROUPS</span> */}
             </div>
             <div className={styles.groups_redactor}>
               <h3>Создай свое сообщество</h3>

@@ -1,21 +1,21 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export interface Grops {
-  _id:string,
-  user: string,
-  name:string,
-  discription: string,
-  followers: string[],
-  post: string[]
-  __v: number,
-  image: string
+  _id: string;
+  user: string;
+  name: string;
+  discription: string;
+  followers: string[];
+  post: string[];
+  __v: number;
+  image: string;
 }
 
 export interface InitialState {
   group: Grops[];
   loading: boolean;
-  error: null | unknown | string | ReactNode
+  error: null | unknown | string | ReactNode;
 }
 
 export const initialState: InitialState = {
@@ -39,61 +39,75 @@ export const getGroups = createAsyncThunk<
   }
 });
 
-export const postGroup = createAsyncThunk("post/group", async({ groupName, groupDescription, userId }, thunkAPI) => {
-  try {
-    const res = await fetch("http://localhost:4000/group", {
-      method: "POST",
-      body: JSON.stringify({name:groupName, discription:groupDescription, user:userId}),
-      headers: {
-      "Content-type": "application/json",
-    },
-  });
+export const postGroup = createAsyncThunk(
+  "post/group",
+  async ({ groupName, groupDescription, userId }, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:4000/group", {
+        method: "POST",
+        body: JSON.stringify({
+          name: groupName,
+          discription: groupDescription,
+          user: userId,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
 
-  const data = await res.json();
- 
-  return data;
+      const data = await res.json();
 
-  } catch (error) {
-    thunkAPI.rejectWithValue(error)
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
-export const unFollowGroup = createAsyncThunk("unfollow/group", async(groupId, thunkAPI) => {
-  try {
-    const res = await fetch(`http://localhost:4000/unsubscribe/group/${groupId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
+export const unFollowGroup = createAsyncThunk(
+  "unfollow/group",
+  async (groupId, thunkAPI) => {
+    try {
+      const res = await fetch(
+        `http://localhost:4000/unsubscribe/group/${groupId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+          },
+        }
+      );
 
-    const data =await res.json();
+      const data = await res.json();
 
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error)
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-})
+);
 
-export const followGroup = createAsyncThunk("folllow/group", async(groupId, thunkAPI) => {
-  try {
-    const res = await fetch(`http://localhost:4000/follow/group/${groupId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-      },
-    });
+export const followGroup = createAsyncThunk(
+  "folllow/group",
+  async (groupId, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/follow/group/${groupId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
 
-    const data =await res.json();
+      const data = await res.json();
 
-    return data;
-
-  } catch (error) {
-    thunkAPI.rejectWithValue(error)
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-})
+);
 
 export const groupSlice = createSlice({
   name: "group",
@@ -101,19 +115,22 @@ export const groupSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getGroups.fulfilled, (state, action:PayloadAction<Grops[]>) => {
-        state.group = action.payload
-        state.loading = false
-        state.error = null
+      .addCase(getGroups.fulfilled, (state, action: PayloadAction<Grops[]>) => {
+        state.group = action.payload;
+        state.loading = false;
+        state.error = null;
       })
       .addCase(getGroups.pending, (state, _) => {
-        state.error = null
-        state.loading = true
+        state.error = null;
+        state.loading = true;
       })
-      .addCase(getGroups.rejected, (state, action:PayloadAction<string | unknown>)=>{
-        state.loading = false
-        state.error = action.payload
-      })
+      .addCase(
+        getGroups.rejected,
+        (state, action: PayloadAction<string | unknown>) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      )
       .addCase(postGroup.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
@@ -123,8 +140,7 @@ export const groupSlice = createSlice({
       })
       .addCase(postGroup.fulfilled, (state, action) => {
         state.loading = false;
-        state.group = action.payload
-        
+        state.group = action.payload;
       })
   },
 });

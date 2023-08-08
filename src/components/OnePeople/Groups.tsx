@@ -28,7 +28,7 @@ const Groups: React.FC = (): JSX.Element => {
                 }
                 alt=""
               />
-              <p onClick={() => handleClick(item._id)}></p>
+              <p onClick={() => handleClick(item._id)}>{item.name}</p>
             </div>
           );
         })}
