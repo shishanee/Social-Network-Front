@@ -56,6 +56,43 @@ export const postGroup = createAsyncThunk("post/group", async({ groupName, group
   } catch (error) {
     thunkAPI.rejectWithValue(error)
   }
+});
+
+export const unFollowGroup = createAsyncThunk("unfollow/group", async(groupId, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/unsubscribe/group/${groupId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+
+    const data =await res.json();
+
+    return data;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error)
+  }
+})
+
+export const followGroup = createAsyncThunk("folllow/group", async(groupId, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/follow/group/${groupId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+
+    const data =await res.json();
+
+    return data;
+
+  } catch (error) {
+    thunkAPI.rejectWithValue(error)
+  }
 })
 
 export const groupSlice = createSlice({
