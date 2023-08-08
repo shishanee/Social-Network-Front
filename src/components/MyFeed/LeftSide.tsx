@@ -19,12 +19,11 @@ const LeftSide: React.FC = (): JSX.Element => {
     setText("");
   };
   const dispatch = useDispatch();
-
   const posts = useSelector((state) => state.posts.userPosts);
   useEffect(() => {
     dispatch(getPosts());
   }, []);
-
+  console.log(posts);
 
   const handleChangeFile = (e) => {
     setImage(e.target.files);
@@ -33,14 +32,25 @@ const LeftSide: React.FC = (): JSX.Element => {
   const handleLike = (postId) => {
     dispatch(addLike({ userId, postId }));
   };
-
   return (
     <div className={styles.leftSide}>
       <div className={styles.blockMainLeft}>
         <div className={styles.photoAndMusic}>
           <Link to={"#"} className={styles.photoBut}>
-            <img className={styles.photoIcon} src={image} />
+            <img
+              className={styles.photoIcon}
+              src="https://i.ibb.co/6vLRt6r/gallery.png"
+            />
             <p>Фото</p>
+          </Link>
+
+          <Link to={"#"} className={styles.musicBut}>
+            <img
+              className={styles.musicIcon}
+              src="https://i.ibb.co/wNxg2sN/music.png"
+              alt=""
+            />
+            <p>Музыка</p>
           </Link>
         </div>
 
@@ -98,8 +108,6 @@ const LeftSide: React.FC = (): JSX.Element => {
         <br /> */}
 
         {posts[0] === undefined ? (
-      </form>
-
           <div className={styles.withoutNotes}>
             <div>
               <img src="https://i.ibb.co/SJnt2jL/notes.png" alt="notes" />
@@ -208,7 +216,6 @@ const LeftSide: React.FC = (): JSX.Element => {
                     </Link>
                   </span>
                 </div>
-
               </div>
             );
           })
