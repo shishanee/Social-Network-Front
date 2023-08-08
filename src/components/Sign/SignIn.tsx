@@ -27,7 +27,6 @@ const SignIn: React.FC = (): JSX.Element => {
     setPassword(e.target.value);
   };
 
-  console.log(error);
   const handleSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(authSignIn({ email, password }));
