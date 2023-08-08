@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const initialState = {
   dialog: [],
   oneChat: [],
+  dialogId: "",
   loading: false,
 };
 
@@ -104,6 +105,7 @@ export const dialogSlice = createSlice({
         state.oneChat[0] = action.payload;
       })
       .addCase(createDialog.fulfilled, (state, action) => {
+        state.dialogId = action.payload[0]._id;
         state.dialog = action.payload;
       })
       .addCase(deleteDialog.fulfilled, (state, action) => {
