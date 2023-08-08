@@ -23,7 +23,6 @@ const LeftSide: React.FC = (): JSX.Element => {
   useEffect(() => {
     dispatch(getPosts());
   }, []);
-  console.log(posts);
 
   const handleChangeFile = (e) => {
     setImage(e.target.files);

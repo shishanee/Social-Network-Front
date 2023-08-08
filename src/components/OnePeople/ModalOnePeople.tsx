@@ -16,6 +16,7 @@ const ModalOnePeople: React.FC = ({ open, setOpen }): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
   const id = dialogId._id
+  console.log(id)
   const addMes = () => {
     dispatch(addMessage({ id, text }));
     setText("");

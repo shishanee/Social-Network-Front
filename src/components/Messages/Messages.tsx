@@ -16,7 +16,7 @@ const Messages: React.FC = (): JSX.Element => {
       return item;
     }
   });
-  console.log(dialog)
+
   const filtred1 = dialog.filter((item) => {
     if (tokenId === item.user._id) {
       return item;
@@ -95,11 +95,10 @@ const Messages: React.FC = (): JSX.Element => {
                         alt=""
                       />
                       <div>
-                        <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>(
-                        <p>{item.messages.at(-1).text}</p>)
+                        <h5>{`${item.you.firstName} ${item.you.lastName}`}</h5>
+                        <p>{item.messages.at(-1).text}</p>
                       </div>
                     </div>
-
                     <p>
                       {item.messages.at(-1).date.slice(8, 10)}{" "}
                       {mounthCheck(item.messages.at(-1).date.slice(5, 7))}
