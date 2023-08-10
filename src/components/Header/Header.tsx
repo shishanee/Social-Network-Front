@@ -39,7 +39,9 @@ const Header: React.FC = (): JSX.Element => {
     setOpen(true);
   };
 
-  const newUsers = users.filter((item) => {
+  const newUsersOne = users.filter((item) => item._id !== tokenId);
+
+  const newUsers = newUsersOne.filter((item) => {
     if (item.firstName.toLowerCase().includes(searchUser.toLowerCase())) {
       return item;
     }
@@ -67,10 +69,8 @@ const Header: React.FC = (): JSX.Element => {
   const handleCheck = (id) => {
     dispatch(oneUser(id));
     setOpen(false);
-    dispatch(onePeopleImages(id))
+    dispatch(onePeopleImages(id));
   };
-  
-
 
   const deleteFollow = (id) => {
     dispatch(deleteUser(id));

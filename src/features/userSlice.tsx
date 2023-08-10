@@ -35,6 +35,7 @@ export const initialState: UserState = {
   users: [],
   friends: [],
   followers: [],
+  groups: [],
   loading: false,
   error: null,
   oneUser: [],
@@ -182,6 +183,7 @@ export const userSlice = createSlice({
         state.user = action.payload;
         state.followers = action.payload.followers;
         state.friends = action.payload.friends;
+        state.groups = action.payload.groups;
         state.loading = false;
         state.error = null;
       })

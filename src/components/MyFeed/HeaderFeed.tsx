@@ -12,7 +12,7 @@ const HeaderFeed: React.FC = (): JSX.Element => {
       <div className={styles.avaName}>
         <img
           className={styles.avaImg}
-          src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg"
+          src={`http://localhost:4000/${user.user.image}`}
           alt="ava"
         />
 
