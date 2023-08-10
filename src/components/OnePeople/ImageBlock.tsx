@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./OnePeople.module.scss";
-import image from "../../../public/image.png";
+import image from "../../../public/image-gallery.png";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { onePeopleImages } from "../../features/imageSlice";

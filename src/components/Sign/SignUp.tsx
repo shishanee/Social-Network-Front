@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Sign.module.scss";
-import logo from "../../../public/letter-d.png";
+import logo from "../../../public/letter-i.png";
 import people from "../../../public/people.svg";
 import sigin from "../../../public/sigin.svg";
 import lock from "../../../public/lock.svg";
@@ -50,14 +50,14 @@ const SignUp: React.FC = (): JSX.Element => {
       <div className={styles.signIn_info}>
         <div className={styles.left_logo}>
           <img src={logo} alt="" />
-          <span>DICAR</span>
+          <span>Into</span>
         </div>
         <div className={styles.info_txt}>
-          <p>Зарегистрируйтесь в DICAR чтобы продолжить</p>
+          <p>Зарегистрируйтесь в Into чтобы продолжить</p>
           <div className={styles.span_block}>
             <span>
               <img src={people} alt="" />
-              <p>Единый аккаунт для сервисов Dicar и партнёров</p>
+              <p>Единый аккаунт для сервисов Into и партнёров</p>
             </span>
             <span>
               <img src={sigin} alt="" />
@@ -67,14 +67,14 @@ const SignUp: React.FC = (): JSX.Element => {
               <img src={lock} alt="" />
               <p>Надёжная защита с привязкой к телефону</p>
             </span>
-            <a href="#">Подробнее о Dicar</a>
+            <a href="#">Подробнее о Into</a>
           </div>
         </div>
       </div>
       <div className={styles.signIn}>
         <div className={styles.logo}>
           <img src={logo} alt="" />
-          <h2>Регистрация в DICAR</h2>
+          <h2>Регистрация в Into</h2>
         </div>
         <form>
           <input

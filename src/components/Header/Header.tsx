@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
-import logo from "../../../public/letter-d (1).png";
+import logo from "../../../public/letter-i.png";
 import search from "../../../public/loupe.png";
 import down from "../../../public/down-arrow (2).png";
 import bell from "../../../public/bell.png";
@@ -83,7 +83,7 @@ const Header: React.FC = (): JSX.Element => {
           <div className={styles.logo}>
             <img src={logo} alt="" />
             <Link to="/">
-              <h3>DICAR</h3>
+              <h3>INTO.com</h3>
             </Link>
           </div>
           <img className={styles.bell} src={bell} alt="" />
