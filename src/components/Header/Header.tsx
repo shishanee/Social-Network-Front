@@ -16,6 +16,7 @@ import tema from "../../../public/tema.svg";
 import { authSignOut } from "../../features/applicationSlice";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
 import { parseJWT } from "../../helpers/parseJWT";
+import { onePeopleImages } from "../../features/imageSlice";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -66,7 +67,10 @@ const Header: React.FC = (): JSX.Element => {
   const handleCheck = (id) => {
     dispatch(oneUser(id));
     setOpen(false);
+    dispatch(onePeopleImages(id))
   };
+  
+
 
   const deleteFollow = (id) => {
     dispatch(deleteUser(id));

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   images: [],
+  oneImages: [],
 };
 
 export const allImages = createAsyncThunk(
@@ -22,10 +23,24 @@ export const allImages = createAsyncThunk(
     }
   }
 );
+
+export const onePeopleImages = createAsyncThunk(
+  "one/images",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/onepeopleimage/${id}`);
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const addImage = createAsyncThunk(
   "add/image",
   async ({ image }, thunkAPI) => {
-    console.log(image)
+    console.log(image);
     try {
       const formData = new FormData();
       formData.append("img", image[0]);
@@ -50,13 +65,16 @@ export const imageSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    .addCase(allImages.fulfilled, (state, action) => {
-      console.log(action.payload)
-      state.images = action.payload;
-    })
-    .addCase(addImage.fulfilled, (state,action) => {
-      state.images = action.payload
-    })
+      .addCase(allImages.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.images = action.payload;
+      })
+      .addCase(addImage.fulfilled, (state, action) => {
+        state.images = action.payload;
+      })
+      .addCase(onePeopleImages.fulfilled, (state, action) => {
+        state.oneImages = action.payload;
+      });
   },
 });
 
