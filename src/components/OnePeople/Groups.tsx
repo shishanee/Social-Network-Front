@@ -19,7 +19,7 @@ const Groups: React.FC = (): JSX.Element => {
         <p>{group.length}</p>
       </div>
       <div className={styles.people}>
-        {group.slice(0, 6).map((item) => {
+        {group.slice(0, 3).map((item) => {
           return (
             <div className={styles.oneFollow}>
               <img

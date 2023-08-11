@@ -83,7 +83,7 @@ const Header: React.FC = (): JSX.Element => {
           <div className={styles.logo}>
             <img src={logo} alt="" />
             <Link to="/">
-              <h3>INTO.com</h3>
+              <h3>INTO</h3>
             </Link>
           </div>
           <img className={styles.bell} src={bell} alt="" />

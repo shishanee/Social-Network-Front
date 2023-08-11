@@ -22,7 +22,7 @@ const FollowersBlock: React.FC = (): JSX.Element => {
         <p>{followers.length}</p>
       </div>
       <div className={styles.people}>
-        {followers.slice(0, 6).map((item) => {
+        {followers.slice(0, 3).map((item) => {
           return (
             <div className={styles.oneFollow}>
               <img
