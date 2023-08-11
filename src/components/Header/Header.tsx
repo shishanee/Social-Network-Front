@@ -183,9 +183,7 @@ const Header: React.FC = (): JSX.Element => {
             />
           )}
           <img className={styles.down} src={down} alt="" />
-        </div>
-      </header>
-      {modal ? (
+          {modal ? (
         <div className={styles.modal_window}>
           <Link to={"/myFeed"}>
             <div className={styles.modal_profile}>
@@ -215,6 +213,10 @@ const Header: React.FC = (): JSX.Element => {
           </div>
         </div>
       ) : null}
+        </div>
+        
+      </header>
+      
     </>
   );
 };

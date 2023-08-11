@@ -144,7 +144,7 @@
 .modal_window{
   position: absolute;
   border-radius: 10px;
-  right: 200px;
+  right: 2px;
   width: 200px;
   background-color: #292929;
   box-shadow: -12px 10px 15px rgba(0, 0, 0, 0.29);
@@ -152,6 +152,7 @@
     text-decoration: none;
   }
   .modal_profile{
+    position: relative;
     display: flex;
     align-items: center;
     margin: 10px;
