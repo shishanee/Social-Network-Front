@@ -1,0 +1,76 @@
+.commentsPage {
+  .commentBlock {
+    padding: 0px 20px;
+    hr {
+      margin-top: 20px;
+    }
+
+    .avaNameBlo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 7px;
+      .onlyAvaName {
+          gap: 5px;
+        display: flex;
+        img {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+        }
+        .nameText {
+          .name {
+            display: flex;
+            gap: 5px;
+            text-decoration: none;
+            font-size: 13px;
+            p {
+              color: #e1e3e6;
+              font-weight: 500;
+              line-height: 1.36;
+            }
+          }
+          .text{
+
+          }
+        }
+      }
+      button {
+        width: 16px;
+        height: 16px;
+        background: none;
+        border: none;
+        color: #939393;
+      }
+    }
+
+    .dateBlock {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 38px;
+      padding: 4px 0px 0px;
+
+      div {
+        display: flex;
+        gap: 7px;
+        p{
+            font-size: 12px;
+            color: #939393;
+        }
+        .send {
+          font-size: 12.5px;
+          color: #77aaeb;
+          text-decoration: none;
+        }
+    }
+      span{
+        button{
+            width: 16px;
+            height: 16px;
+            background: none;
+            border: none;
+        }
+      }
+    }
+  }
+}

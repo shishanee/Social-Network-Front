@@ -37,7 +37,6 @@ export const createPosts = createAsyncThunk(
         method: "POST",
         body: formData,
         headers: {
-          //   "Content-type": "application/json",
           Authorization: `Bearer ${thunkAPI.getState().application.token}`,
         },
       });
@@ -69,6 +68,26 @@ export const addLike = createAsyncThunk(
   }
 );
 
+export const deletePost = createAsyncThunk(
+  "delete/post",
+  async ({ postId }, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/post/${postId}`, {
+        method: "DELETE",
+        body: JSON.stringify(),
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const postsSlice = createSlice({
   name: "post",
   initialState,
@@ -76,12 +95,13 @@ export const postsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getPosts.fulfilled, (state, action) => {
-        state.userPosts = action.payload.reverse();
+        state.userPosts = action.payload
+        .reverse();
         state.loading = false;
       })
-      .addCase(getPosts.pending, (state, action) => {
-        state.loading = true;
-      })
+      // .addCase(getPosts.pending, (state, action) => {
+      //   state.loading = true;
+      // })
       .addCase(createPosts.fulfilled, (state, action) => {
         state.userPosts.unshift(action.payload);
         state.loading = false;
@@ -95,7 +115,17 @@ export const postsSlice = createSlice({
             item.likes.push(action.meta.arg.userId);
           }
         });
-      });
+        state.loading = false
+      })
+      .addCase(addLike.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.userPosts.filter((item) => item._id !== action.meta.arg.postId)
+      })
+      .addCase(deletePost.pending, (state, action) => {
+        state.loading = true
+      })
   },
 });
 
