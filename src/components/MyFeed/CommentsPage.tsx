@@ -6,12 +6,12 @@ import Likes from "./Likes";
 const CommentsPage: React.FC = ({ item, comments }) => {
   return (
     <div className={styles.commentsPage} key={item._id}>
+        <hr />
       {comments.map((comment) => {
         if (comment.post === item._id) {
           return (
             <div className={styles.commentBlock} key={comment._id}>
 
-              <hr />
 
               <div className={styles.avaNameBlo}>
                 <div className={styles.onlyAvaName}>
@@ -58,6 +58,7 @@ const CommentsPage: React.FC = ({ item, comments }) => {
                   </button>
                 </span>
               </div>
+              <hr />
             </div>
           );
         }
