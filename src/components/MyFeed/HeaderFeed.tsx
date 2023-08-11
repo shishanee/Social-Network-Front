@@ -3,6 +3,7 @@ import styles from "./MyFeed.module.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import noimage from '../../../public/noimage.png'
 
 const HeaderFeed: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user);
@@ -12,7 +13,7 @@ const HeaderFeed: React.FC = (): JSX.Element => {
       <div className={styles.avaName}>
         <img
           className={styles.avaImg}
-          src={`http://localhost:4000/${user.user.image}`}
+          src={!user.user.image ? noimage : `http://localhost:4000/${user.user.image}`}
           alt="ava"
         />
 
