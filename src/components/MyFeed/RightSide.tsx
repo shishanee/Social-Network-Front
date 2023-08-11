@@ -15,6 +15,7 @@ const RightSide: React.FC = (): JSX.Element => {
   };
   return (
     <div className={styles.rightSide}>
+
       <div className={styles.blockForFriends}>
         <Link className={styles.linkToFriends} to={"#"}>
           Подписчики
@@ -50,6 +51,7 @@ const RightSide: React.FC = (): JSX.Element => {
       </div>
 
       <div className={styles.blockForFriends}>
+
         <Link className={styles.linkToFriends} to={"#"}>
           Подписки
           <span>{user.followers.length}</span>

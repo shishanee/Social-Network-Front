@@ -6,6 +6,8 @@ import { RootState } from "../../app/store";
 import noimage from '../../../public/noimage.png'
 
 const HeaderFeed: React.FC = (): JSX.Element => {
+  const loading = useSelector((state) => state.posts.loading)
+  
   const user = useSelector((state: RootState) => state.user);
 
   return (
@@ -21,7 +23,7 @@ const HeaderFeed: React.FC = (): JSX.Element => {
           <div className={styles.fullName}>
             <div
               className={styles.name}
-            >{`${user.user.firstName} ${user.user.lastName}`}</div>
+            >{(loading) ? "Loading" : `${user.user.firstName} ${user.user.lastName}`}</div>
             <Link to={"/edit"} className={styles.linkToChangeProfile}>
               Укажите информацию о себе
               <span className={styles.arrowLink}> › </span>
