@@ -14,7 +14,7 @@ const Comments: React.FC = ({item, handleComment}) => {
   
   return (
     <span className={styles.span} aria-hidden="true">
-      <Link onClick={handleComment} to={"#"}>
+      <Link onClick={() => handleComment(item._id)} to={"#"}>
         <svg
           height="24"
           viewBox="0 0 24 24"

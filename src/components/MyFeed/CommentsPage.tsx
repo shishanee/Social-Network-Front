@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./CommentPage.module.scss";
 import { Link } from "react-router-dom";
-import Likes from "./Likes";
 
 const CommentsPage: React.FC = ({ item, comments }) => {
   return (
