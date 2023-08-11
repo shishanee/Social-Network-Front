@@ -16,6 +16,7 @@ import OneChat from "../components/Messages/OneChat";
 import GroupMore from "../components/Group/GroupMore";
 import OnePeople from "../components/OnePeople/OnePeople";
 import Image from "../components/Image/Image";
+import AllVideos from "../components/Video/AllVideos";
 
 const Routers: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -35,8 +36,9 @@ const Routers: React.FC = (): JSX.Element => {
       )}
       {token && (
         <Routes>
-          <Route path="/login" element={<Navigate to="/" />} />;
+          <Route path="/login" element={<Navigate to="/" />} />; 
           <Route path="/edit" element={<Edit />} />
+          <Route path="/videos" element={<AllVideos />} />
           <Route path="/image" element={<Image />} />
           <Route path="/messages/:id" element={<OneChat />} />
           <Route path="/messages" element={<Messages />} />

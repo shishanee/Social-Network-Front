@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.scss";
-import logo from "../../../public/letter-d (1).png";
+import logo from "../../../public/letter-i.png";
 import search from "../../../public/loupe.png";
 import down from "../../../public/down-arrow (2).png";
 import bell from "../../../public/bell.png";
@@ -16,6 +16,7 @@ import tema from "../../../public/tema.svg";
 import { authSignOut } from "../../features/applicationSlice";
 import { deleteUser, followUser, oneUser } from "../../features/userSlice";
 import { parseJWT } from "../../helpers/parseJWT";
+import { onePeopleImages } from "../../features/imageSlice";
 
 const Header: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -38,7 +39,9 @@ const Header: React.FC = (): JSX.Element => {
     setOpen(true);
   };
 
-  const newUsers = users.filter((item) => {
+  const newUsersOne = users.filter((item) => item._id !== tokenId);
+
+  const newUsers = newUsersOne.filter((item) => {
     if (item.firstName.toLowerCase().includes(searchUser.toLowerCase())) {
       return item;
     }
@@ -66,6 +69,7 @@ const Header: React.FC = (): JSX.Element => {
   const handleCheck = (id) => {
     dispatch(oneUser(id));
     setOpen(false);
+    dispatch(onePeopleImages(id));
   };
 
   const deleteFollow = (id) => {
@@ -79,7 +83,7 @@ const Header: React.FC = (): JSX.Element => {
           <div className={styles.logo}>
             <img src={logo} alt="" />
             <Link to="/">
-              <h3>DICAR</h3>
+              <h3>INTO.com</h3>
             </Link>
           </div>
           <img className={styles.bell} src={bell} alt="" />

@@ -4,6 +4,30 @@
   border-radius: 14px;
   color: #dbdbdb;
   padding: 17px;
+  .youphotos {
+    font-weight: 500;
+  }
+  .allImagesBlock {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    .oneImage {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      margin: 8px;
+      transition: .5s;
+    }
+    .oneImage:hover{
+      scale: 1.5;
+    }
+  }
+  .addImage {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
   .imageText {
     font-size: 15.5px;
     display: flex;
@@ -14,7 +38,7 @@
       color: gray;
     }
   }
-  .imageContainerOne{
+  .imageContainerOne {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -71,5 +95,44 @@
         height: 100%;
       }
     }
+  }
+}
+
+.form {
+  display: flex;
+  button {
+    border: none;
+    background: white;
+    color: black;
+    font-weight: 500;
+    padding: 0px 5px;
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.3s;
+  }
+}
+.label:hover {
+  margin-right: 8px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  background: rgb(67, 67, 248);
+  padding: 7px;
+  border-radius: 5px 0px 0px 5px;
+  transition: 0.3s;
+  cursor: pointer;
+  p {
+    color: white;
+    font-weight: 500;
+  }
+  img {
+    width: 15px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  input {
+    display: none;
   }
 }

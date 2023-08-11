@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./OnePeople.module.scss";
 import image from "../../../public/image.png";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
+import { onePeopleImages } from "../../features/imageSlice";
+import { useParams } from "react-router-dom";
 
-const ImageBlock: React.FC = ():JSX.Element => {
+const ImageBlock: React.FC = (): JSX.Element => {
+  const images = useSelector((state: RootState) => state.image.oneImages);
+
+  const { id } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(onePeopleImages(id));
+  }, []);
+
+ 
   return (
     <div className={styles.imgBlock}>
       <div className={styles.buttonBlock}>
@@ -10,9 +23,9 @@ const ImageBlock: React.FC = ():JSX.Element => {
         <button>Фото</button>
       </div>
       <div className={styles.images}>
-        <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
-        <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
-        <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
+        {images.slice(0, 3).map((item) => {
+          return <img src={`http://localhost:4000/${item}`} alt="" />;
+        })}
       </div>
     </div>
   );

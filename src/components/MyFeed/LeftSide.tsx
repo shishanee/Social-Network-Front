@@ -28,6 +28,13 @@ const LeftSide: React.FC = (): JSX.Element => {
     dispatch(createPosts({ text, image }));
     setText("");
   }};
+  };
+
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.userPosts);
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
 
   const handleChangeFile = (e) => {
     setImage(e.target.files);

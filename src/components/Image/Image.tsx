@@ -1,36 +1,50 @@
-import React from 'react'
-import styler from './Image.module.scss'
+import React, { useState } from "react";
+import styles from "./Image.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../app/store";
+import { addImage } from "../../features/imageSlice";
+import upload from '../../../public/upload.png'
 
+const Image: React.FC = (): JSX.Element => {
+  const images = useSelector((state: RootState) => state.image.images);
+  const [image, setImage] = useState<string>("");
 
-const  Image: React.FC = () :JSX.Element => {
-    
-    const testArray = [1,3,4,3]
-
-    const count = testArray.length
-
-    const classImage = (num: number) =>{
-        if(num === 1){
-            return styler.imageContainerOne
-        }else if
-        (num === 2){
-            return styler.imagesContainerTwo
-        }
-        else{
-            return styler.imageContainerTree
-        }
-    }
-
-    return (
-        <div className={styler.imageContainer}>
-            <div className={styler.imageText}>
-                <div>Ваши фотографии:</div>
-                <div className={styler.ImageCounter}>{count}</div>
-            </div>
-            <div className={classImage(count)}>
-                {testArray.map(item => <div className={styler.images}><img src='' alt="" /></div>)}
-            </div>
+  const dispatch = useDispatch<AppDispatch>();
+  const handleChangeFile = (e) => {
+    setImage(e.target.files);
+  };
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(addImage({ image }));
+  };
+  return (
+    <div className={styles.imageContainer}>
+      <div className={styles.imageText}>
+        <div className={styles.addImage}>
+          {" "}
+          <p className={styles.youphotos}>Ваши фотографии:</p>{" "}
+          <form className={styles.form} onSubmit={handleClick}>
+            <label className={styles.label} htmlFor="label">
+             <p>Добавить фото</p>
+              <input id="label" onChange={handleChangeFile} type="file" />{" "}
+            </label>
+            <button>Загрузить</button>
+          </form>
         </div>
-    )
-}
+      </div>
+      <div className={styles.allImagesBlock}>
+        {images.map((item) => {
+          return (
+            <img
+              className={styles.oneImage}
+              src={`http://localhost:4000/${item}`}
+              alt=""
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-export default Image
+export default Image;

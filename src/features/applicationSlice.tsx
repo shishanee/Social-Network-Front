@@ -52,7 +52,6 @@ export const authSignUp = createAsyncThunk<
   dataSingUp,
   { rejectValue: string | unknown | null }
 >("auth/signUp", async ({ firstName, lastName, email, password }, thunkAPI) => {
-  console.log(firstName, lastName, email, password);
   try {
     const res = await fetch("http://localhost:4000/auth", {
       method: "POST",

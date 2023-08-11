@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Group.module.scss";
 import { AppDispatch, RootState } from "../../app/store";
 import { useState } from "react";
-import icon from "../../../public/letter-d.png";
+import icon from "../../../public/letter-i.png";
 import { postGroup } from "../../features/groupSlice";
 import noimage from "../../../public/noimage.png";
 import GroupCard from "./GroupCard";
