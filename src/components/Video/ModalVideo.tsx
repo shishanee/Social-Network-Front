@@ -11,6 +11,7 @@ const ModalVideo: React.FC = ({ text, setOpen }): JSX.Element => {
       <div className={styles.modal__content}>
         <Videos
           autoPlay
+          className={styles.video}
           loop
           controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
         >
