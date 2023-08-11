@@ -36,6 +36,7 @@ export const initialState: UserState = {
   friends: [],
   followers: [],
   groups: [],
+  posts: [],
   loading: false,
   error: null,
   oneUser: [],
@@ -110,6 +111,15 @@ export const followUser = createAsyncThunk(
     }
   }
 );
+export const getPostsAll = createAsyncThunk("get/postsAll", async (id, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/getposts/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   "get/user",
@@ -222,7 +232,10 @@ export const userSlice = createSlice({
         state.oneUserFollow = action.payload.followers;
         state.oneUserFriends = action.payload.friends;
         state.oneUserGroup = action.payload.groups;
-      });
+      })
+      .addCase(getPostsAll.fulfilled, (state,action) => {
+        state.posts = action.payload
+      })
   },
 });
 

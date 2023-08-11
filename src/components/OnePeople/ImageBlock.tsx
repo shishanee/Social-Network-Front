@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./OnePeople.module.scss";
-import image from "../../../public/image-gallery.png";
+import image from "../../../public/image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { onePeopleImages } from "../../features/imageSlice";
@@ -14,6 +14,8 @@ const ImageBlock: React.FC = (): JSX.Element => {
   useEffect(() => {
     dispatch(onePeopleImages(id));
   }, []);
+
+ 
   return (
     <div className={styles.imgBlock}>
       <div className={styles.buttonBlock}>
