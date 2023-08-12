@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./MyFeed.module.scss";
 import Likes from "./Likes";
@@ -8,10 +8,13 @@ import Comments from "./Comments";
 import Reports from "./Reports";
 import Dot from "./Dot";
 import CommentsPage from "./CommentsPage";
+import InputForComments from "./InputForComments";
 // import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 // import { es, ru } from 'date-fns/locale'
 
 const Posts: React.FC = ({ posts }) => {
+  const [openComment, setOpenComment] = useState(null);
+  
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleLike = (postId) => {
@@ -19,7 +22,9 @@ const Posts: React.FC = ({ posts }) => {
   };
   const comments = useSelector((state) => state.comments.comments);
 
-  const handleComment = () => {};
+  const handleComment = (postId) => {
+    setOpenComment(postId);
+  };
 
   // function createDate_DTO(date: Date) {
   //   return format(date, "d/MMMM/yy/hh/mm/ss", { locale: ru })
@@ -93,7 +98,8 @@ const Posts: React.FC = ({ posts }) => {
                 <Comments item={item} handleComment={handleComment} />
                 <Reports />
               </div>
-                  <CommentsPage item={item} comments={comments}/>
+              <CommentsPage item={item} comments={comments} />
+              {openComment === item._id ? <InputForComments postId={item._id} user={user} /> : ""}
             </div>
           );
         })

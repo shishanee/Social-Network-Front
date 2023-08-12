@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyFeed.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { createPosts, getPosts } from "../../features/postsSlice";
 import FormForLeftSide from "./FormForLeftSide";
 import MainLeftSide from "./MainLeftSide";
 import Posts from "./Posts";
-import { getAllComments, getPostComments } from "../../features/commentsSlice";
+import { getAllComments} from "../../features/commentsSlice";
 import { AppDispatch } from "../../app/store";
 
 const LeftSide: React.FC = (): JSX.Element => {
@@ -14,18 +14,17 @@ const LeftSide: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const posts = useSelector((state) => state.posts.userPosts);
   const loading = useSelector((state) => state.posts.loading);
+  const comment = useSelector((state) => state.comments.loading);
 
   useEffect(() => {
     dispatch(getPosts());
     dispatch(getAllComments());
-  }, [loading]);
+  }, [loading, comment]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (text !== " ") {
       dispatch(createPosts({ text, image }));
       setText("");
-    }
   };
 
   const handleChangeFile = (e) => {
