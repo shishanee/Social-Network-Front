@@ -10,6 +10,7 @@ import { allUsers, getUser, oneUser } from "./features/userSlice";
 import { getGroups } from "./features/groupSlice";
 import { getDialog } from "./features/dialogSlice";
 import { allImages } from "./features/imageSlice";
+import Music from "./components/Music/Music";
 
 const App: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -24,14 +25,15 @@ const App: React.FC = (): JSX.Element => {
   }, []);
   return (
     <>
-      <BtnScrollUp />
+    <Music/>
+      {/* <BtnScrollUp />
       {token && <Header />}
       <div className="home">
         <div className="homePage">
           {token && <Sidebar />}
           <Routers />
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
