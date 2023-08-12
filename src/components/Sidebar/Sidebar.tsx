@@ -64,7 +64,7 @@ const Sidebar: React.FC = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link to="#">
+          <Link to="/music">
             {" "}
             <img src={musics} alt="" />
             Музыка

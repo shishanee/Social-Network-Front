@@ -25,15 +25,14 @@ const App: React.FC = (): JSX.Element => {
   }, []);
   return (
     <>
-    <Music/>
-      {/* <BtnScrollUp />
+      <BtnScrollUp />
       {token && <Header />}
       <div className="home">
         <div className="homePage">
           {token && <Sidebar />}
           <Routers />
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

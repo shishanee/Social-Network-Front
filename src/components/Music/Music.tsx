@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { IMusic, songsData } from "./tracks";
 import styles from "./Music.module.scss";
 import OneSong from "./OneSong";
-import play from '../../a/play.svg'
-import pause from '../../a/pause.svg'
-import back from '../../a/back.svg'
-import next from '../../a/next.svg'
+import play from "../../a/play.svg";
+import pause from "../../a/pause.svg";
+import back from "../../a/back.svg";
+import next from "../../a/next.svg";
 
 const Music: React.FC = () => {
   const [i, setI] = useState(0);
@@ -95,17 +95,33 @@ const Music: React.FC = () => {
   return (
     <>
       <div className={styles.mainContainer}>
-        <div className={styles.songsPlayer} >
-          <div className={styles.buttons} >
+        <div className={styles.songsPlayer}>
+          <div className={styles.buttons}>
             {isPlaying ? (
-              <div  className={styles.buttonPlayAndPause} onClick={handlePlayAndPauseSong}> <img src={pause} alt="" /></div>
+              <div
+                className={styles.buttonPlayAndPause}
+                onClick={handlePlayAndPauseSong}
+              >
+                {" "}
+                <img src={pause} alt="" />
+              </div>
             ) : (
-              <div className={styles.buttonPlayAndPause} onClick={handlePlayAndPauseSong}> <img src={play} alt="" /> </div>
+              <div
+                className={styles.buttonPlayAndPause}
+                onClick={handlePlayAndPauseSong}
+              >
+                {" "}
+                <img src={play} alt="" />{" "}
+              </div>
             )}
-            <div onClick={handleBackSong}><img src={back} alt="" /></div>
-            <div onClick={handleNextSong}><img src={next} alt="" /></div>
+            <div onClick={handleBackSong}>
+              <img src={back} alt="" />
+            </div>
+            <div onClick={handleNextSong}>
+              <img src={next} alt="" />
+            </div>
           </div>
-          <div className={styles.songAndProgress} >
+          <div className={styles.songAndProgress}>
             <div className={styles.songName}>{currentSong.title}</div>
             <div className={styles.songAuthor}>{currentSong.author}</div>
             <div
