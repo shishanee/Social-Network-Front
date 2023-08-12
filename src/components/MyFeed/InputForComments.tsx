@@ -2,32 +2,46 @@ import React, { useState } from "react";
 import styles from "./CommentPage.module.scss";
 import PhotoSvg from "./PhotoSvg";
 import { useDispatch } from "react-redux";
+import { createComment, deleteComment } from "../../features/commentsSlice";
 
-const InputForComments: React.FC = ({ user }) => {
+const InputForComments: React.FC = ({ user, postId }) => {
   const dispatch = useDispatch();
-  const [comment, setComment] = useState("");
+  const [text, setText] = useState("");
+  const [image, setImage] = useState('');
+
   const handleChange = (e) => {
-    setComment(e.target.value);
+    setText(e.target.value);
+  };
+
+  const handleChangeFile = (e) => {
+    setImage(e.target.files);
   };
   const handleClick = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+    dispatch(createComment({text, image, postId}))
+    setText('')
+  };
+
+
   return (
     <div className={styles.inputBlock}>
       <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
       <div>
         <textarea
           onChange={handleChange}
-          value={comment}
+          value={text}
           id="file"
           type="text"
           placeholder="Написать комментарий..."
         />
-        <label htmlFor="file">
+        {/* <input width={"1px"} id="file" type="text" /> */}
+        <label  htmlFor="file">
           <PhotoSvg />
         </label>
       </div>
-      <button>
+      <button 
+      onClick={handleClick}
+      >
         <svg
           width="24"
           height="24"

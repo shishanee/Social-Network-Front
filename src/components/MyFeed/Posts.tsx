@@ -14,6 +14,7 @@ import InputForComments from "./InputForComments";
 
 const Posts: React.FC = ({ posts }) => {
   const [openComment, setOpenComment] = useState(null);
+  
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleLike = (postId) => {
@@ -98,7 +99,7 @@ const Posts: React.FC = ({ posts }) => {
                 <Reports />
               </div>
               <CommentsPage item={item} comments={comments} />
-              {openComment === item._id ? <InputForComments user={user} /> : ""}
+              {openComment === item._id ? <InputForComments postId={item._id} user={user} /> : ""}
             </div>
           );
         })

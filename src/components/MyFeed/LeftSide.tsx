@@ -14,18 +14,17 @@ const LeftSide: React.FC = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const posts = useSelector((state) => state.posts.userPosts);
   const loading = useSelector((state) => state.posts.loading);
+  const comment = useSelector((state) => state.comments.loading);
 
   useEffect(() => {
     dispatch(getPosts());
     dispatch(getAllComments());
-  }, [loading]);
+  }, [loading, comment]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (text !== " ") {
       dispatch(createPosts({ text, image }));
       setText("");
-    }
   };
 
   const handleChangeFile = (e) => {

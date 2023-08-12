@@ -71,6 +71,13 @@
           height: 16px;
           background: none;
           border: none;
+
+          .active {
+            // background: rgb(213, 71, 71);
+          }
+          .us {
+            // background: none;
+          }
         }
       }
     }
@@ -97,17 +104,17 @@
     border-radius: 5px;
     textarea {
       height: 34px;
-      width: 350px;  
+      width: 350px;
       padding: 7px 120px 7px 13px;
       border: none;
       background: #222222;
       outline: none;
     }
-    label{
-        margin-top: 4px;
+    label {
+      margin-top: 4px;
     }
   }
-  button{
+  button {
     background: #222222;
     border: none;
   }

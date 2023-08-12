@@ -287,11 +287,12 @@
           align-content: center;
           padding: 18px 20px;
           border: 1px solid rgba(192, 192, 192, 0.135);
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
+          // border-top-left-radius: 12px;
+          // border-top-right-radius: 12px;
+          border-radius: 12px;
           background: #222222;
           border-bottom: 0px;
-          margin-bottom: -8px;
+          margin-bottom: 2px;
 
           .linkk2:hover {
             background: #333333;
