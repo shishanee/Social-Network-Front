@@ -27,6 +27,9 @@
                 }
             }
             .popUp{
+                display: flex;
+                flex-direction: column;
+                position: relative;
                 cursor: pointer;
                 text-align: center;
                 font-weight: 700;
@@ -42,9 +45,13 @@
 }
 
 .Pop {
+    top:30px;
     position: absolute;
-    right: 290px;
-    top: 170px;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: normal;
+    left: 0px;
+    width: 150px;
     background-color:#292929;
     padding: 10px;
     font-size: 13px;
