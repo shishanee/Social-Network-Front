@@ -1,0 +1,70 @@
+.trackNavigator {
+  background-color: rgba(190, 190, 190, 0.308);
+  width: 300px;
+  .progressBar {
+    height: 1.5px;
+    background-color: #dbdbdb;
+  }
+}
+.fullSongs {
+  background-color: #222222;
+  padding: 15px;
+  width: 440px;
+  border-radius: 13px;
+}
+.songContainer:hover {
+  background-color: #3b3b3b;
+}
+.songContainer {
+  border: rgba(128, 128, 128, 0.468) solid 1px;
+  background-color: #222222;
+  width: 400px;
+  margin-bottom: 4px;
+  border-radius: 13px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  .songName {
+    color: #dbdbdb;
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 1px;
+    width: 400px;
+  }
+  .songAuthor {
+    color: rgba(190, 190, 190, 0.308);
+    font-size: 11.5px;
+    width: 400px;
+  }
+}
+.songAndProgress {
+  .songName {
+    color: #dbdbdb;
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 1px;
+    width: 400px;
+  }
+  .songAuthor {
+    color: rgba(190, 190, 190, 0.308);
+    font-size: 11.5px;
+    margin-bottom: 5px;
+    width: 400px;
+  }
+}
+.songsPlayer {
+  display: flex;
+  padding: 7px 15px;
+  border: solid 1px black;
+  width: 440px;
+  border-radius: 13px;
+  background-color: #222222;
+  margin-bottom: 30px;
+  .buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    div {
+      margin-right: 5px;
+    }
+  }
+}
