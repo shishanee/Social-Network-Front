@@ -135,7 +135,7 @@ button {
   .createGroupModal {
     margin-top: 80px;
     border-radius: 10px;
-    background-color: #292929;
+    background-color: #222222;
     width: 750px;
     height: 500px;
     display: flex;
@@ -189,9 +189,9 @@ button {
 }
 
 .groupHeader {
-  width: 750px;
+  width: 910px;
   margin-top: 10px;
-  background-color: #292929;
+  background-color: #222222;
   padding-bottom: 20px;
   padding-left: 20px;
   border-radius: 10px;
@@ -212,5 +212,157 @@ button {
     margin-right: 10px;
     position: absolute;
     z-index: 0;
+  }
+}
+.groupBody {
+  .followers{
+    width: 300px;
+    background: #222222;
+    border-radius: 15px;
+    padding: 8px;
+    border: 1px solid #3d3d3d;
+    margin: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .users{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .follower_info{
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+    }
+    img{
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+  }
+  .follower_info:hover{
+   background-color: #5b5a5a;
+   border-radius: 10px;
+  }
+}
+.groupBody {
+  display: flex;
+  .desc{
+    background: #222222;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 8px;
+    border: 1px solid #3d3d3d;
+    margin: 10px;
+    width: 300px;
+    
+    .desc_info{
+      width: fit-content;
+      margin: 10px;
+      display: flex;
+
+    }
+    img{
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      margin-right
+      : 10px;
+      border-radius: 50%;
+    }
+
+  }
+}
+.blockName{
+  margin: 10px;
+}
+.itemLength{
+  color: #5b5a5a;
+}
+a{
+  text-decoration: none;
+}
+.favorite_main{
+
+  .favorite{
+      background-color:  #222222;
+      padding: 10px;
+      border-radius: 15px;
+      width: 600px;
+      border: 1px solid #3d3d3d;
+      margin-top: 10px;
+      .postImg {
+          width: -webkit-fill-available;
+          padding: 10px;
+      }
+      span{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          img{
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              object-fit: cover;
+              margin: 5px;
+          }
+          p{
+              flex: 1;
+              margin: 10px;
+              span {
+                  font-size: 12px;
+              }
+          }
+          .popUp{
+              cursor: pointer;
+              text-align: center;
+              font-weight: 700;
+              font-size: 16px;
+              padding: 10px;
+              color:#626262;
+          }
+      }
+      p {
+          font-size: 14px;
+      }
+  }
+}
+
+.Pop {
+  position: absolute;
+  right: 290px;
+  top: 170px;
+  background-color:#292929;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 10px;
+  
+}
+.Pop:hover{
+  background-color: #626262;
+  cursor: pointer;
+}
+.postCreate{
+  width: 600px;
+  background-color: #222222;
+  border: 1px solid #3d3d3d;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  input{
+    background-color: transparent;
+    border: 0;
+    margin-left: 10px;
+    width: 500px;
+  }
+  img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
   }
 }

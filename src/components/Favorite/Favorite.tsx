@@ -3,14 +3,14 @@ import icon from "../../../public/noimage.png"
 import { useState } from "react"
 
 function Favorite() {
-const [popUp, setPopUp] = useState(false);
+  const [popUp, setPopUp] = useState(false);
 
-const handlePopOpen = () => {
-  setPopUp(true)
-}  
-const handlePopClose = () => {
-  setPopUp(false)
-}
+  const handlePopOpen = () => {
+    setPopUp(true)
+  }  
+  const handlePopClose = () => {
+    setPopUp(false)
+  }
 
   return (
     <div className={styles.favorite_main}>

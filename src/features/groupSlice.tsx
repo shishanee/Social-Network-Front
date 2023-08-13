@@ -19,6 +19,7 @@ export interface InitialState {
 }
 
 export const initialState: InitialState = {
+  oneGroup: [],
   group: [],
   loading: false,
   error: null,
@@ -38,6 +39,19 @@ export const getGroups = createAsyncThunk<
     thunkAPI.rejectWithValue(error);
   }
 });
+
+export const getOneGroups = createAsyncThunk("get/oneGroup", 
+  async( id, thunkAPI ) => {
+    try {
+      const res = await fetch(`http://localhost:4000/group${id}`);
+      const data = await res.json();
+
+      return data;
+
+    } catch (error) {
+      thunkAPI.rejectWithValue(error)
+    }
+  })
 
 export const postGroup = createAsyncThunk(
   "post/group",
@@ -142,6 +156,22 @@ export const groupSlice = createSlice({
         state.loading = false;
         state.group = action.payload;
       })
+      .addCase(getOneGroups.fulfilled, (state, action: PayloadAction<Grops[]>) => {
+        state.group = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(getOneGroups.pending, (state, _) => {
+        state.error = null;
+        state.loading = true;
+      })
+      .addCase(
+        getOneGroups.rejected,
+        (state, action: PayloadAction<string | unknown>) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      )
   },
 });
 
