@@ -5,7 +5,19 @@ export const initialState = {
   post: [],
   loading: false,
   allPosts: [],
+  onePost: [],
+  onePostUser: [],
 };
+
+export const getOnePost = createAsyncThunk("one/post", async (id, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:4000/onepost/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const allPosts = createAsyncThunk("all/posts", async (_, thunkAPI) => {
   try {
@@ -62,7 +74,6 @@ export const createPosts = createAsyncThunk(
 export const addLike = createAsyncThunk(
   "add/message",
   async ({ userId, postId }, thunkAPI) => {
-    console.log(postId)
     try {
       const res = await fetch(`http://localhost:4000/post/like/${postId}`, {
         method: "PATCH",
@@ -129,6 +140,11 @@ export const postsSlice = createSlice({
             item.likes.push(action.meta.arg.userId);
           }
         });
+        state.allPosts.map((item) => {
+          if (item.user === action.meta.arg.userId) {
+            item.likes.push(action.meta.arg.userId);
+          }
+        });
         state.loading = false;
       })
       .addCase(addLike.pending, (state, action) => {
@@ -139,6 +155,10 @@ export const postsSlice = createSlice({
       })
       .addCase(deletePost.pending, (state, action) => {
         state.loading = true;
+      })
+      .addCase(getOnePost.fulfilled, (state, action) => {
+        state.onePost = action.payload;
+        state.onePostUser = action.payload.user;
       });
   },
 });

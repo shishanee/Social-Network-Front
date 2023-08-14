@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./OnePeople.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

@@ -18,7 +18,7 @@ const CommentsPage: React.FC = ({ item, comments }) => {
   };
   return (
     <div className={styles.commentsPage} key={item._id}>
-      <hr />
+      <div className={styles.hr}></div>
       {comments.map((comment) => {
         if (comment.post === item._id) {
           return (
@@ -99,7 +99,6 @@ const CommentsPage: React.FC = ({ item, comments }) => {
                   </button>
                 </span>
               </div>
-              <hr />
             </div>
           );
         }
