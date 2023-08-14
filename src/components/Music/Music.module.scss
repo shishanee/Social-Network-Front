@@ -9,14 +9,13 @@
 .fullSongs {
   background-color: #222222;
   padding: 15px;
-  width: 440px;
+  width: 900px;
   border-radius: 13px;
 }
 .songContainer:hover {
   background-color: #3b3b3b;
 }
 .songContainer {
-  border: rgba(128, 128, 128, 0.468) solid 1px;
   background-color: #222222;
   width: 400px;
   margin-bottom: 4px;
@@ -55,7 +54,8 @@
   display: flex;
   padding: 7px 15px;
   border: solid 1px black;
-  width: 440px;
+  width: 900px;
+  justify-content: center;
   border-radius: 13px;
   background-color: #222222;
   margin-bottom: 30px;
