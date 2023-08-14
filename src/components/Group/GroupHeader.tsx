@@ -7,7 +7,6 @@ import { RootState } from "../../app/store";
 const GroupHeader:React.FC = ():JSX.Element => {
   const groups = useSelector((state:RootState) => state.group.oneGroup);
 
-  console.log(groups)
   return (
     <div className={styles.groupPage}>
       <div className={styles.groupHeader}>

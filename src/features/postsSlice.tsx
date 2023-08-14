@@ -62,6 +62,7 @@ export const createPosts = createAsyncThunk(
 export const addLike = createAsyncThunk(
   "add/message",
   async ({ userId, postId }, thunkAPI) => {
+    console.log(postId)
     try {
       const res = await fetch(`http://localhost:4000/post/like/${postId}`, {
         method: "PATCH",

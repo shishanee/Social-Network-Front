@@ -1,31 +1,24 @@
 import React, { useState } from "react";
-import styles from "./MyFeed.module.scss";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deletePost } from "../../features/postsSlice";
+import styles from "./Home.module.scss";
 
-const Dot: React.FC = ({ postId }) => {
-  const [active, setActive] = useState(false);
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    setActive(true);
+const Dots: React.FC = ({ postId }): JSX.Element => {
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpen = () => {
+    setOpen(!open);
   };
+
   const handleBlur = () => {
     setTimeout(() => {
-      setActive(false);
+      setOpen(false);
     }, 140);
   };
 
-  const handleRemove = () => {
-    dispatch(deletePost({ postId }));
-  };
   return (
     <div>
-      <Link
-        className={styles.linkBut}
-        to={"#"}
-        onFocus={handleClick}
+      <button
         onBlur={handleBlur}
+        onClick={handleOpen}
+        className={styles.moreButton}
       >
         <svg
           width="24"
@@ -50,21 +43,16 @@ const Dot: React.FC = ({ postId }) => {
             </g>
           </g>
         </svg>
-      </Link>
-      {active ? (
+      </button>
+      {open ? (
         <div className={styles.popUp}>
-          <button onClick={handleRemove} className={styles.popUpBut}>
-            Удалить запись
-          </button>
-          <button className={styles.popUpBut}>Сохранить в закладках</button>
-          <button className={styles.popUpBut}>Архивировать запись</button>
-          <button className={styles.popUpBut}>Редактировать</button>
+          <button>Сохранить в закладках</button>
         </div>
       ) : (
-        " "
+        ""
       )}
     </div>
   );
 };
 
-export default Dot;
+export default Dots;

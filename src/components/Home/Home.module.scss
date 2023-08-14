@@ -37,3 +37,98 @@
     }
   }
 }
+
+.postsBlock {
+  width: 550px;
+  border-radius: 12px;
+  margin-top: 10px;
+  .onePostBlock {
+    padding: 20px;
+    background: #222222;
+    border: 1px solid rgba(192, 192, 192, 0.135);
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+  .onePost {
+    margin-top: 10px;
+    p {
+      margin-bottom: 5px;
+    }
+    .image {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .personalBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    .popUp {
+      position: absolute;
+      right: -80px;
+      background: #222222;
+      border: 1px solid rgba(192, 192, 192, 0.135);
+      padding: 5px;
+      border-radius: 10px;
+
+      button {
+        border: none;
+        background: transparent;
+        color: #dbdbdb;
+        padding: 5px;
+        border-radius: 10px;
+      }
+      button:hover {
+        background: #333333;
+      }
+    }
+    .moreButton {
+      border: none;
+      background: transparent;
+    }
+    .firstBlock {
+      display: flex;
+    }
+
+    h6 {
+      color: grey;
+      font-weight: 400;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 8px;
+    }
+    p {
+      color: #77aaeb;
+    }
+  }
+}
+
+.like {
+  display: flex;
+  align-items: center;
+  button {
+    background: #333333;
+    margin: 3px;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 5px;
+      font-weight: 500;
+      color: grey;
+    }
+  }
+  img {
+    width: 20px;
+    width: 20px;
+    object-fit: cover;
+  }
+}

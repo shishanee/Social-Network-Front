@@ -40,7 +40,6 @@ export const onePeopleImages = createAsyncThunk(
 export const addImage = createAsyncThunk(
   "add/image",
   async ({ image }, thunkAPI) => {
-    console.log(image);
     try {
       const formData = new FormData();
       formData.append("img", image[0]);
@@ -66,7 +65,6 @@ export const imageSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(allImages.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.images = action.payload;
       })
       .addCase(addImage.fulfilled, (state, action) => {
