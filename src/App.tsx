@@ -11,6 +11,7 @@ import { getGroups } from "./features/groupSlice";
 import { getDialog } from "./features/dialogSlice";
 import { allImages } from "./features/imageSlice";
 import Music from "./components/Music/Music";
+import { allPosts } from "./features/postsSlice";
 
 const App: React.FC = (): JSX.Element => {
   const token = useSelector((state: RootState) => state.application.token);
@@ -22,6 +23,7 @@ const App: React.FC = (): JSX.Element => {
     dispatch(getGroups());
     dispatch(getDialog());
     dispatch(allImages());
+    dispatch(allPosts());
   }, []);
   return (
     <>

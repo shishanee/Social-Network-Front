@@ -4,7 +4,18 @@ export const initialState = {
   userPosts: [],
   post: [],
   loading: false,
+  allPosts: [],
 };
+
+export const allPosts = createAsyncThunk("all/posts", async (_, thunkAPI) => {
+  try {
+    const res = await fetch("http://localhost:4000/allposts");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const getPosts = createAsyncThunk("get/post", async (_, thunkAPI) => {
   try {
@@ -94,9 +105,11 @@ export const postsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(allPosts.fulfilled, (state, action) => {
+        state.allPosts = action.payload;
+      })
       .addCase(getPosts.fulfilled, (state, action) => {
-        state.userPosts = action.payload
-        .reverse();
+        state.userPosts = action.payload.reverse();
         state.loading = false;
       })
       // .addCase(getPosts.pending, (state, action) => {
@@ -115,17 +128,17 @@ export const postsSlice = createSlice({
             item.likes.push(action.meta.arg.userId);
           }
         });
-        state.loading = false
+        state.loading = false;
       })
       .addCase(addLike.pending, (state, action) => {
         state.loading = true;
       })
       .addCase(deletePost.fulfilled, (state, action) => {
-        state.userPosts.filter((item) => item._id !== action.meta.arg.postId)
+        state.userPosts.filter((item) => item._id !== action.meta.arg.postId);
       })
       .addCase(deletePost.pending, (state, action) => {
-        state.loading = true
-      })
+        state.loading = true;
+      });
   },
 });
 

@@ -4,13 +4,11 @@ import RightSidebar from "../rightSidebar/rightSidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import noimage from "../../../public/noimage.png";
+import PostBlock from "./PostBlock";
 
 const Home: React.FC = (): JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
   const token = useSelector((state: RootState) => state.application.token);
-
-  
-  
 
   return (
     <>
@@ -25,6 +23,7 @@ const Home: React.FC = (): JSX.Element => {
           )}
           <input type="text" placeholder="Что у вас нового?" />
         </div>
+        <PostBlock/>
       </div>
       <RightSidebar />
     </>
