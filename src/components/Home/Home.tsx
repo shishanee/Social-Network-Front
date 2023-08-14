@@ -23,7 +23,7 @@ const Home: React.FC = (): JSX.Element => {
           )}
           <input type="text" placeholder="Что у вас нового?" />
         </div>
-        <PostBlock/>
+        <PostBlock />
       </div>
       <RightSidebar />
     </>

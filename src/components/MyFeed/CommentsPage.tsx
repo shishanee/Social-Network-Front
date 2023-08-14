@@ -7,7 +7,6 @@ import { addLike, deleteComment } from "../../features/commentsSlice";
 const CommentsPage: React.FC = ({ item, comments }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  console.log(user);
   
 
   const handleRemove = (id) => {
