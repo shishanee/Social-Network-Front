@@ -6,11 +6,12 @@ function Favorite() {
   const [popUp, setPopUp] = useState(false);
 
   const handlePopOpen = () => {
-    setPopUp(true);
-  };
+    setPopUp(true)
+  }  
   const handlePopClose = () => {
-    setPopUp(false);
-  };
+    setPopUp(false)
+  }
+
 
   return (
     <div className={styles.favorite_main}>
