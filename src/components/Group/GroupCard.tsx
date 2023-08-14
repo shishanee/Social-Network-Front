@@ -19,7 +19,7 @@ const GroupCard: React.FC = (props: Props): JSX.Element => {
 
   const userId = useSelector((state) => state.user.user._id);
 
-  const userGroups = followers.includes(userId);
+  const newUser = followers.find((item) => item._id === userId);
 
   return (
     <div>
@@ -27,11 +27,13 @@ const GroupCard: React.FC = (props: Props): JSX.Element => {
         <div className={styles.groupName}>
           <img src={image} alt="" />
           <div>
-            <Link to={`/group/${id}`}>{name}</Link>
+            <Link onClick={() => dispatch(id)} to={`/group/${id}`}>
+              {name}
+            </Link>
             <h5>{followers.length} участников</h5>
           </div>
         </div>
-        {userGroups ? (
+        {newUser ? (
           <button className={styles.unfollow} onClick={() => handleFollow(id)}>
             Вы подписаны
           </button>

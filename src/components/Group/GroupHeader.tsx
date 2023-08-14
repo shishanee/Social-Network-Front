@@ -1,30 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import noimage from "../../../public/noimage.png"
-import styles from "./Group.module.scss"
+import React from "react";
+import { useSelector } from "react-redux";
+import noimage from "../../../public/noimage.png";
+import styles from "./Group.module.scss";
+import { RootState } from "../../app/store";
 
-function GroupHeader() {
-    const groups = useSelector((state) => state.group.group);
-    const { id } = useParams();
-    const filterGroup = groups.find((i) => i._id === id);
-    
+const GroupHeader:React.FC = ():JSX.Element => {
+  const groups = useSelector((state:RootState) => state.group.oneGroup);
 
+  console.log(groups)
   return (
     <div className={styles.groupPage}>
-        <div className={styles.groupHeader}>
-          <img
-            src={
-              filterGroup.image
-                ? `http://localhost:4000/${filterGroup.image}`
-                : noimage
-            }
-            alt=""
-          />
-          <h3>{filterGroup.name}</h3>
-        </div>
+      <div className={styles.groupHeader}>
+        <img
+          src={
+            groups.image
+              ? `http://localhost:4000/${groups.image}`
+              : noimage
+          }
+          alt=""
+        />
+        <h3>{groups.name}</h3>
       </div>
-  )
+    </div>
+  );
 }
 
-export default GroupHeader
+export default GroupHeader;

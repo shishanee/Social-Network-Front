@@ -7,9 +7,8 @@ import PhotoSvg from '../MyFeed/PhotoSvg';
 
 function GroupPoster() {
   
-  const groups = useSelector((state) => state.group.group);
-  const { id } = useParams();
-  const filterGroup = groups.find((i) => i._id === id);
+  const filterGroup = useSelector((state) => state.group.oneGroup);
+  // const filterGroup = groups.find((i) => i._id === id);
 
   return (
     <div className={styles.postCreate}>

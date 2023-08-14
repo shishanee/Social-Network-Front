@@ -14,12 +14,14 @@ export interface Grops {
 
 export interface InitialState {
   group: Grops[];
+  oneGroup: Grops[];
   loading: boolean;
   error: null | unknown | string | ReactNode;
 }
 
 export const initialState: InitialState = {
   oneGroup: [],
+  followers: [],
   group: [],
   loading: false,
   error: null,
@@ -43,7 +45,7 @@ export const getGroups = createAsyncThunk<
 export const getOneGroups = createAsyncThunk("get/oneGroup", 
   async( id, thunkAPI ) => {
     try {
-      const res = await fetch(`http://localhost:4000/group${id}`);
+      const res = await fetch(`http://localhost:4000/group/${id}`);
       const data = await res.json();
 
       return data;
@@ -157,7 +159,8 @@ export const groupSlice = createSlice({
         state.group = action.payload;
       })
       .addCase(getOneGroups.fulfilled, (state, action: PayloadAction<Grops[]>) => {
-        state.group = action.payload;
+        state.oneGroup = action.payload
+        state.followers = action.payload.followers
         state.loading = false;
         state.error = null;
       })
