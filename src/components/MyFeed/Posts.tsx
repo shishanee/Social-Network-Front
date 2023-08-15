@@ -10,16 +10,17 @@ import Dot from "./Dot";
 import CommentsPage from "./CommentsPage";
 import InputForComments from "./InputForComments";
 import noimage from "../../../public/noimage.png";
+import { RootState } from "../../app/store";
 
-const Posts: React.FC = ({ posts }) => {
+const Posts: React.FC = ({ posts }):JSX.Element => {
   const [openComment, setOpenComment] = useState(null);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state:RootState) => state.user.user);
   const handleLike = (postId) => {
     dispatch(addLike({ user, postId }));
   };
-  const comments = useSelector((state) => state.comments.comments);
+  const comments = useSelector((state:RootState) => state.comments.comments);
 
   const handleComment = (postId) => {
     setOpenComment(postId);

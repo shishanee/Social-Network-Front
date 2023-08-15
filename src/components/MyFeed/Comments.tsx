@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./MyFeed.module.scss";
 
-const Comments: React.FC = ({item, handleComment}) => {
+const Comments: React.FC = ({item, handleComment}):JSX.Element => {
   return (
     <span className={styles.span} aria-hidden="true">
       <Link onClick={() => handleComment(item._id)} to={"#"}>

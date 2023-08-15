@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import styles from "./Friends.module.scss";
-import { deleteUser, unFollow } from "../../features/userSlice";
+import { unFollow } from "../../features/userSlice";
+import { AppDispatch } from "../../app/store";
 
 interface Props {
   image: string;
@@ -12,7 +13,7 @@ interface Props {
 
 const FriendCart = (props: Props): JSX.Element => {
   const { id, image, firstName, lastName, buttonText } = props;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
   const handleUnFollow = (id) => {
     dispatch(unFollow(id))

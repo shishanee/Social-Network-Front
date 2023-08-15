@@ -3,7 +3,6 @@ import styles from "./Image.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { addImage } from "../../features/imageSlice";
-import upload from "../../../public/upload.png";
 
 const Image: React.FC = (): JSX.Element => {
   const images = useSelector((state: RootState) => state.image.images);

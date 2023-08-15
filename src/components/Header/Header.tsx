@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../../public/letter-i.png";
 import search from "../../../public/loupe.png";
