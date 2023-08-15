@@ -14,7 +14,7 @@
       .avaName {
         padding: 16px 16px 2px;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         gap: 12px;
         img {
           width: 72px;
@@ -95,5 +95,14 @@
         }
       }
     }
+  }
+}
+
+.label {
+  input {
+    display: none;
+  }
+  img {
+    object-fit: cover;
   }
 }

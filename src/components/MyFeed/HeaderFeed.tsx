@@ -7,7 +7,6 @@ import noimage from "../../../public/noimage.png";
 
 const HeaderFeed: React.FC = (): JSX.Element => {
   const loading = useSelector((state) => state.posts.loading);
-
   const user = useSelector((state: RootState) => state.user);
 
   return (

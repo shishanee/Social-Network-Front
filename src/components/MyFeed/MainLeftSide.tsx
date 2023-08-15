@@ -7,13 +7,8 @@ import { onePeopleImages } from "../../features/imageSlice";
 import noimage from "../../../public/noimage.png";
 
 const MainLeftSide: React.FC = () => {
-  const images = useSelector((state: RootState) => state.image.oneImages);
-  const user = useSelector((state: RootState) => state.user.user);
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(onePeopleImages(user._id));
-  }, []);
+  const images = useSelector((state: RootState) => state.user.images);
+  console.log(images)
   return (
     <div className={styles.blockMainLeft}>
       <div className={styles.photoAndMusic}>
