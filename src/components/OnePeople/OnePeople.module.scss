@@ -207,10 +207,8 @@
 }
 
 .blockForPost {
-  border: 1px solid rgba(192, 192, 192, 0.135);
   border-radius: 12px;
   background: #222222;
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   padding: 16px 20px;
@@ -218,6 +216,7 @@
   .userNameAndAva {
     display: flex;
     align-items: center;
+    
     img {
       width: 40px;
       height: 40px;
@@ -281,4 +280,16 @@
     }
   }
 
+}
+
+.imageBlock {
+  img {
+
+    width: 560px;
+    background: #222222;
+    border-radius: 12px;
+    padding: 15px;
+    margin-right: 10px;
+    border-radius: 20px;
+  }
 }

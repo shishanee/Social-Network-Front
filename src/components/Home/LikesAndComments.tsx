@@ -30,11 +30,11 @@ const LikesAndComments: React.FC = ({ like, postId }): JSX.Element => {
   return (
     <div className={styles.like}>
       <button onClick={() => likeClick(postId)}>
-        <img src={!finded ? unlike : likeOn} alt="" />
+        <img className={styles.imageforlike} src={!finded ? unlike : likeOn} alt="" />
         {like.length >= 1 && <p>{like.length}</p>}
       </button>
       <button onClick={() => handleClick(postId)}>
-        <img src={chat} alt="" />
+        <img className={styles.imageforlike} src={chat} alt="" />
       </button>
       {open && <ModalPost id={postId} setOpen={setOpen} />}
     </div>
