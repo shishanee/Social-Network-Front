@@ -5,7 +5,7 @@ import { createPosts, getPosts } from "../../features/postsSlice";
 import FormForLeftSide from "./FormForLeftSide";
 import MainLeftSide from "./MainLeftSide";
 import Posts from "./Posts";
-import { getAllComments} from "../../features/commentsSlice";
+import { getAllComments } from "../../features/commentsSlice";
 import { AppDispatch } from "../../app/store";
 
 const LeftSide: React.FC = (): JSX.Element => {
@@ -23,8 +23,8 @@ const LeftSide: React.FC = (): JSX.Element => {
 
   const handleClick = (e) => {
     e.preventDefault();
-      dispatch(createPosts({ text, image }));
-      setText("");
+    dispatch(createPosts({ text, image }));
+    setText("");
   };
 
   const handleChangeFile = (e) => {

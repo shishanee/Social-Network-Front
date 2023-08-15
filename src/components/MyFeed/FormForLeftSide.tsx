@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import styles from "./MyFeed.module.scss";
 import PhotoSvg from './PhotoSvg';
-
+import noimage from '../../../public/noimage.png'
 const FormForLeftSide: React.FC = ({handleClick, text, handleChange, handleChangeFile}) => {
   return (
     <form onSubmit={handleClick} className={styles.post}>
       <div>
-        <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
+        <img src={noimage} alt="" />
 
         <input
           value={text}

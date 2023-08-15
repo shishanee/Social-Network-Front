@@ -3,6 +3,7 @@ import styles from "./CommentPage.module.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addLike, deleteComment } from "../../features/commentsSlice";
+import noimage from '../../../public/noimage.png'
 
 const CommentsPage: React.FC = ({ item, comments }) => {
   const dispatch = useDispatch();
@@ -20,13 +21,14 @@ const CommentsPage: React.FC = ({ item, comments }) => {
     <div className={styles.commentsPage} key={item._id}>
       <div className={styles.hr}></div>
       {comments.map((comment) => {
+        
         if (comment.post === item._id) {
           return (
             <div className={styles.commentBlock} key={comment._id}>
               <div className={styles.avaNameBlo}>
                 <div className={styles.onlyAvaName}>
                   <img
-                    src={"https://i.ibb.co/qJBKH3D/Abdurrahman.jpg"}
+                    src={!comment.user.image ? noimage: `http://localhost:4000/${comment.user.image}`}
                     alt=""
                   />
 

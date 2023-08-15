@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Edit.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "../../features/userSlice";
+import noimage from "../../../public/noimage.png";
 
 const EditFirst: React.FC = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,7 @@ const EditFirst: React.FC = () => {
   const lastName = useSelector((state) => state.user.user.lastName);
   const number = useSelector((state) => state.user.user.number);
   const email = useSelector((state) => state.user.user.email);
-  const age = useSelector((state) => state.user.user.age);;
-  
+  const age = useSelector((state) => state.user.user.age);
 
   const [editName, setEditName] = useState(firstName);
   const [editSurname, setEditSurname] = useState(lastName);
@@ -37,17 +37,17 @@ const EditFirst: React.FC = () => {
   //   setEditEmail(e.target.value);
   // };
 
-
   const handleClick = (e) => {
     e.preventDefault();
-    dispatch(changeUser({editName, editSurname, editNumber, editEmail, editAge}))
-  }
-
+    dispatch(
+      changeUser({ editName, editSurname, editNumber, editEmail, editAge })
+    );
+  };
 
   return (
     <div className={styles.editFirst}>
       <div className={styles.avaName}>
-        <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
+        <img src={!user.image ? noimage : user.image} alt="" />
         <div>
           <h3>
             {user.firstName} {user.lastName}
@@ -60,15 +60,19 @@ const EditFirst: React.FC = () => {
         <div className={styles.firstBlock}>
           <div>
             <p> Имя </p>
-              <input
-                onChange={hadnleChangeName}
-                value={editName}
-                type="textbox"
-              />
+            <input
+              onChange={hadnleChangeName}
+              value={editName}
+              type="textbox"
+            />
           </div>
           <div>
             <p>Фамилия</p>
-            <input value={editSurname} onChange={handleChangeSurname} type="text" />
+            <input
+              value={editSurname}
+              onChange={handleChangeSurname}
+              type="text"
+            />
           </div>
         </div>
 
@@ -76,21 +80,29 @@ const EditFirst: React.FC = () => {
           <div>
             <p> Email </p>
             <input
-            value={user.email}
-            className={styles.emailInput} type="textbox" />
+              value={user.email}
+              className={styles.emailInput}
+              type="textbox"
+            />
           </div>
           <div>
             <p>Возраст</p>
             <input
-            value={editAge}
-            onChange={handleChangeAge} className={styles.ageInput} type="text" />
+              value={editAge}
+              onChange={handleChangeAge}
+              className={styles.ageInput}
+              type="text"
+            />
           </div>
 
           <div>
             <p>Телефон</p>
             <input
-            value={editNumber}
-            onChange={handleChangeNumber} className={styles.phoneInput} type="text" />
+              value={editNumber}
+              onChange={handleChangeNumber}
+              className={styles.phoneInput}
+              type="text"
+            />
           </div>
         </div>
         <div className={styles.blockButton}>

@@ -11,10 +11,11 @@ import CommentsPage from "./CommentsPage";
 import InputForComments from "./InputForComments";
 // import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 // import { es, ru } from 'date-fns/locale'
+import noimage from "../../../public/noimage.png";
 
 const Posts: React.FC = ({ posts }) => {
   const [openComment, setOpenComment] = useState(null);
-  
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleLike = (postId) => {
@@ -56,7 +57,14 @@ const Posts: React.FC = ({ posts }) => {
           return (
             <div key={item._id} className={styles.blockForPost}>
               <div className={styles.userNameAndAva}>
-                <img src="https://i.ibb.co/qJBKH3D/Abdurrahman.jpg" alt="" />
+                <img
+                  src={
+                    !item.user.image
+                      ? noimage
+                      : `http://localhost:4000${item.user.image}`
+                  }
+                  alt=""
+                />
                 <div>
                   <span>
                     <p>{item.user.firstName}</p>
@@ -99,7 +107,11 @@ const Posts: React.FC = ({ posts }) => {
                 <Reports />
               </div>
               <CommentsPage item={item} comments={comments} />
-              {openComment === item._id ? <InputForComments postId={item._id} user={user} /> : ""}
+              {openComment === item._id ? (
+                <InputForComments postId={item._id} user={user} />
+              ) : (
+                ""
+              )}
             </div>
           );
         })
