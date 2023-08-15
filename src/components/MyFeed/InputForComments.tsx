@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styles from "./CommentPage.module.scss";
 import PhotoSvg from "./PhotoSvg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createComment, deleteComment } from "../../features/commentsSlice";
 import noimage from "../../../public/noimage.png";
+import { RootState } from "../../app/store";
 
 const InputForComments: React.FC = ({ user, postId }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
+  const us = useSelector((state:RootState) => state.user.user)
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -22,11 +24,10 @@ const InputForComments: React.FC = ({ user, postId }) => {
     dispatch(createComment({ text, image, postId }));
     setText("");
   };
-
   return (
     <div className={styles.inputBlock}>
       <img
-        src={!user.image ? noimage : `http://localhost:4000/${user.image}`}
+        src={!us.image ? noimage : `http://localhost:4000/${us.image}`}
         alt=""
       />
       <div>

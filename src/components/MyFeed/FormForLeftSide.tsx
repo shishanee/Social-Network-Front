@@ -1,12 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef } from "react";
 import styles from "./MyFeed.module.scss";
-import PhotoSvg from './PhotoSvg';
-import noimage from '../../../public/noimage.png'
-const FormForLeftSide: React.FC = ({handleClick, text, handleChange, handleChangeFile}) => {
+import PhotoSvg from "./PhotoSvg";
+import noimage from "../../../public/noimage.png";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+const FormForLeftSide: React.FC = ({
+  handleClick,
+  text,
+  handleChange,
+  handleChangeFile,
+}) => {
+  const user = useSelector((state: RootState) => state.user.user);
   return (
     <form onSubmit={handleClick} className={styles.post}>
       <div>
-        <img src={noimage} alt="" />
+        <img
+          src={!user.image ? noimage : `http://localhost:4000/${user.image}`}
+          alt=""
+        />
 
         <input
           value={text}
@@ -14,15 +25,21 @@ const FormForLeftSide: React.FC = ({handleClick, text, handleChange, handleChang
           type="text"
           placeholder="Что у вас нового?"
         />
-        </div>
-        <div>
-          <input className={styles.inputM} id="file" onChange={handleChangeFile} type="file" multiple />
-          <label  htmlFor="file">
-            <PhotoSvg />
-          </label>
-        </div>
-      </form>
-  )
-}
+      </div>
+      <div>
+        <input
+          className={styles.inputM}
+          id="file"
+          onChange={handleChangeFile}
+          type="file"
+          multiple
+        />
+        <label htmlFor="file">
+          <PhotoSvg />
+        </label>
+      </div>
+    </form>
+  );
+};
 
-export default FormForLeftSide
+export default FormForLeftSide;

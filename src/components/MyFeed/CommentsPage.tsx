@@ -28,7 +28,7 @@ const CommentsPage: React.FC = ({ item, comments }) => {
               <div className={styles.avaNameBlo}>
                 <div className={styles.onlyAvaName}>
                   <img
-                    src={!comment.user.image ? noimage: `http://localhost:4000/${comment.user.image}`}
+                    src={!user.image ? noimage: `http://localhost:4000/${user.image}`}
                     alt=""
                   />
 
