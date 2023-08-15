@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Message.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../app/store";
+import {  useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 import { parseJWT } from "../../helpers/parseJWT";
 import noimage from "../../../public/noimage.png";
 import { mounthCheck } from "../../helpers/mounthCheck.js";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./OnePeople.module.scss";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { getPostsAll } from "../../features/userSlice";

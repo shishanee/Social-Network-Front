@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Edit.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, editImage } from "../../features/userSlice";
@@ -42,11 +42,8 @@ const EditFirst: React.FC = () => {
   const handleChangeAge = (e) => {
     setEditAge(e.target.value);
   };
-  // const handleChangeEmail = (e) => {
-  //   setEditEmail(e.target.value);
-  // };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(
@@ -54,8 +51,8 @@ const EditFirst: React.FC = () => {
     );
     dispatch(editImage(img));
     setTimeout(() => {
-      navigate('/myfeed')
-    },100)
+      navigate("/myfeed");
+    }, 100);
   };
 
   return (

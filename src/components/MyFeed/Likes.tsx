@@ -3,7 +3,7 @@ import styles from "./MyFeed.module.scss";
 import heart from "../../../public/heart (2).png";
 import heartTwo from "../../../public/heart (3).png";
 
-const Likes: React.FC = ({ user, item, handleLike }) => {
+const Likes: React.FC = ({ user, item, handleLike }):JSX.Element => {
   const filtred = item.likes.find((item) => item.user._id == user._id);
 
   return (

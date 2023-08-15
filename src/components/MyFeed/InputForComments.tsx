@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./CommentPage.module.scss";
 import PhotoSvg from "./PhotoSvg";
 import { useDispatch, useSelector } from "react-redux";
-import { createComment, deleteComment } from "../../features/commentsSlice";
+import { createComment } from "../../features/commentsSlice";
 import noimage from "../../../public/noimage.png";
 import { RootState } from "../../app/store";
 
@@ -39,7 +39,6 @@ const InputForComments: React.FC = ({ user, postId }) => {
           type="text"
           placeholder="Написать комментарий..."
         />
-        {/* <input width={"1px"} id="file" type="text" /> */}
         <label htmlFor="file">
           <PhotoSvg />
         </label>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import likeOn from "../../../public/heart (3).png";
 import unlike from "../../../public/heart (2).png";
 import chat from "../../../public/chat-box.png";
-import share from "../../../public/share.png";
 import styles from "./Home.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
@@ -13,7 +12,7 @@ const LikesAndComments: React.FC = ({ like, postId }): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.user.user);
   const [icon, setIcon] = useState(unlike);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const userId = user._id;
   const likeClick = (id) => {

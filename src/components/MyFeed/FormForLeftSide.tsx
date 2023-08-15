@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./MyFeed.module.scss";
 import PhotoSvg from "./PhotoSvg";
 import noimage from "../../../public/noimage.png";
@@ -9,7 +9,7 @@ const FormForLeftSide: React.FC = ({
   text,
   handleChange,
   handleChangeFile,
-}) => {
+}):JSX.Element => {
   const user = useSelector((state: RootState) => state.user.user);
   return (
     <form onSubmit={handleClick} className={styles.post}>
