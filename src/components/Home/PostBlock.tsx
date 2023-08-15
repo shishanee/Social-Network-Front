@@ -15,7 +15,6 @@ const PostBlock: React.FC = (): JSX.Element => {
   const filtered = posts.filter((item) => {
     return friends.some((friend) => friend._id === item.user._id);
   });
-  console.log(filtered);
   
 
   const dispatch = useDispatch<AppDispatch>();

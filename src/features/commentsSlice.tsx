@@ -112,7 +112,6 @@ export const addLike = createAsyncThunk(
       //   state.loading = true
       // })
       .addCase(createComment.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.comments.unshift(action.payload);
         state.loading = false;
       })

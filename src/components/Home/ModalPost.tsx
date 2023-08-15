@@ -42,7 +42,6 @@ const ModalPost: React.FC = ({ id, setOpen }): JSX.Element => {
           <h2>{post.text}</h2>
           {post.image &&
             post.image.map((item) => {
-              console.log(item);
               return <img src={`http://localhost:4000/${item.path}`} alt="" />;
             })}
         </div>

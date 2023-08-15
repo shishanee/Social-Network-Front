@@ -25,7 +25,7 @@ const Home: React.FC = (): JSX.Element => {
         </div>
         <PostBlock />
       </div>
-      <RightSidebar />
+      {/* <RightSidebar /> */}
     </>
   );
 };

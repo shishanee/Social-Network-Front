@@ -49,7 +49,6 @@ export const initialState: UserState = {
 export const editImage = createAsyncThunk(
   "edit/image",
   async (img, thunkAPI) => {
-    console.log(img)
     try {
       const formData = new FormData();
       formData.append("img", img[0]);

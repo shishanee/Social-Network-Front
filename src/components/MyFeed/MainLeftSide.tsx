@@ -8,7 +8,6 @@ import noimage from "../../../public/noimage.png";
 
 const MainLeftSide: React.FC = () => {
   const images = useSelector((state: RootState) => state.user.images);
-  console.log(images)
   return (
     <div className={styles.blockMainLeft}>
       <div className={styles.photoAndMusic}>

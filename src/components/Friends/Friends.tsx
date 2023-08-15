@@ -60,9 +60,6 @@ const Friends: React.FC = (): JSX.Element => {
             Ваши подписки
           </div>
         </div>
-        <div className={styles.liveSearch}>
-          <input type="text" />
-        </div>
         <div className={styles.siz}></div>
         <div>
           <div>

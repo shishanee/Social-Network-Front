@@ -15,7 +15,6 @@ function Favorite() {
 
   return (
     <div className={styles.favorite_main}>
-      <h3>Все закладки</h3>
       <div className={styles.favorite}>
         <span>
           <img src={icon} alt="" />{" "}

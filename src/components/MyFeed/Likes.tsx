@@ -5,7 +5,6 @@ import heartTwo from "../../../public/heart (3).png";
 
 const Likes: React.FC = ({ user, item, handleLike }) => {
   const filtred = item.likes.find((item) => item.user._id == user._id);
-  console.log(filtred);
 
   return (
     <span
