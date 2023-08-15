@@ -126,7 +126,7 @@
       color: grey;
     }
   }
-  img {
+  .imageforlike{
     width: 20px;
     width: 20px;
     object-fit: cover;
@@ -153,6 +153,8 @@
     top: 20px;
     font-weight: 300;
     cursor: pointer;
+    width: 20px;
+    height: 20px;
   }
   .modal__content {
     padding: 20px;
@@ -164,6 +166,8 @@
       img{
         width: 100%;
         margin-top: 15px;
+        height: 300px;
+        object-fit: cover;
       }
       h2{
         font-weight: 500;

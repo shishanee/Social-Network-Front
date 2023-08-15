@@ -29,6 +29,7 @@ const InputForComments: React.FC = ({ user, postId }) => {
       <img
         src={!us.image ? noimage : `http://localhost:4000/${us.image}`}
         alt=""
+        className={styles.imageForCom}
       />
       <div>
         <textarea
