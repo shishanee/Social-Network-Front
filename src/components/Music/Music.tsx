@@ -6,6 +6,7 @@ import play from "../../a/play.svg";
 import pause from "../../a/pause.svg";
 import back from "../../a/back.svg";
 import next from "../../a/next.svg";
+import repeat from '../../../public/repeat.png'
 
 const Music: React.FC = () => {
   const [i, setI] = useState(0);
@@ -34,8 +35,8 @@ const Music: React.FC = () => {
   }, [isPlaying, audioElem.current, i, rep]);
 
   const handleRepeatSong = () => {
-    handleNextSong();
-    handleBackSong();
+    setI(i*1)
+    audioElem.current?.play()
   };
 
   const handleSongEnd = () => {
@@ -128,18 +129,19 @@ const Music: React.FC = () => {
               className={styles.trackNavigator}
               onClick={handleCheckWidth}
               ref={clickRef}
-            >
+              >
               <div
                 className={styles.progressBar}
                 style={{ width: `${currentSong.progress}%` }}
-              ></div>
+                ></div>
             </div>
             <audio
               src={songs[i].src}
               ref={audioElem}
               onTimeUpdate={handleOnPlaying}
-            />
+              />
           </div>
+              <img onClick={handleRepSong} className={styles.repeatButton} src={repeat} alt="" />
         </div>
         <div className={styles.fullSongs}>
           {songs.map((song, i) => {
@@ -150,6 +152,7 @@ const Music: React.FC = () => {
                   index={i}
                   songName={song.title}
                   songAuthor={song.author}
+                  image={song.image}
                 />
               </div>
             );

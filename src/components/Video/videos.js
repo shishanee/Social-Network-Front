@@ -11,4 +11,8 @@ export const videos = [
     name: "Асхьаб Нежный",
     url: "src/video/acx3.mp4",
   },
+  {
+    name: 'Полюби меня сбоку',
+    url: "src/video/acx4.mp4",
+  }
 ];
