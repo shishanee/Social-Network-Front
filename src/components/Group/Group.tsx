@@ -12,11 +12,12 @@ const Group: React.FC = (): JSX.Element => {
   const [createGroup, setCreateGroup] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [groupDescription, setGroupDescription] = useState("");
+  const [controll, setControll] = useState(false)
 
   const userId = useSelector((state) => state.user.user._id);
 
   const dispatch = useDispatch<AppDispatch>();
-
+ 
   const handleCreateGroup = () => {
     dispatch(postGroup({ groupName, groupDescription, userId }));
     setCreateGroup(false);
@@ -36,6 +37,14 @@ const Group: React.FC = (): JSX.Element => {
   const handleCloseModal = () => {
     setCreateGroup(false);
   };
+
+  const handleControll = () => {
+    setControll(true)
+  };
+
+  const handleControllOff = () => {
+    setControll(false)
+  }
 
   return (
     <div className={styles.group}>
@@ -71,10 +80,10 @@ const Group: React.FC = (): JSX.Element => {
       ) : null}
       <div className={styles.buttons}>
         <div className={styles.firstLinks}>
-          <button>
+          <button onClick={handleControllOff}>
             Все сообщества <p>{group.length}</p>
           </button>
-          <button>Управление</button>
+          <button onClick={handleControll}>Управление</button>
         </div>
         <button className={styles.createBut} onClick={handleGroupModal}>
           Создать сообщество
@@ -84,7 +93,9 @@ const Group: React.FC = (): JSX.Element => {
         <input type="text" placeholder="Поиск сообществ" />
       </div>
       <div className={styles.groupsMain}>
-        {group.map((item) => {
+        {controll ?  group.map((item) => {
+            if(item.user == userId) {
+
           return (
             <GroupCard
               image={
@@ -94,7 +105,18 @@ const Group: React.FC = (): JSX.Element => {
               name={item.name}
               followers={item.followers}
             />
-          );
+          )}
+        }) : group.map((item) => {
+          return (
+            <GroupCard
+              image={
+                !item.image ? noimage : `http://localhost:4000/${item.image}`
+              }
+              id={item._id}
+              name={item.name}
+              followers={item.followers}
+            />
+          ) 
         })}
       </div>
     </div>

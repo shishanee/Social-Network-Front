@@ -15,12 +15,15 @@ export interface Grops {
 export interface InitialState {
   group: Grops[];
   oneGroup: Grops[];
+  posts: Grops[];
+  followers: Grops[];
   loading: boolean;
   error: null | unknown | string | ReactNode;
 }
 
 export const initialState: InitialState = {
   oneGroup: [],
+  posts: [],
   followers: [],
   group: [],
   loading: false,
@@ -104,6 +107,7 @@ export const unFollowGroup = createAsyncThunk(
   }
 );
 
+
 export const followGroup = createAsyncThunk(
   "folllow/group",
   async (groupId, thunkAPI) => {
@@ -175,6 +179,7 @@ export const groupSlice = createSlice({
           state.error = action.payload;
         }
       )
+      
   },
 });
 
