@@ -1,6 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 import { ReactNode } from "react";
+import { Action } from "@remix-run/router";
 
 export interface User {
   age: string;
@@ -16,6 +17,7 @@ export interface User {
   posts: string[];
   __v: number;
   _id: string;
+  favorite: string[];
 }
 
 export interface UserState {
@@ -28,6 +30,8 @@ export interface UserState {
   oneUserFriends: User[];
   loading: boolean;
   error: ReactNode | string | null | unknown;
+  favorite: string[];
+  groups: string[];
 }
 
 export const initialState: UserState = {
@@ -37,13 +41,36 @@ export const initialState: UserState = {
   followers: [],
   groups: [],
   posts: [],
+  images: [],
   loading: false,
   error: null,
   oneUser: [],
   oneUserFollow: [],
   oneUserFriends: [],
   oneUserGroup: [],
+  favorite: [],
 };
+
+export const editImage = createAsyncThunk(
+  "edit/image",
+  async (img, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append("img", img[0]);
+      const res = await fetch("http://localhost:4000/editImage", {
+        method: "PATCH",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+        },
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const oneUser = createAsyncThunk("one/user", async (id, thunkAPI) => {
   try {
@@ -111,15 +138,18 @@ export const followUser = createAsyncThunk(
     }
   }
 );
-export const getPostsAll = createAsyncThunk("get/postsAll", async (id, thunkAPI) => {
-  try {
-    const res = await fetch(`http://localhost:4000/getposts/${id}`);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error);
+export const getPostsAll = createAsyncThunk(
+  "get/postsAll",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/getposts/${id}`);
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const getUser = createAsyncThunk<User[], void, { state: RootState }>(
   "get/user",
@@ -169,8 +199,23 @@ export const changeUser = createAsyncThunk<
       const data = await res.json();
       return data;
     } catch (error) {
-      thunkApi.rejectWithValue(error);
+      thunkAPI.rejectWithValue(error);
     }
+  }
+);
+
+export const GetUserFavorite = createAsyncThunk(
+  "favorite/get",
+  async (_, thunkAPI) => {
+    const res = await fetch("http://localhost:4000/favorite/get", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+    });
+    const data = await res.json();
+    return data;
   }
 );
 
@@ -180,9 +225,43 @@ export const allUsers = createAsyncThunk<
   { rejectValue: string | unknown | null }
 >("all/users", async (_) => {
   const res = await fetch("http://localhost:4000/users");
-  const data = res.json();
+  const data = await res.json();
   return data;
 });
+
+export const deleteFavorite = createAsyncThunk(
+  "favorite/delete",
+  async (id, thunkAPI) => {
+    const res = await fetch('http://localhost:4000/favorite/delete', {
+      method: 'PATCH',
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+      },
+      body: JSON.stringify({
+        favorite: id
+      })
+    })
+    const data = await res.json();
+    return data;
+  }
+);
+
+export const addFavorit = createAsyncThunk('/favorite/add', async (id, thunkAPI) => {
+  const res = await fetch('http://localhost:4000/favorite',{
+    method: 'PATCH',
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+    },
+    body: JSON.stringify({
+      favorite: id
+    })
+  })
+  const data = await res.json()
+  return data
+})
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -194,6 +273,7 @@ export const userSlice = createSlice({
         state.followers = action.payload.followers;
         state.friends = action.payload.friends;
         state.groups = action.payload.groups;
+        state.images = action.payload.images;
         state.loading = false;
         state.error = null;
       })
@@ -223,6 +303,9 @@ export const userSlice = createSlice({
           state.loading = false;
         }
       )
+      .addCase(editImage.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
       .addCase(allUsers.pending, (state, _) => {
         state.error = null;
         state.loading = true;
@@ -233,8 +316,19 @@ export const userSlice = createSlice({
         state.oneUserFriends = action.payload.friends;
         state.oneUserGroup = action.payload.groups;
       })
-      .addCase(getPostsAll.fulfilled, (state,action) => {
-        state.posts = action.payload
+      .addCase(getPostsAll.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+      .addCase(GetUserFavorite.fulfilled, (state, action) => {
+        state.favorite = action.payload;
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(deleteFavorite.fulfilled, (state, action)=>{
+        state.favorite = action.payload
+      })
+      .addCase(addFavorit.fulfilled, (state, action)=>{
+        state.favorite = action.payload
       })
   },
 });
