@@ -6,6 +6,7 @@ import dialog from "../features/dialogSlice";
 import posts from "../features/postsSlice";
 import comments from "../features/commentsSlice";
 import image from "../features/imageSlice";
+import groupPost from "../features/groupPostSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     posts,
     comments,
     image,
+    groupPost
   },
 });
 
