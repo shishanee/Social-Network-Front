@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import styles from "./Home.module.scss";
+import { useDispatch } from "react-redux";
+import { GetUserFavorite, addFavorit } from "../../features/userSlice";
+import { AppDispatch } from "../../app/store";
 
 const Dots: React.FC = ({ postId }): JSX.Element => {
+  const dispatch = useDispatch<AppDispatch>()
   const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => {
     setOpen(!open);
   };
+
+  const handleAddFavorite = (id)=>{
+    dispatch(addFavorit(id))
+    location.reload()
+  }
+
 
   const handleBlur = () => {
     setTimeout(() => {
@@ -46,7 +56,7 @@ const Dots: React.FC = ({ postId }): JSX.Element => {
       </button>
       {open ? (
         <div className={styles.popUp}>
-          <button>Сохранить в закладках</button>
+          <button onClick={()=>handleAddFavorite(postId)} >Сохранить в закладках</button>
         </div>
       ) : (
         ""
@@ -56,3 +66,4 @@ const Dots: React.FC = ({ postId }): JSX.Element => {
 };
 
 export default Dots;
+

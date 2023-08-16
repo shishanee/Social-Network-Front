@@ -5,6 +5,11 @@
         padding: 10px;
         border-radius: 15px;
         width: 600px;
+        .imgUser{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
         .postImg {
             width: -webkit-fill-available;
             padding: 10px;

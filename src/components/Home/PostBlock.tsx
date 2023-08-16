@@ -43,7 +43,7 @@ const PostBlock: React.FC = (): JSX.Element => {
                   <h6>Сегодня {item.date.slice(11, 16)}</h6>
                 </div>
               </div>
-              <Dots />
+              <Dots postId = {item._id} />
             </div>
             <div className={styles.onePost}>
               <p>{item.text}</p>
