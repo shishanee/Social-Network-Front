@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deletePost } from "../../features/postsSlice";
 
-const Dot: React.FC = ({ postId }) => {
+const Dot: React.FC = ({ postId }):JSX.Element => {
   const [active, setActive] = useState(false);
   const dispatch = useDispatch();
   const handleClick = () => {

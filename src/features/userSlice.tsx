@@ -304,6 +304,7 @@ export const userSlice = createSlice({
         }
       )
       .addCase(editImage.fulfilled, (state, action) => {
+
         state.user = action.payload;
       })
       .addCase(allUsers.pending, (state, _) => {

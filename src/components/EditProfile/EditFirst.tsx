@@ -1,25 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Edit.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { changeUser } from "../../features/userSlice";
+import { changeUser, editImage } from "../../features/userSlice";
 import noimage from "../../../public/noimage.png";
+import { AppDispatch, RootState } from "../../app/store";
+import { useNavigate } from "react-router-dom";
 
 const EditFirst: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state: RootState) => state.user.user);
+  const firstName = useSelector(
+    (state: RootState) => state.user.user.firstName
+  );
+  const lastName = useSelector((state: RootState) => state.user.user.lastName);
+  const number = useSelector((state: RootState) => state.user.user.number);
+  const email = useSelector((state: RootState) => state.user.user.email);
+  const age = useSelector((state: RootState) => state.user.user.age);
+  const image = useSelector((state: RootState) => state.user.user.image);
 
-  const firstName = useSelector((state) => state.user.user.firstName);
-  const lastName = useSelector((state) => state.user.user.lastName);
-  const number = useSelector((state) => state.user.user.number);
-  const email = useSelector((state) => state.user.user.email);
-  const age = useSelector((state) => state.user.user.age);
+  const [editName, setEditName] = useState<string>(firstName);
+  const [editSurname, setEditSurname] = useState<string>(lastName);
+  const [editNumber, setEditNumber] = useState<string>(number);
+  const [editEmail, setEditEmail] = useState<string>(email);
+  const [editAge, setEditAge] = useState<string>(age);
+  const [img, setImg] = useState<string>("");
 
-  const [editName, setEditName] = useState(firstName);
-  const [editSurname, setEditSurname] = useState(lastName);
-  const [editNumber, setEditNumber] = useState(number);
-  const [editEmail, setEditEmail] = useState(email);
-  const [editAge, setEditAge] = useState(age);
+  const handleChangeFile = (e) => {
+    setImg(e.target.files);
+  };
 
   const hadnleChangeName = (e) => {
     setEditName(e.target.value);
@@ -33,21 +42,29 @@ const EditFirst: React.FC = () => {
   const handleChangeAge = (e) => {
     setEditAge(e.target.value);
   };
-  // const handleChangeEmail = (e) => {
-  //   setEditEmail(e.target.value);
-  // };
 
+  const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(
       changeUser({ editName, editSurname, editNumber, editEmail, editAge })
     );
+    dispatch(editImage(img));
+    setTimeout(() => {
+      navigate("/myfeed");
+    }, 100);
   };
 
   return (
     <div className={styles.editFirst}>
       <div className={styles.avaName}>
-        <img src={!user.image ? noimage : user.image} alt="" />
+        <label className={styles.label} htmlFor="label">
+          <input onChange={handleChangeFile} id="label" type="file" />
+          <img
+            src={!image ? noimage : `http://localhost:4000/${image}`}
+            alt=""
+          />
+        </label>
         <div>
           <h3>
             {user.firstName} {user.lastName}

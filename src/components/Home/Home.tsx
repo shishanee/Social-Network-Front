@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Home.module.scss";
-import RightSidebar from "../rightSidebar/rightSidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import noimage from "../../../public/noimage.png";
@@ -25,7 +24,6 @@ const Home: React.FC = (): JSX.Element => {
         </div>
         <PostBlock />
       </div>
-      <RightSidebar />
     </>
   );
 };

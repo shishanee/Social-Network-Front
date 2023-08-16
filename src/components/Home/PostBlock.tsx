@@ -7,16 +7,16 @@ import Dots from "./Dots";
 import LikesAndComments from "./LikesAndComments";
 import { allPosts } from "../../features/postsSlice";
 import { Link } from "react-router-dom";
-import ModalPost from "./ModalPost";
 
 const PostBlock: React.FC = (): JSX.Element => {
   const posts = useSelector((state: RootState) => state.posts.allPosts);
   const friends = useSelector((state: RootState) => state.user.friends);
-  const [open,setOpen] = useState<boolean>(false)
-
+  const [open, setOpen] = useState<boolean>(false);
   const filtered = posts.filter((item) => {
     return friends.some((friend) => friend._id === item.user._id);
   });
+  
+
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(allPosts());
@@ -37,7 +37,9 @@ const PostBlock: React.FC = (): JSX.Element => {
                   alt=""
                 />
                 <div>
-                  <Link to={`/people/${item.user._id}`}>{`${item.user.firstName} ${item.user.lastName}`}</Link>
+                  <Link
+                    to={`/people/${item.user._id}`}
+                  >{`${item.user.firstName} ${item.user.lastName}`}</Link>
                   <h6>Сегодня {item.date.slice(11, 16)}</h6>
                 </div>
               </div>

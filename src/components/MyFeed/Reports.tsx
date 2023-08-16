@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./MyFeed.module.scss";
 import { Link } from 'react-router-dom';
 
-const Reports: React.FC = () => {
+const Reports: React.FC = ():JSX.Element => {
   return (
     <span
     className={styles.span} 

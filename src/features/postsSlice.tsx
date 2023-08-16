@@ -128,7 +128,7 @@ export const postsSlice = createSlice({
       //   state.loading = true;
       // })
       .addCase(createPosts.fulfilled, (state, action) => {
-        state.userPosts.unshift(action.payload);
+        // state.userPosts.unshift(action.payload);
         state.loading = false;
       })
       .addCase(createPosts.pending, (state, action) => {

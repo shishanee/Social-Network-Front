@@ -6,15 +6,15 @@ import FormForLeftSide from "./FormForLeftSide";
 import MainLeftSide from "./MainLeftSide";
 import Posts from "./Posts";
 import { getAllComments } from "../../features/commentsSlice";
-import { AppDispatch } from "../../app/store";
+import { AppDispatch, RootState } from "../../app/store";
 
 const LeftSide: React.FC = (): JSX.Element => {
   const [text, setText] = useState<string>("");
   const [image, setImage] = useState<string>("");
   const dispatch = useDispatch<AppDispatch>();
-  const posts = useSelector((state) => state.posts.userPosts);
-  const loading = useSelector((state) => state.posts.loading);
-  const comment = useSelector((state) => state.comments.loading);
+  const posts = useSelector((state: RootState) => state.posts.userPosts);
+  const loading = useSelector((state: RootState) => state.posts.loading);
+  const comment = useSelector((state: RootState) => state.comments.loading);
 
   useEffect(() => {
     dispatch(getPosts());

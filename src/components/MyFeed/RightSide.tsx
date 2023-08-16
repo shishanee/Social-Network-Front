@@ -18,7 +18,7 @@ const RightSide: React.FC = (): JSX.Element => {
 
       <div className={styles.blockForFriends}>
         <Link className={styles.linkToFriends} to={"#"}>
-          Подписчики
+          Подписки
           <span>{user.friends.length}</span>
         </Link>
 
@@ -53,7 +53,7 @@ const RightSide: React.FC = (): JSX.Element => {
       <div className={styles.blockForFriends}>
 
         <Link className={styles.linkToFriends} to={"#"}>
-          Подписки
+          Подписчики
           <span>{user.followers.length}</span>
         </Link>
 

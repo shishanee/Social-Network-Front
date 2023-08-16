@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     height: 52px;
-    width: 550px;
+    width: 700px;
     background: #222222;
     border-radius: 10px;
     border: 1px solid rgba(192, 192, 192, 0.135);
@@ -39,7 +39,7 @@
 }
 
 .postsBlock {
-  width: 550px;
+  width: 700px;
   border-radius: 12px;
   margin-top: 10px;
   .onePostBlock {
@@ -126,7 +126,7 @@
       color: grey;
     }
   }
-  img {
+  .imageforlike{
     width: 20px;
     width: 20px;
     object-fit: cover;
@@ -153,6 +153,8 @@
     top: 20px;
     font-weight: 300;
     cursor: pointer;
+    width: 20px;
+    height: 20px;
   }
   .modal__content {
     padding: 20px;
@@ -164,6 +166,8 @@
       img{
         width: 100%;
         margin-top: 15px;
+        height: 300px;
+        object-fit: cover;
       }
       h2{
         font-weight: 500;

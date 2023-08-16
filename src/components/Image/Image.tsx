@@ -3,7 +3,6 @@ import styles from "./Image.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store";
 import { addImage } from "../../features/imageSlice";
-import upload from '../../../public/upload.png'
 
 const Image: React.FC = (): JSX.Element => {
   const images = useSelector((state: RootState) => state.image.images);
@@ -25,7 +24,7 @@ const Image: React.FC = (): JSX.Element => {
           <p className={styles.youphotos}>Ваши фотографии:</p>{" "}
           <form className={styles.form} onSubmit={handleClick}>
             <label className={styles.label} htmlFor="label">
-             <p>Добавить фото</p>
+              <p>Добавить фото</p>
               <input id="label" onChange={handleChangeFile} type="file" />{" "}
             </label>
             <button>Загрузить</button>

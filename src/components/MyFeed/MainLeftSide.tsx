@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./MyFeed.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import { onePeopleImages } from "../../features/imageSlice";
-import noimage from "../../../public/noimage.png";
 
 const MainLeftSide: React.FC = () => {
-  const images = useSelector((state: RootState) => state.image.oneImages);
-  const user = useSelector((state: RootState) => state.user.user);
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(onePeopleImages(user._id));
-  }, []);
+  const images = useSelector((state: RootState) => state.user.images);
   return (
     <div className={styles.blockMainLeft}>
       <div className={styles.photoAndMusic}>

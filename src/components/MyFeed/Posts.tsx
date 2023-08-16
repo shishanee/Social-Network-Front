@@ -9,27 +9,23 @@ import Reports from "./Reports";
 import Dot from "./Dot";
 import CommentsPage from "./CommentsPage";
 import InputForComments from "./InputForComments";
-// import { format, formatDistance, formatRelative, subDays } from 'date-fns'
-// import { es, ru } from 'date-fns/locale'
 import noimage from "../../../public/noimage.png";
+import { RootState } from "../../app/store";
 
-const Posts: React.FC = ({ posts }) => {
+const Posts: React.FC = ({ posts }):JSX.Element => {
   const [openComment, setOpenComment] = useState(null);
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state:RootState) => state.user.user);
   const handleLike = (postId) => {
     dispatch(addLike({ user, postId }));
   };
-  const comments = useSelector((state) => state.comments.comments);
+  const comments = useSelector((state:RootState) => state.comments.comments);
 
   const handleComment = (postId) => {
     setOpenComment(postId);
   };
 
-  // function createDate_DTO(date: Date) {
-  //   return format(date, "d/MMMM/yy/hh/mm/ss", { locale: ru })
-  // }
 
   return (
     <div className={styles.blockForNotes}>
@@ -59,9 +55,9 @@ const Posts: React.FC = ({ posts }) => {
               <div className={styles.userNameAndAva}>
                 <img
                   src={
-                    !item.user.image
+                    !user.image
                       ? noimage
-                      : `http://localhost:4000${item.user.image}`
+                      : `http://localhost:4000/${user.image}`
                   }
                   alt=""
                 />

@@ -6,16 +6,18 @@ export const initialState = {
   loading: false,
 };
 
-
-export const getAllComments = createAsyncThunk("get/allComments", async (_, thunkAPI) => {
+export const getAllComments = createAsyncThunk(
+  "get/allComments",
+  async (_, thunkAPI) => {
     try {
-        const res = await fetch(`http://localhost:4000/comment/all`);
-        const data = await res.json();
-        return data
+      const res = await fetch(`http://localhost:4000/comment/all`);
+      const data = await res.json();
+      return data;
     } catch (error) {
-        thunkAPI.rejectWithValue(error)
+      thunkAPI.rejectWithValue(error);
     }
-})
+  }
+);
 
 export const createComment = createAsyncThunk(
   "create/comment",
@@ -40,7 +42,7 @@ export const createComment = createAsyncThunk(
       thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 export const deleteComment = createAsyncThunk(
   "delete/comment",
@@ -66,14 +68,17 @@ export const addLike = createAsyncThunk(
   "add/like",
   async ({ userId, commentId }, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:4000/comment/like/${commentId}`, {
-        method: "PATCH",
-        body: JSON.stringify({ userId }),
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-        },
-      });
+      const res = await fetch(
+        `http://localhost:4000/comment/like/${commentId}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ userId }),
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     } catch (error) {
@@ -98,19 +103,16 @@ export const addLike = createAsyncThunk(
 //     }
 //   });
 
-  export const commentSlice = createSlice({
-    name: "comment",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
+export const commentSlice = createSlice({
+  name: "comment",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
       .addCase(getAllComments.fulfilled, (state, action) => {
         state.comments = action.payload;
         state.loading = false;
       })
-      // .addCase(getAllComments.pending, (state) => {
-      //   state.loading = true
-      // })
       .addCase(createComment.fulfilled, (state, action) => {
         state.comments.unshift(action.payload);
         state.loading = false;
@@ -120,10 +122,10 @@ export const addLike = createAsyncThunk(
       })
       .addCase(deleteComment.fulfilled, (state, action) => {
         state.comments.filter((item) => item._id !== action.meta.arg);
-        state.loading = false
+        state.loading = false;
       })
       .addCase(deleteComment.pending, (state, action) => {
-        state.loading = true
+        state.loading = true;
       })
       .addCase(addLike.fulfilled, (state, action) => {
         state.comments.map((item) => {
@@ -131,17 +133,12 @@ export const addLike = createAsyncThunk(
             item.likes.push(action.meta.arg.userId);
           }
         });
-        state.loading = false
+        state.loading = false;
       })
       .addCase(addLike.pending, (state, action) => {
         state.loading = true;
-      })
-        // .addCase(getPostComments.fulfilled, (state, action) => {
-        //   state.postComments = action.payload
-        //   .reverse();
-        //   state.loading = false;
-        // })
-    },
+      });
+  },
 });
 
 export default commentSlice.reducer;
