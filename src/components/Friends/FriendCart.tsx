@@ -17,6 +17,7 @@ const FriendCart = (props: Props): JSX.Element => {
 
   const handleUnFollow = (id) => {
     dispatch(unFollow(id))
+    location.reload()
   }
 
   return (
