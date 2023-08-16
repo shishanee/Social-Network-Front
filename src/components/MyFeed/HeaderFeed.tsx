@@ -39,7 +39,6 @@ const HeaderFeed: React.FC = (): JSX.Element => {
             <Link to={"/edit"} className={styles.changeProfile}>
               <p>Редактировать профиль</p>
             </Link>
-            <button className={styles.yet}> Ещё </button>
           </div>
         </div>
       </div>

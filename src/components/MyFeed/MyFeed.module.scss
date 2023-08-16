@@ -81,14 +81,13 @@
             text-decoration: none;
             background: #4d4b4b;
             color: #e1e3e6;
-            padding: 0px 16px;
+            padding: 4px 16px;
             border-radius: 5px;
             border: none;
             cursor: pointer;
+            text-align: center;
 
-            p {
-              margin-top: 4.5px;
-            }
+           
           }
 
           .changeProfile:hover {

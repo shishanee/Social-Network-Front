@@ -106,6 +106,7 @@ const Music: React.FC = () => {
                 {" "}
                 <img src={pause} alt="" />
               </div>
+              
             ) : (
               <div
                 className={styles.buttonPlayAndPause}
@@ -121,6 +122,7 @@ const Music: React.FC = () => {
             <div onClick={handleNextSong}>
               <img src={next} alt="" />
             </div>
+            <img className={styles.songImage} src={currentSong.image} alt="" />
           </div>
           <div className={styles.songAndProgress}>
             <div className={styles.songName}>{currentSong.title}</div>
